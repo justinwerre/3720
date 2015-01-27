@@ -14,3 +14,8 @@ apt-get install -y php5 libapache2-mod-php5
 
 rm -rf /var/www
 ln -fs /vagrant /var/www
+
+#set up php unit
+wget https://phar.phpunit.de/phpunit.phar
+chmod +x phpunit.phar
+sudo mv phpunit.phar /usr/local/bin/phpunit
