@@ -10,11 +10,9 @@ sudo apt-get -y install mysql-server libapache2-mod-auth-mysql php5-mysql
 
 apt-get install -y php5 libapache2-mod-php5
 
-sed -i '/AllowOverride None/c AllowOverride All' /etc/apache2/sites-available/default
-
 if ! [ -L /var/www ]; then
 	rm -rf /var/www
-	ln -fs /vagrant /var/www
+	ln -fs /vagrant/public /var/www
 fi
 
 /etc/init.d/apache2 restart
