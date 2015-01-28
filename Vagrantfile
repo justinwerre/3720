@@ -5,7 +5,8 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "ubuntu/trusty64"
+  #config.vm.box = "ubuntu/trusty64"
+	config.vm.box = "hashicorp/precise32"
 
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
