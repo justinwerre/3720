@@ -12,7 +12,7 @@ apt-get install -y php5 libapache2-mod-php5
 
 if ! [ -L /var/www ]; then
 	rm -rf /var/www
-	ln -fs /vagrant/public/html /var/www
+	ln -fs /vagrant/public /var/www
 fi
 
 /etc/init.d/apache2 restart
