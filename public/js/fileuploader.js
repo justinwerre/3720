@@ -11,7 +11,7 @@ $(document).ready(function(){
       $.ajax({
         type: "POST",
         url: "/php/fileparser.php",
-        data: {fuckyouchrome: file_data},
+        data: {filedata: file_data},
         cache: false,
         success: function(data, textStatus, jqXHR){
           console.log(data);
