@@ -1,4 +1,5 @@
 <?php
+  // Rename .lis to T.lis and place in php folder
   error_reporting(E_ALL);
   $file = fopen("T.lis", "r");
     while(!feof($file)){
