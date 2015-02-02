@@ -13,9 +13,10 @@ $(document).ready(function(){
       processData: false, // jquery doesn't need to proccess the file
       data: formData,
       success: function(response, textStatus, jqXHR){
-        // clear out the old server responce and show the new server response
+        // clear out the old server responce
         $("#report").remove();
         
+        // show the new server response
         $("<div />",{
           appendTo: $("body"),
           id: "report",
