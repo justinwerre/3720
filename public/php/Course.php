@@ -14,7 +14,7 @@
 
     public function get($property)
     {
-      return "  ";
+      return "CPSC";
     }
 
     public function set($newval)
