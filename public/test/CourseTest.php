@@ -36,5 +36,12 @@ class CourseTest extends PHPUnit_Framework_TestCase
     $c->set("weight","3");
     $this->assertEquals("3", $c->get("weight"));
   }
+  
+  public function testSetTotalPoints()
+  {
+    $c = new Course();
+    $c->set("totalPoints","12");
+    $this->assertEquals("12", $c->get("totalPoints"));
+  }
   // ...
 }
