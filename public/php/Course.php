@@ -9,17 +9,30 @@
 
     public function __construct()
     {
-        
+      $this->dept = "CPSC";
+      $this->courseNumber = "";
+      $this->courseTitle = "";
+      $this->weight = "";
+      $this->totalPoints = "";
     }
 
     public function get($property)
     {
-      return "CPSC";
+      switch ($property)
+      {
+        case "dept":
+          return $this->dept;
+          break;
+        default: 
+      }
     }
 
-    public function set($newval)
+    public function set($property,$newValue)
     {
-        //$this->prop1 = $newval;
+      if($property == "dept")
+      {
+        $this->dept = $newValue;
+      }
     }
 
     public function __destruct()
