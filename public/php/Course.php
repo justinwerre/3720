@@ -1,7 +1,7 @@
 <?php
   class Course
   {
-    private $dept;
+    private $department;
     private $courseNumber;
     private $courseTitle;
     private $weight;
@@ -9,7 +9,7 @@
 
     public function __construct()
     {
-      $this->dept = "CPSC";
+      $this->department = "CPSC";
       $this->courseNumber = "";
       $this->courseTitle = "";
       $this->weight = "";
@@ -21,18 +21,20 @@
     */
     public function get($property)
     {
+      $returnValue;
       switch ($property)
       {
-        case "dept":
-          return $this->dept;
+        case "department":
+          $returnValue = $this->department;
           break;
         case "courseNumber":
-          return $this->courseNumber;
+          $returnValue = $this->courseNumber;
           break;
         case "courseTitle":
-          return $this->courseTitle;
+          $returnValue = $this->courseTitle;
           break;
       }
+      return $returnValue;
     }
     /*
     set() works with the following properties:
@@ -42,8 +44,8 @@
     {
       switch ($property)
       {
-        case "dept":
-          $this->dept = $newValue;
+        case "department":
+          $this->department = $newValue;
           break;
         case "courseNumber":
           $this->courseNumber = $newValue;
