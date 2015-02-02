@@ -12,8 +12,15 @@ $(document).ready(function(){
       contentType: false, // don't add a content type header
       processData: false, // jquery doesn't need to proccess the file
       data: formData,
-      success: function(data, textStatus, jqXHR){
-        console.log(data);
+      success: function(response, textStatus, jqXHR){
+        // clear out the old server responce and show the new server response
+        $("#report").remove();
+        
+        $("<div />",{
+          appendTo: $("body"),
+          id: "report",
+          html: response
+        });
       } 
     });
   });
