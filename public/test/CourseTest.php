@@ -22,5 +22,12 @@ class CourseTest extends PHPUnit_Framework_TestCase
     $c->set("courseNumber","1000");
     $this->assertEquals("1000", $c->get("courseNumber"));
   }
+  
+  public function testSetCourseTitle()
+  {
+    $c = new Course();
+    $c->set("courseTitle","Intro to Computer Science");
+    $this->assertEquals("Intro to Computer Science", $c->get("courseTitle"));
+  }
   // ...
 }
