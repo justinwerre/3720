@@ -1,29 +1,20 @@
+// Creates an onclick event handler to upload files to the server
 $(document).ready(function(){
   $("#filesubmitbutton").on("click", function(){
-    var fileSelect = document.getElementById("fileinput");
-    var files = fileSelect.files;
-    var lis = files[0];
+    var lis = $("#fileinput").get(0).files[0];
     var formData = new FormData();
     formData.append("file", lis, lis.name);
-    
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/php/jsdev.php", true);
-    
-    xhr.onload = function(){
-      if(xhr.status === 200){
-        console.log("success", xhr.responseText);
-      }else{
-        console.log("problems");
-      }
-    };
-    
+
+    // send the form off to the server
     $.ajax({
       type: "POST",
       url: "/php/jsdev.php",
-      
+      contentType: false, // don't add a content type header
+      processData: false, // jquery doesn't need to proccess the file
+      data: formData,
+      success: function(data, textStatus, jqXHR){
+        console.log(data);
+      } 
     });
-    
-    xhr.send(formData);
-    
   });
 });
