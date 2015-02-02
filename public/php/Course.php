@@ -17,7 +17,7 @@
     }
     /*
     get() works with the following properties:
-    dept, courseNumber, courseTitle, weight
+    dept, courseNumber, courseTitle, weight, and totalPoints
     */
     public function get($property)
     {
@@ -36,12 +36,15 @@
         case "weight":
           $returnValue = $this->weight;
           break;
+        case "totalPoints":
+          $returnValue = $this->totalPoints;
+          break;
       }
       return $returnValue;
     }
     /*
     set() works with the following properties:
-    dept, courseNumber, courseTitle, weight
+    dept, courseNumber, courseTitle, weight, and totalPoints
     */
     public function set($property,$newValue)
     {
@@ -58,6 +61,9 @@
           break;
         case "weight":
           $this->weight = $newValue;
+          break;
+        case "totalPoints":
+          $this->totalPoints = $newValue;
           break;
       }
       
