@@ -21,7 +21,7 @@
     */
     public function get($property)
     {
-      $returnValue;
+      $returnValue = "";
       switch ($property)
       {
         case "department":

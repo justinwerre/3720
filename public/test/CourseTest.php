@@ -29,5 +29,12 @@ class CourseTest extends PHPUnit_Framework_TestCase
     $c->set("courseTitle","Intro to Computer Science");
     $this->assertEquals("Intro to Computer Science", $c->get("courseTitle"));
   }
+  
+  public function testSetWeight()
+  {
+    $c = new Course();
+    $c->set("weight","3");
+    $this->assertEquals("3", $c->get("weight"));
+  }
   // ...
 }
