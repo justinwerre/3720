@@ -9,7 +9,7 @@
 
     public function __construct()
     {
-      $this->department = "CPSC";
+      $this->department = "";
       $this->courseNumber = "";
       $this->courseTitle = "";
       $this->weight = "";
