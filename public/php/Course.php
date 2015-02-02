@@ -1,11 +1,11 @@
 <?php
   class Course
   {
-    private $department;
-    private $cnumber;
-    private $ctitle;
+    private $dept;
+    private $courseNumber;
+    private $courseTitle;
     private $weight;
-    private $totalpoints;
+    private $totalPoints;
 
     public function __construct()
     {
