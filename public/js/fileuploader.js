@@ -1,24 +1,27 @@
+// Creates an onclick event handler to upload files to the server
 $(document).ready(function(){
-  $("#filesubmitbutton").on("click",function(){
-    var file_data = $("#fileinput").prop('files')[0];
-    var form_data = new FormData(document.forms.namedItem("testForm"));
-//    form_data.append('file', file_data);
-    console.log(file_data);
-//    var formData = new FormData($("#testForm"));
-//    console.log(file_data);
-    //probably a bad idea
-    try{
-      $.ajax({
-        type: "POST",
-        url: "/php/fileparser.php",
-        data: {filedata: file_data},
-        cache: false,
-        success: function(data, textStatus, jqXHR){
-          console.log(data);
-        }
-      });
-    }catch(e){
-      console.log(e);
-    }
+  $("#filesubmitbutton").on("click", function(){
+    var lis = $("#fileinput").get(0).files[0];
+    var formData = new FormData();
+    formData.append("file", lis, lis.name);
+
+    // send the form off to the server
+    $.ajax({
+      type: "POST",
+      url: "/php/jsdev.php",
+      contentType: false, // don't add a content type header
+      processData: false, // jquery doesn't need to proccess the file
+      data: formData,
+      success: function(response, textStatus, jqXHR){
+        // clear out the old server responce and show the new server response
+        $("#report").remove();
+        
+        $("<div />",{
+          appendTo: $("body"),
+          id: "report",
+          html: response
+        });
+      } 
+    });
   });
 });
