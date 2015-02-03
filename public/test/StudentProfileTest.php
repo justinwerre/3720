@@ -25,5 +25,11 @@ class StudentProfileTest extends PHPUnit_Framework_TestCase
     $s->set("program","Giraffe Mgmt");
     $this->assertEquals("Arts and Science", $s->get("faculty"));
   }
+  public function testAddMajor()
+  {
+    $s = new StudentProfile();
+    $s->set("major","Table Assembly");
+    $this->assertEquals("Table Assembly", $s->get("major"));
+  }
   
 }

@@ -11,7 +11,7 @@
     }
     /*
     get() works with the following properties:
-    name, faculty
+    name, faculty, program
     */
     public function set($property,$newValue)
     {
@@ -30,7 +30,7 @@
     }
     /*
     set() works with the following properties:
-    name, faculty
+    name, faculty, program
     */
     public function get($property)
     {
@@ -47,7 +47,6 @@
           $returnValue = $this->program;
           break;
       }
-      
       return $returnValue;
     }
 
