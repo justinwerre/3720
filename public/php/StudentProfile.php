@@ -9,12 +9,12 @@
       $this->name = "";
     }
     
-    public function setName($name)
+    public function set($property)
     {
-      
+      $this->name = $property;
     }
     
-    public function getName()
+    public function get()
     {
       return $this->name;
     }
