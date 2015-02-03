@@ -40,4 +40,10 @@ class StudentProfileTest extends PHPUnit_Framework_TestCase
     $r = $s->get("courses");
     $this->assertEquals("MATH", $r[0]->get("department"));
   }
+  public function testAddCreditHours()
+  {
+    $s = new StudentProfile();
+    $s->set("creditHours",97);
+    $this->assertEquals(97, $s->get("creditHours"));
+  }
 }
