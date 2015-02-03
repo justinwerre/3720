@@ -15,13 +15,17 @@
     */
     public function set($property,$newValue)
     {
-      if($property == "name")
+      switch ($property)
       {
-        $this->name = $newValue;
-      }
-      else
-      {
-        $this->faculty = $newValue;
+        case "name":
+          $this->name = $newValue;
+          break;
+        case "faculty":
+          $this->faculty = $newValue;
+          break;
+        case "program":
+          $this->program = $newValue;
+          break;
       }
     }
     /*
@@ -31,14 +35,19 @@
     public function get($property)
     {
       $returnValue = "";
-      if($property == "name")
+      switch ($property)
       {
-        $returnValue = $this->name;
+        case "name":
+          $returnValue = $this->name;
+          break;
+        case "faculty":
+          $returnValue = $this->faculty;
+          break;
+        case "program":
+          $returnValue = $this->program;
+          break;
       }
-      else
-      {
-        $returnValue = $this->faculty;
-      }
+      
       return $returnValue;
     }
 
