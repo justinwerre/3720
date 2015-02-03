@@ -6,8 +6,6 @@
 
 class CourseTest extends PHPUnit_Framework_TestCase
 {
-  // ...
-
   public function testSetDept()
   {
     $c = new Course();
@@ -42,5 +40,4 @@ class CourseTest extends PHPUnit_Framework_TestCase
     $c->set("totalPoints","12");
     $this->assertEquals("12", $c->get("totalPoints"));
   }
-  // ...
 }
