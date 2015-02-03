@@ -6,6 +6,7 @@
     private $faculty;
     private $program;
     private $major;
+    private $creditHours;
 
     public function __construct()
     {
@@ -14,10 +15,11 @@
       $this->program = "";
       $this->major = "";
       $this->courses = array();
+      $this->creditHours = 0;
     }
     /*
     get() works with the following properties:
-    name, faculty, program, major, courses
+    name, faculty, program, major, courses, creditHours
     */
     public function set($property,$newValue)
     {
@@ -38,11 +40,14 @@
         case "courses":
           $this->courses[] = $newValue;
           break;
+        case "creditHours":
+          $this->creditHours = $newValue;
+          break;
       }
     }
     /*
     set() works with the following properties:
-    name, faculty, program, major, course
+    name, faculty, program, major, course, creditHours
     */
     public function get($property)
     {
@@ -63,6 +68,9 @@
           break;
         case "courses":
           $returnValue = $this->courses;
+          break;
+        case "creditHours":
+          $returnValue = $this->creditHours;
           break;
       }
       return $returnValue;
