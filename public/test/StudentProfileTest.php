@@ -6,11 +6,16 @@
 
 class StudentProfileTest extends PHPUnit_Framework_TestCase
 {
-   public function testAddName()
+  public function testAddName()
   {
     $s = new StudentProfile();
-    $s->set("Sara");
+    $s->set("name","Sara");
     $this->assertEquals("Sara", $s->get());
   }
-  
+  public function testAddFaculty()
+  {
+    $s = new StudentProfile();
+    $s->set("faculty","Arts and Science");
+    $this->assertEquals("Arts and Science", $s->get());
+  }
 }

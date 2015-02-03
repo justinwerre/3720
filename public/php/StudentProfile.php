@@ -3,15 +3,23 @@
   {
     private $name;
     private $classes;
+    private $faculty;
 
     public function __construct()
     {
       $this->name = "";
     }
     
-    public function set($property)
+    public function set($property,$newValue)
     {
-      $this->name = $property;
+      if($property == "name")
+      {
+        $this->name = $newValue;
+      }
+      else
+      {
+        $this->faculty = $newValue;
+      }
     }
     
     public function get()
