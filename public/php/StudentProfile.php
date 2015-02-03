@@ -4,10 +4,16 @@
     private $name;
     private $classes;
     private $faculty;
+    private $program;
+    private $major;
 
     public function __construct()
     {
       $this->name = "";
+      $this->faculty = "";
+      $this->program = "";
+      $this->major = "";
+      
     }
     /*
     get() works with the following properties:
