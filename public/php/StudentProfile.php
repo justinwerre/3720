@@ -9,7 +9,10 @@
     {
       $this->name = "";
     }
-    
+    /*
+    get() works with the following properties:
+    name, faculty
+    */
     public function set($property,$newValue)
     {
       if($property == "name")
@@ -21,17 +24,22 @@
         $this->faculty = $newValue;
       }
     }
-    
+    /*
+    set() works with the following properties:
+    name, faculty
+    */
     public function get($property)
     {
+      $returnValue = "";
       if($property == "name")
       {
-        return $this->name;
+        $returnValue = $this->name;
       }
       else
       {
-        return $this->faculty;
+        $returnValue = $this->faculty;
       }
+      return $returnValue;
     }
 
     public function __destruct()
