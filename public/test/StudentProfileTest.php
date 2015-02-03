@@ -3,7 +3,7 @@
  * run phpunit command from public folder
  * phpunit --bootstrap php/StudentProfile.php test/StudentProfileTest.php
 */
-
+require_once "Course.php";
 class StudentProfileTest extends PHPUnit_Framework_TestCase
 {
   public function testAddName()
@@ -31,5 +31,13 @@ class StudentProfileTest extends PHPUnit_Framework_TestCase
     $s->set("major","Table Assembly");
     $this->assertEquals("Table Assembly", $s->get("major"));
   }
-  
+  public function testAddCourse()
+  {
+    $c = new Course();
+    $c->set("department","MATH");
+    $s = new StudentProfile();
+    $s->set("courses",$c);
+    
+    $this->assertEquals("MATH", $s->get("courses")[0]->get("department");
+  }
 }

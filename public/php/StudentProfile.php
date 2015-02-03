@@ -2,7 +2,7 @@
   class StudentProfile
   {
     private $name;
-    private $classes;
+    private $courses;
     private $faculty;
     private $program;
     private $major;
@@ -13,7 +13,7 @@
       $this->faculty = "";
       $this->program = "";
       $this->major = "";
-      
+      $this->courses = array();
     }
     /*
     get() works with the following properties:
