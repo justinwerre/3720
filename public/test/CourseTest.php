@@ -1,4 +1,9 @@
 <?php
+/*
+ * run phpunit command from public folder
+ * phpunit --bootstrap php/Course.php test/CourseTest.php
+*/
+
 class CourseTest extends PHPUnit_Framework_TestCase
 {
   // ...
