@@ -22,9 +22,16 @@
       }
     }
     
-    public function get()
+    public function get($property)
     {
-      return $this->name;
+      if($property == "name")
+      {
+        return $this->name;
+      }
+      else
+      {
+        return $this->faculty;
+      }
     }
 
     public function __destruct()
