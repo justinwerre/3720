@@ -11,7 +11,7 @@
     }
     /*
     get() works with the following properties:
-    name, faculty, program
+    name, faculty, program, major
     */
     public function set($property,$newValue)
     {
@@ -26,11 +26,14 @@
         case "program":
           $this->program = $newValue;
           break;
+        case "major":
+          $this->major = $newValue;
+          break;
       }
     }
     /*
     set() works with the following properties:
-    name, faculty, program
+    name, faculty, program, major
     */
     public function get($property)
     {
@@ -45,6 +48,9 @@
           break;
         case "program":
           $returnValue = $this->program;
+          break;
+        case "major":
+          $returnValue = $this->major;
           break;
       }
       return $returnValue;
