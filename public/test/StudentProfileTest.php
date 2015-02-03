@@ -3,7 +3,7 @@
  * run phpunit command from public folder
  * phpunit --bootstrap php/StudentProfile.php test/StudentProfileTest.php
 */
-require_once "Course.php";
+require_once "/vagrant/public/php/Course.php";
 class StudentProfileTest extends PHPUnit_Framework_TestCase
 {
   public function testAddName()
@@ -37,7 +37,7 @@ class StudentProfileTest extends PHPUnit_Framework_TestCase
     $c->set("department","MATH");
     $s = new StudentProfile();
     $s->set("courses",$c);
-    
-    $this->assertEquals("MATH", $s->get("courses")[0]->get("department");
+    $r = $s->get("courses");
+    $this->assertEquals("MATH", $r[0]->get("department"));
   }
 }
