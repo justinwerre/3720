@@ -18,4 +18,12 @@ class StudentProfileTest extends PHPUnit_Framework_TestCase
     $s->set("faculty","Arts and Science");
     $this->assertEquals("Arts and Science", $s->get("faculty"));
   }
+  public function testAddProgramDoesntChangeFaculty()
+  {
+    $s = new StudentProfile();
+    $s->set("faculty","Arts and Science");
+    $s->set("program","Giraffe Mgmt");
+    $this->assertEquals("Arts and Science", $s->get("faculty"));
+  }
+  
 }
