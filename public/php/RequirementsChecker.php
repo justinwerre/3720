@@ -23,8 +23,8 @@
     return $studentProfile->get("creditHours") >= 120;
   }
 
-  function check1000Classes($studentProfile)
+  function check1000Courses($studentProfile)
   {
-    return true;
+    return count($studentProfile->get("courses")) < 12;
   } 
 ?>
