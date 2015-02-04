@@ -13,4 +13,11 @@ class RequirementsCheckerTest extends PHPUnit_Framework_TestCase
     $student->set("GPA", 3.99);
     $this->assertEquals(true, checkGPA($student));
   }
+  
+  public function testGPAlessThantwo()
+  {
+    $student = new StudentProfile();
+    $student->set("GPA", 1.0);
+    $this->assertEquals(false, checkGPA($student));
+  }
 }
