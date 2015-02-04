@@ -1,12 +1,13 @@
 <?php
-  require_once "/vagrant/public/php/Course.php";
-  require_once "/vagrant/public/php/StudentProfile.php";
+  require_once "Course.php";
+  require_once "StudentProfile.php";
 
-  // Rename .lis to T.lis and place in php folder
-  error_reporting(E_ALL);
-  $file = fopen("T.lis", "r");
-
+    // Rename .lis to T.lis and place in php folder
+    error_reporting(E_ALL);
+    $file = fopen("T.lis", "r");
     $student = new StudentProfile();
+    $gpaLine;
+
 
     while(!feof($file))
     { 
@@ -18,6 +19,13 @@
 
       $line = fgets($file);
       $arr = explode(" ", $line);
+
+      //Save GPA line and overlap, when end of file is found, the last one saved will have total GPA
+      if($line[0] = "Current")
+      {
+        echo $line[0];
+        //var_dump($line);
+      }
 
       //~~~Parse out courses~~~//
       if(ctype_upper($arr[0]))
@@ -90,8 +98,9 @@
       }
     }
 
-    for($i = 0; i < count($student->$r); i++)
+    /*$temp = $student->get("courses");
+    for($i = 0; $i < count($temp); $i++)
     {
-      echo $student->$r[i];
-    }
+      echo $temp[$i]->get("department") . "<br>";
+    }*/
 ?>
