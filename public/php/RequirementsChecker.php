@@ -25,6 +25,6 @@
 
   function check1000Classes($studentProfile)
   {
-    
+    return true;
   } 
 ?>
