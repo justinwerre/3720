@@ -20,6 +20,6 @@
 
   function checkCreditHours($studentProfile)
   {
-    
+    return true;
   }
 ?>
