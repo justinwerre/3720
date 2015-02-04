@@ -15,6 +15,6 @@
  
 function checkGPA($studentProfile)
 {
-  return $studentProfile->get("GPA") > 2;
+  return $studentProfile->get("GPA") >= 2;
 }
 ?>
