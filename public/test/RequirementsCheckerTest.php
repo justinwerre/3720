@@ -41,4 +41,11 @@ class RequirementsCheckerTest extends PHPUnit_Framework_TestCase
     $student->set("creditHours", 119);
     $this->assertEquals(false, checkCreditHours($student));
   }
+  
+  public function testCreditHoursEquals120()
+  {
+    $student = new StudentProfile();
+    $student->set("creditHours", 120);
+    $this->assertEquals(true, checkCreditHours($student));
+  }
 }
