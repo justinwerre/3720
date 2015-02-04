@@ -46,4 +46,23 @@ class StudentProfileTest extends PHPUnit_Framework_TestCase
     $s->set("creditHours",97);
     $this->assertEquals(97, $s->get("creditHours"));
   }
+  public function testAddGPA()
+  {
+    $s = new StudentProfile();
+    $s->set("GPA",3.0);
+    $this->assertEquals(3.0, $s->get("GPA"));
+  }
+  public function testAddMultipleCourses()
+  {
+    $c1 = new Course();
+    $c2 = new Course();
+    $c1->set("department","MATH");
+    $c2->set("department","CPSC");
+    $s = new StudentProfile();
+    $s->set("courses",$c1);
+    $s->set("courses",$c2);
+    $r = $s->get("courses");
+    $this->assertEquals("MATH", $r[0]->get("department"));
+    $this->assertEquals("CPSC", $r[1]->get("department"));
+  }
 }

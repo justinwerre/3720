@@ -7,6 +7,7 @@
     private $program;
     private $major;
     private $creditHours;
+    private $GPA;
 
     public function __construct()
     {
@@ -16,6 +17,7 @@
       $this->major = "";
       $this->courses = array();
       $this->creditHours = 0;
+      $this->GPA = 0.0;
     }
     /*
     get() works with the following properties:
@@ -42,6 +44,9 @@
           break;
         case "creditHours":
           $this->creditHours = $newValue;
+          break;
+        case "GPA":
+          $this->GPA = $newValue;
           break;
       }
     }
@@ -71,6 +76,9 @@
           break;
         case "creditHours":
           $returnValue = $this->creditHours;
+          break;
+        case "GPA":
+          $returnValue = $this->GPA;
           break;
       }
       return $returnValue;
