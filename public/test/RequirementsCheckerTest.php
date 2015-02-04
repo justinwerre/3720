@@ -70,4 +70,15 @@ class RequirementsCheckerTest extends PHPUnit_Framework_TestCase
     }
     $this->assertEquals(false, check1000Courses($student));
   }
+  public function test1000CoursesEquals12()
+  {
+    $student = new StudentProfile();
+    for($i=0;$i<12;$i++)
+    {
+      $course = new Course();
+      $course->set("department", "MATH");
+      $student->set("courses", $course);
+    }
+    $this->assertEquals(true, check1000Courses($student));
+  }
 }
