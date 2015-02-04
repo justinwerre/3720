@@ -25,6 +25,6 @@
 
   function check1000Courses($studentProfile)
   {
-    return count($studentProfile->get("courses")) < 12;
+    return count($studentProfile->get("courses")) <= 12;
   } 
 ?>
