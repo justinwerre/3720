@@ -15,6 +15,6 @@
  
 function checkGPA($studentProfile)
 {
-
+  return true;
 }
 ?>
