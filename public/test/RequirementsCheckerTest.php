@@ -27,4 +27,11 @@ class RequirementsCheckerTest extends PHPUnit_Framework_TestCase
     $student->set("GPA", 2.0);
     $this->assertEquals(true, checkGPA($student));
   }
+  
+  public function testCreditHoursGreaterThan120()
+  {
+    $student = new StudentProfile();
+    $student->set("creditHours", 121);
+    $this->assertEquals(true, checkCreditHours($student));
+  }
 }

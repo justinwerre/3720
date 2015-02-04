@@ -13,8 +13,13 @@
 
   }
  
-function checkGPA($studentProfile)
-{
-  return $studentProfile->get("GPA") >= 2;
-}
+  function checkGPA($studentProfile)
+  {
+    return $studentProfile->get("GPA") >= 2;
+  }
+
+  function checkCreditHours($studentProfile)
+  {
+    
+  }
 ?>
