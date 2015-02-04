@@ -4,6 +4,7 @@
  * phpunit --bootstrap php/RequirementsChecker.php test/RequirementsCheckerTest.php
 */
 require_once "/vagrant/public/php/StudentProfile.php";
+require_once "/vagrant/public/php/Course.php";
 
 class RequirementsCheckerTest extends PHPUnit_Framework_TestCase
 {
@@ -47,5 +48,14 @@ class RequirementsCheckerTest extends PHPUnit_Framework_TestCase
     $student = new StudentProfile();
     $student->set("creditHours", 120);
     $this->assertEquals(true, checkCreditHours($student));
+  }
+  
+  public function test1000ClassesLessThan12()
+  {
+    $student = new StudentProfile();
+    $course = new Course();
+    $course->set("department", "MATH");
+    $student->set("courses", $course);
+    $this->assertEquals(true, check1000Classes($student));
   }
 }

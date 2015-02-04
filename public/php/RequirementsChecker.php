@@ -22,4 +22,9 @@
   {
     return $studentProfile->get("creditHours") >= 120;
   }
+
+  function check1000Classes($studentProfile)
+  {
+    
+  } 
 ?>
