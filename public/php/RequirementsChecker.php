@@ -20,6 +20,6 @@
 
   function checkCreditHours($studentProfile)
   {
-    return $studentProfile->get("creditHours") > 120;
+    return $studentProfile->get("creditHours") >= 120;
   }
 ?>
