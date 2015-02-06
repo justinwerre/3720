@@ -111,4 +111,22 @@ class RequirementsCheckerTest extends PHPUnit_Framework_TestCase
     $status = check1000Courses($student);
     $this->assertEquals(true, $status["result"]);
   }
+  
+  public function test1000CoursesDoNotCountPHAC()
+  {
+    $student = new StudentProfile();
+    $course = new Course();
+    $course->set("courseNumber", 1000);
+    $course->set("department", "PHAC");
+    $student->set("courses", $course);
+    for($i=0;$i<12;$i++)
+    {
+      $course = new Course();
+      $course->set("department", "MATH");
+      $course->set("courseNumber", 1000);
+      $student->set("courses", $course);
+    }
+    $status = check1000Courses($student);
+    $this->assertEquals(true, $status["result"]);
+  }
 }
