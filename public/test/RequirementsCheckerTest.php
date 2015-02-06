@@ -61,6 +61,7 @@ class RequirementsCheckerTest extends PHPUnit_Framework_TestCase
     $student = new StudentProfile();
     $course = new Course();
     $course->set("department", "MATH");
+    $course->set("courseNumber", 1000);
     $student->set("courses", $course);
     $status = check1000Courses($student);
     $this->assertEquals(true, $status["result"]);
@@ -73,11 +74,13 @@ class RequirementsCheckerTest extends PHPUnit_Framework_TestCase
     {
       $course = new Course();
       $course->set("department", "MATH");
+      $course->set("courseNumber", 1000);
       $student->set("courses", $course);
     }
     $status = check1000Courses($student);
     $this->assertEquals(false, $status["result"]);
   }
+  
   public function test1000CoursesEquals12()
   {
     $student = new StudentProfile();
@@ -85,6 +88,7 @@ class RequirementsCheckerTest extends PHPUnit_Framework_TestCase
     {
       $course = new Course();
       $course->set("department", "MATH");
+      $course->set("courseNumber", 1000);
       $student->set("courses", $course);
     }
     $status = check1000Courses($student);
@@ -101,6 +105,7 @@ class RequirementsCheckerTest extends PHPUnit_Framework_TestCase
     {
       $course = new Course();
       $course->set("department", "MATH");
+      $course->set("courseNumber", 1000);
       $student->set("courses", $course);
     }
     $status = check1000Courses($student);
