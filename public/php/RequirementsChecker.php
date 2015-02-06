@@ -24,12 +24,12 @@
     );
   }
 
+  // returns true if <= 12 1000 courses have been taken
   function check1000Courses($studentProfile)
   {
     return array(
       "result" => count($studentProfile->get("courses")) <= 12,
       "reason" => $studentProfile->get("courses")
     );
-
   } 
 ?>
