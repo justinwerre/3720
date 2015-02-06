@@ -12,42 +12,48 @@ class RequirementsCheckerTest extends PHPUnit_Framework_TestCase
   {
     $student = new StudentProfile();
     $student->set("GPA", 3.99);
-    $this->assertEquals(true, checkGPA($student));
+    $status = checkGPA($student);
+    $this->assertEquals(true, $status["result"]);
   }
   
   public function testGPAlessThanTwo()
   {
     $student = new StudentProfile();
     $student->set("GPA", 1.0);
-    $this->assertEquals(false, checkGPA($student));
+    $status = checkGPA($student);
+    $this->assertEquals(false, $status["result"]);
   }
   
   public function testGPAEqualsTwo()
   {
     $student = new StudentProfile();
     $student->set("GPA", 2.0);
-    $this->assertEquals(true, checkGPA($student));
+    $status = checkGPA($student);
+    $this->assertEquals(true, $status["result"]);
   }
   
   public function testCreditHoursGreaterThan120()
   {
     $student = new StudentProfile();
     $student->set("creditHours", 121);
-    $this->assertEquals(true, checkCreditHours($student));
+    $status = checkCreditHours($student);
+    $this->assertEquals(true, $status["result"]);
   }
   
   public function testCreditHoursLessThan120()
   {
     $student = new StudentProfile();
     $student->set("creditHours", 119);
-    $this->assertEquals(false, checkCreditHours($student));
+    $status = checkCreditHours($student);
+    $this->assertEquals(false, $status["result"]);
   }
   
   public function testCreditHoursEquals120()
   {
     $student = new StudentProfile();
     $student->set("creditHours", 120);
-    $this->assertEquals(true, checkCreditHours($student));
+    $status = checkCreditHours($student);
+    $this->assertEquals(true, $status["result"]);
   }
   
   public function test1000CoursesLessThan12()
@@ -56,7 +62,8 @@ class RequirementsCheckerTest extends PHPUnit_Framework_TestCase
     $course = new Course();
     $course->set("department", "MATH");
     $student->set("courses", $course);
-    $this->assertEquals(true, check1000Courses($student));
+    $status = check1000Courses($student);
+    $this->assertEquals(true, $status["result"]);
   }
   
   public function test1000CoursesGreaterThan12()
@@ -68,7 +75,8 @@ class RequirementsCheckerTest extends PHPUnit_Framework_TestCase
       $course->set("department", "MATH");
       $student->set("courses", $course);
     }
-    $this->assertEquals(false, check1000Courses($student));
+    $status = check1000Courses($student);
+    $this->assertEquals(false, $status["result"]);
   }
   public function test1000CoursesEquals12()
   {
@@ -79,6 +87,7 @@ class RequirementsCheckerTest extends PHPUnit_Framework_TestCase
       $course->set("department", "MATH");
       $student->set("courses", $course);
     }
-    $this->assertEquals(true, check1000Courses($student));
+    $status = check1000Courses($student);
+    $this->assertEquals(true, $status["result"]);
   }
 }
