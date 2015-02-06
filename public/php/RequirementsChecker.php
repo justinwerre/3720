@@ -1,9 +1,21 @@
 <?php
   class RequirementsChecker
   {
+    private $requirements;
     
-    public function __construct()
-    {}
+    public function __construct($studentProfile)
+    {
+      $this->requirements = array(
+        "GPA" => checkGPA($studentProfile),
+        "creditHours" => checkCreditHours($studentProfile),
+        "oneThousands" => check1000Courses($studentProfile)
+      );  
+    }
+    
+    public function get(){
+      return $this->requirements;
+    }
+    
     public function __destruct()
     {}
   }
