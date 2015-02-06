@@ -66,7 +66,17 @@
           $this->totalPoints = $newValue;
           break;
       }
-      
+    }
+    
+    public function toArray()
+    {
+      return array(
+        "department" => $this->department,
+        "courseNumber" => $this->courseNumber,
+        "courseTitle" => $this->courseTitle,
+        "weight" => $this->weight,
+        "totalPoints" => $this->totalPoints
+      );
     }
 
     public function __destruct()

@@ -45,7 +45,7 @@
         // exclude activity courses
         if($course->get("department") != "PHAC" &&
           $course->get("department") != "MUSE"){
-          $courses[] = $course;
+          $courses[] = $course->toArray();
         }
       }
     }
