@@ -7,6 +7,11 @@
     $file = fopen("T.lis", "r");
     $student = new StudentProfile();
     $gpaLine;
+    $faculty = "";
+    $program = "";
+    $major = "";
+    $name = "";
+    $lineCount = 0;
 
 
     while(!feof($file))
@@ -16,19 +21,82 @@
       $cTitle = "";
       $weightCR = 0;
       $tPoints = 0;
+      $lineCount++;
 
       $line = fgets($file);
       $arr = explode(" ", $line);
-
-      //Save GPA line and overlap, when end of file is found, the last one saved will have total GPA
-      if($line[0] = "Current")
+      
+      //Get name
+      if($lineCount == 3)
       {
-        echo $line[0];
-        //var_dump($line);
+        $name = $arr[0];
+        for($i = 1; $i < count($arr); $i++)
+        {
+          if(!is_numeric($arr[$i]))
+          {
+            $name = $name . " " . $arr[$i];
+          }
+          else
+          {
+            break;
+          }
+        }
+        $student->set("name", $name);
       }
-
+      
+      //Find faculty value and write it to student profile class
+      if($arr[0] == "Faculty:")
+      {
+        $faculty = $arr[1];
+        for($i = 2; $i < count($arr); $i++)
+        {
+          if($i < count($arr) - 1)
+          {
+            if($arr[$i].$arr[$i+1] != "")
+            {
+              $faculty = $faculty . " " . $arr[$i];
+            }
+            else
+            {
+              break; 
+            }
+          }
+        }
+        $student->set("faculty",$faculty);
+        //Find program value and write it to student profile class
+        for($j = count($arr) - 1; $j >= 0; $j--)
+        {
+          if($arr[$j] != "Program:")
+          {
+            $program = $arr[$j] . " " . $program;
+          }
+          else
+          {
+            break; 
+          }
+        }
+        $student->set("program",$program);
+      }
+      //Find GPA Line and get total GPA, over write until last one is found.
+      if($arr[0] == "Current")
+      {
+        $gpaLine = explode(" ", $line);
+        $student->set("GPA", $gpaLine[8]);
+      }
+      //Find major value and write it to student profile class
+      if($arr[0] == "Major:")
+      {
+        $major = $arr[1];
+        for($i = 2; $i < count($arr); $i++)
+        {
+          if($i < count($arr))
+              $major = $major . " " . $arr[$i];
+        }
+        $student->set("major",$major);
+      }
+      
       //~~~Parse out courses~~~//
-      if(ctype_upper($arr[0]))
+      if(ctype_upper($arr[0])) 
       {
       	$size = count($arr);
         $justCredit = false;
@@ -97,10 +165,8 @@
         //echo $dept . " " . $cNum . " " . $cTitle . " " . $weightCR . " " . $tPoints . "<br>";
       }
     }
-
-    /*$temp = $student->get("courses");
-    for($i = 0; $i < count($temp); $i++)
-    {
-      echo $temp[$i]->get("department") . "<br>";
-    }*/
+    //echo $student->get("program");
+    //echo $student->get("name");
+    //echo $student->get("faculty");
+    //echo $student->get("major");
 ?>
