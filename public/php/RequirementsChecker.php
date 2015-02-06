@@ -27,9 +27,15 @@
   // returns true if <= 12 1000 courses have been taken
   function check1000Courses($studentProfile)
   {
+    $courses = array();
+    foreach($studentProfile->get("courses") as $course){
+      if($course->get("courseNumber") < 2000){
+        $courses[] = $course;
+      }
+    }
     return array(
-      "result" => count($studentProfile->get("courses")) <= 12,
-      "reason" => $studentProfile->get("courses")
+      "result" => count($courses) <= 12,
+      "reason" => $courses
     );
   } 
 ?>
