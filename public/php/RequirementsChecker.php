@@ -30,7 +30,10 @@
     $courses = array();
     foreach($studentProfile->get("courses") as $course){
       if($course->get("courseNumber") < 2000){
-        $courses[] = $course;
+        // exclude activity courses
+        if($course->get("department") != "PHAC"){
+          $courses[] = $course;
+        }
       }
     }
     return array(
