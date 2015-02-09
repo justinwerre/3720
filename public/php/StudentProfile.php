@@ -83,6 +83,18 @@
       }
       return $returnValue;
     }
+    
+    public function toArray(){
+      return array(
+        "name" => $this->name,
+        "faculty" => $this->faculty,
+        "program" => $this->program,
+        "major" => $this->major,
+        "courses" => $this->courses,
+        "creditHours" => $this->creditHours,
+        "GPA" => $this->GPA
+      );
+    }
 
     public function __destruct()
     {

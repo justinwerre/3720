@@ -18,16 +18,94 @@ $(document).ready(function(){
         console.log(response);
         
         // create a report for the user
-       $report.append(GPAReport(response));
+        $report.append(nameReport(response.studentProfile));
+        $report.append(facultyReport(response.studentProfile));
+        $report.append(majorReport(response.studentProfile));
+        $report.append(programReport(response.studentProfile));
+        $report.append(GPAReport(response.gradCheck));
+        $report.append(creditHoursReport(response.gradCheck));
+        $report.append(oneThousandsReport(response.gradCheck));
+
       } 
     });
   });
 });
 
+// creates a table row for student name
+function nameReport(response){
+  var header = $("<td />", {text: "Student name:"});
+  var name = $("<td />", {text: response.name});
+  return $("<tr />",{
+    append: Array(header, name)
+  });
+}
+
+// creates a table row for faculty
+function facultyReport(response){
+  var header = $("<td />", {text: "Faculty:"});
+  var faculty = $("<td />", {text: response.faculty});
+  return $("<tr />",{
+    append: Array(header, faculty)
+  });
+}
+
+// creates a table row for major
+function majorReport(response){
+  var header = $("<td />", {text: "Major:"});
+  var major = $("<td />", {text: response.major});
+  return $("<tr />",{
+    append: Array(header, major)
+  });
+}
+
+// creates a table row for program
+function programReport(response){
+  var header = $("<td />", {text: "Program:"});
+  var program = $("<td />", {text: response.program});
+  return $("<tr />",{
+    append: Array(header, program)
+  });
+}
+
 // creates a table row for the GPA requirement check
 function GPAReport(response){
   var header = $("<td />", {text: "GPA test:"});
-  var result = $("<td />", {text: response.GPA.result?"Pass":"fail"});
+  var result = $("<td />", {text: response.GPA.result?"Pass":"Fail"});
   var reason = $("<td />", {text: response.GPA.reason+" gpa"});
-  return $("<tr />").append(header).append(result).append(reason);
+  return $("<tr />",{
+    append: Array(header, result, reason)
+  });
+} 
+
+function creditHoursReport(response){
+  var header = $("<td />", {text: "Credit Hours:"});
+  var result = $("<td />", {text: response.creditHours.result?"Pass":"Fail"});
+  var reason = $("<td />", {text: response.creditHours.reason+" credit hours"});
+  return $("<tr />",{
+    append: Array(header, result, reason)
+  });
+}
+
+function oneThousandsReport(response){
+  var header = $("<td />", {text: "1000 courses:"});
+  var result = $("<td />", {text: response.oneThousands.result?"Pass":"Fail"});
+  var reason = $("<td />", {text: response.oneThousands.reason.length+" 1000 courses"});
+  var returnArray = new Array($("<tr />",{
+      append: Array(header, result, reason)
+    })
+  );
+  
+  if(!response.oneThousands.result || true){
+    $.each(response.oneThousands.reason, function(name, value){
+      console.log(value);
+      var dept = $("<td />", {text: value.department});
+      var crsNmb = $("<td />", {text: value.courseNumber});
+      var crsTitle = $("<td />", {text: value.courseTitle});
+      returnArray.push($("<tr />", {
+        append: Array(dept, crsNmb, crsTitle)
+      }));
+    });
+  }
+  
+  return returnArray;
 }

@@ -10,5 +10,8 @@
   $requirementChecker = new RequirementsChecker($student);
   $check = $requirementChecker->get();
   header('Content-Type: application/json');
-  echo json_encode($check);
+  echo json_encode(array(
+    "gradCheck" => $check,
+    "studentProfile" => $student->toArray()
+  ));
 ?>
