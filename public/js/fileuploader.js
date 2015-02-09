@@ -72,7 +72,8 @@ function GPAReport(response){
   var header = $("<td />", {text: "GPA test:"});
   var result = $("<td />", {text: response.GPA.result?"Pass":"Fail"});
   var reason = $("<td />", {text: response.GPA.reason+" gpa"});
-  return $("<tr />",{
+  return $("<tr />", {
+    class: response.GPA.result?"success":"danger",
     append: Array(header, result, reason)
   });
 } 
@@ -81,7 +82,8 @@ function creditHoursReport(response){
   var header = $("<td />", {text: "Credit Hours:"});
   var result = $("<td />", {text: response.creditHours.result?"Pass":"Fail"});
   var reason = $("<td />", {text: response.creditHours.reason+" credit hours"});
-  return $("<tr />",{
+  return $("<tr />", {
+    class: response.creditHours.result?"success":"danger",
     append: Array(header, result, reason)
   });
 }
@@ -91,6 +93,7 @@ function oneThousandsReport(response){
   var result = $("<td />", {text: response.oneThousands.result?"Pass":"Fail"});
   var reason = $("<td />", {text: response.oneThousands.reason.length+" 1000 courses"});
   var returnArray = new Array($("<tr />",{
+      class: response.oneThousands.result?"success":"danger",
       append: Array(header, result, reason)
     })
   );
@@ -102,6 +105,7 @@ function oneThousandsReport(response){
       var crsNmb = $("<td />", {text: value.courseNumber});
       var crsTitle = $("<td />", {text: value.courseTitle});
       returnArray.push($("<tr />", {
+        class: "info",
         append: Array(dept, crsNmb, crsTitle)
       }));
     });
