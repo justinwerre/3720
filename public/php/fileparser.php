@@ -13,15 +13,16 @@
     $major = "";
     $name = "";
     $lineCount = 0;
-
+    $totalCreditHours = 0;
+    
     while(!feof($file))
     { 
       $dept = "";
       $cNum = 0;
       $cTitle = "";
       $weightCR = 0;
-      $tPoints = 0;
       $lineCount++;
+      $tPoints = 0;
 
       $line = fgets($file);
       $arr = explode(" ", $line);
@@ -159,11 +160,15 @@
         $course->set("courseTitle", $cTitle);
         $course->set("weight", $weightCR);
         $course->set("totalPoints", $tPoints);
+        
+        $totalCreditHours += $weightCR;
 
         $student->set("courses", $course);
-
       }
     }
+    $student->set("creditHours", $totalCreditHours);
     return $student;
+  
   }
+//parseFile("T.lis");
 ?>
