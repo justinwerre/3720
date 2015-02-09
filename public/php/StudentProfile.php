@@ -40,7 +40,18 @@
           $this->major = $newValue;
           break;
         case "courses":
-          $this->courses[] = $newValue;
+          $inserted = false;
+          foreach($this->courses as &$course){
+            if($course->get("department") == $newValue->get("department") &&
+               $course->get("courseNumber") == $newValue->get("courseNumber") &&
+               $course->get("courseTitle") == $newValue->get("courseTitle")){
+              $inserted = true;
+              $course->set("totalPoints", $newValue->get("totalPoints"));
+            }
+          }
+          if(!$inserted){
+            $this->courses[] = $newValue;
+          }
           break;
         case "creditHours":
           $this->creditHours = $newValue;
