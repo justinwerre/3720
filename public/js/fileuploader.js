@@ -24,6 +24,7 @@ $(document).ready(function(){
   });
 });
 
+// creates a table row for the GPA requirement check
 function GPAReport(response){
   var header = $("<td />", {text: "GPA test:"});
   var result = $("<td />", {text: response.GPA.result?"Pass":"fail"});
