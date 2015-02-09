@@ -2,7 +2,8 @@
   require_once "Course.php";
   require_once "StudentProfile.php";
 
-  function parseFile($filename){
+  function parseFile($filename)
+  {
     // Rename .lis to T.lis and place in php folder
     error_reporting(E_ALL);
     $file = fopen($filename, "r");
@@ -121,22 +122,23 @@
         $dept = $arr[0];
         $cNum = $arr[1];
 
-        //Special case for management, note that the arr index will be shifted compared to all other courses
+        //Special case for 3 letter depts, note that the arr index will be shifted compared to all other courses
         $i = 2;
-        if($dept == "MGT")
+        
+        //echo strlen($arr[1]);
+        if(strlen($arr[1]) != 4)
         {
         	$i = 3;
+            $cNum = $arr[2];
         }
 
         //Loop to get title
         for(; $i < $size; $i++)
         {
-        	//var_dump($arr[$i]);
         	$temp = $arr[$i];
-        	//var_dump($temp);
+
         	if(is_numeric($temp) == False)
         	{
-        		//echo "TRUE" . $temp . " ";
         		$cTitle = $cTitle . " " . $arr[$i];
         	}
         	else if($justCredit == false)
@@ -170,5 +172,5 @@
     return $student;
   
   }
-//parseFile("T.lis");
+ //parseFile("T.lis");
 ?>
