@@ -2,9 +2,10 @@
   require_once "Course.php";
   require_once "StudentProfile.php";
 
+  function parseFile($filename){
     // Rename .lis to T.lis and place in php folder
     error_reporting(E_ALL);
-    $file = fopen("T.lis", "r");
+    $file = fopen($filename, "r");
     $student = new StudentProfile();
     $gpaLine;
     $faculty = "";
@@ -12,16 +13,16 @@
     $major = "";
     $name = "";
     $lineCount = 0;
-
-
+    $totalCreditHours = 0;
+    
     while(!feof($file))
     { 
       $dept = "";
       $cNum = 0;
       $cTitle = "";
       $weightCR = 0;
-      $tPoints = 0;
       $lineCount++;
+      $tPoints = 0;
 
       $line = fgets($file);
       $arr = explode(" ", $line);
@@ -159,14 +160,15 @@
         $course->set("courseTitle", $cTitle);
         $course->set("weight", $weightCR);
         $course->set("totalPoints", $tPoints);
+        
+        $totalCreditHours += $weightCR;
 
         $student->set("courses", $course);
-
-        //echo $dept . " " . $cNum . " " . $cTitle . " " . $weightCR . " " . $tPoints . "<br>";
       }
     }
-    //echo $student->get("program");
-    //echo $student->get("name");
-    //echo $student->get("faculty");
-    //echo $student->get("major");
+    $student->set("creditHours", $totalCreditHours);
+    return $student;
+  
+  }
+//parseFile("T.lis");
 ?>
