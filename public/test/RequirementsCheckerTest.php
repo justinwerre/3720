@@ -3,8 +3,8 @@
  * run phpunit command from public folder
  * phpunit --bootstrap php/RequirementsChecker.php test/RequirementsCheckerTest.php
 */
-require_once "/vagrant/public/php/StudentProfile.php";
-require_once "/vagrant/public/php/Course.php";
+require_once "../php/StudentProfile.php";
+require_once "../php/Course.php";
 
 class RequirementsCheckerTest extends PHPUnit_Framework_TestCase
 {
