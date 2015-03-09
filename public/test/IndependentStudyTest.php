@@ -16,7 +16,7 @@ class IndependentStudyCheckerTest extends PHPUnit_Framework_TestCase
     $course->set("courseNumber",2990);
     $student->set("courses",$course);
     $status = checkIndependentStudy($student);
-    $this->assertEquals(true, $status["result"]);
+    $this->assertEquals(1, count($status["reason"]));
   }
 
   public function test2991()
@@ -26,7 +26,7 @@ class IndependentStudyCheckerTest extends PHPUnit_Framework_TestCase
     $course->set("courseNumber",2991);
     $student->set("courses",$course);
     $status = checkIndependentStudy($student);
-    $this->assertEquals(false, $status["result"]);
+    $this->assertEquals(0, count($status["reason"]));
   }
 
   public function test3990()
@@ -36,6 +36,6 @@ class IndependentStudyCheckerTest extends PHPUnit_Framework_TestCase
     $course->set("courseNumber",3990);
     $student->set("courses",$course);
     $status = checkIndependentStudy($student);
-    $this->assertEquals(true, $status["result"]);
+    $this->assertEquals(1, count($status["reason"]));
   }
 }

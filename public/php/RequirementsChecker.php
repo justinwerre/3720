@@ -59,14 +59,18 @@
   function checkIndependentStudy($studentProfile)
   {
   	$isIndStudy = false;
+  	$independentStudyCourses = array();
   	$courses = $studentProfile->get("courses");
   	$courseNumber = $courses[0]->get("courseNumber");
   	if($courseNumber == 2990 || $courseNumber == 3990)
+  	{
   		$isIndStudy = true;
+  		$independentStudyCourses[] = $courses;
+  	}
   	return array
   	(
       "result" => $isIndStudy,
-      "reason" => false
+      "reason" => $independentStudyCourses
     );
   }
 ?>
