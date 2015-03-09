@@ -18,4 +18,14 @@ class IndependentStudyCheckerTest extends PHPUnit_Framework_TestCase
     $status = checkIndependentStudy($student);
     $this->assertEquals(true, $status["result"]);
   }
+
+  public function test2991()
+  {
+    $student = new StudentProfile();
+    $course = new Course();
+    $course->set("courseNumber",2991);
+    $student->set("courses",$course);
+    $status = checkIndependentStudy($student);
+    $this->assertEquals(false, $status["result"]);
+  }
 }
