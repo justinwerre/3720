@@ -60,7 +60,8 @@
   {
   	$isIndStudy = false;
   	$courses = $studentProfile->get("courses");
-  	if($courses[0]->get("courseNumber") == 2990)
+  	$courseNumber = $courses[0]->get("courseNumber");
+  	if($courseNumber == 2990 || $courseNumber == 3990)
   		$isIndStudy = true;
   	return array
   	(
