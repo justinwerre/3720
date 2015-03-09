@@ -1,0 +1,10 @@
+language: php
+php:
+  - 5.4
+
+notifications:
+  recipients:
+    - werrejustin@gmail.com
+  email:
+    on_success: change
+    on_failure: always
