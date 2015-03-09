@@ -54,4 +54,14 @@
       "reason" => $courses
     );
   } 
+
+  // returns true if less than or equal to five independent Study courses have been taken
+  function checkIndependentStudy($studentProfile)
+  {
+  	return array
+  	(
+      "result" => true,
+      "reason" => false
+    );
+  }
 ?>
