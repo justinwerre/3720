@@ -52,11 +52,12 @@ class IndependentStudyCheckerTest extends PHPUnit_Framework_TestCase
   public function testCountInStudy()
   {
     $student = new StudentProfile();
-    $course = new Course();
-    $course->set("courseNumber",4990);
-    $student->set("courses",$course);
-    $course->set("courseNumber",3990);
-    $student->set("courses",$course);
+    $course1 = new Course();
+     $course2 = new Course();
+    $course1->set("courseNumber",4990);
+    $student->set("courses",$course1);
+    $course2->set("courseNumber",3990);
+    $student->set("courses",$course2);
     $status = checkIndependentStudy($student);
     $this->assertEquals(2, count($status["reason"]));
   }

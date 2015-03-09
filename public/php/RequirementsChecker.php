@@ -61,12 +61,19 @@
   	$isIndStudy = false;
   	$independentStudyCourses = array();
   	$courses = $studentProfile->get("courses");
-  	$courseNumber = $courses[0]->get("courseNumber");
-  	if($courseNumber == 2990 || $courseNumber == 3990 || $courseNumber == 4990)
-  	{
-  		$isIndStudy = true;
-  		$independentStudyCourses[] = $courses;
-  	}
+  	
+  	foreach($courses as  $course)
+  	{ 
+       
+  	  	$courseNumber = $course->get("courseNumber");
+  	 	if($courseNumber == 2990 || $courseNumber == 3990 || $courseNumber == 4990)
+  		{
+  			$isIndStudy = true;
+  			$independentStudyCourses[] = $course;
+  		}
+  	
+    }
+
   	return array
   	(
       "result" => $isIndStudy,
