@@ -2,6 +2,8 @@ language: php
 php:
   - 5.4
 
+script: phpunit public/test/
+
 notifications:
   recipients:
     - werrejustin@gmail.com
