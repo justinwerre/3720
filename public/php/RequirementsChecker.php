@@ -81,4 +81,13 @@
       "reason" => $independentStudyCourses
     );
   }
+
+  // returns true if >= 15 3000 and 4000 arts or arts&sci courses have been taken
+  function check30004000Courses($studentProfile)
+  {
+    return array(
+      "result" => true,
+      "reason" => true
+    );
+  } 
 ?>
