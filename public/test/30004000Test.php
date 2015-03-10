@@ -16,7 +16,8 @@ class check30004000Test extends PHPUnit_Framework_TestCase
     $course->set("courseNumber",3000);
     $student->set("courses",$course);
     $status = check30004000Courses($student);
-    $this->assertEquals(false, $status["reason"]);
+    $this->assertEquals(false, $status["result"]);
   }
+
 
 }

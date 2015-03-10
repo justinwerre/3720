@@ -86,7 +86,7 @@
   function check30004000Courses($studentProfile)
   {
     return array(
-      "result" => true,
+      "result" => false,
       "reason" => true
     );
   } 
