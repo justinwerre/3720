@@ -5,3 +5,10 @@ php:
 script:
   - cd ./public
   - phpunit ./test
+  
+notifications:
+  webhooks:
+  urls:
+    - https://hall-hoos.herokuapp.com/travis-ci/buildnotification/66d44cca0eff4a9f7fa9ef644208a9e0
+  on_success: change
+  on_failure: always
