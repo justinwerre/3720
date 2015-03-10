@@ -86,7 +86,7 @@
   function check30004000Courses($studentProfile)
   {
     return array(
-      "result" => false,
+      "result" => count($studentProfile->get("courses")) >= 15,
       "reason" => true
     );
   } 
