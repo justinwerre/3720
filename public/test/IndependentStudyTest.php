@@ -3,9 +3,10 @@
  * run phpunit command from public folder
  * phpunit --bootstrap php/RequirementsChecker.php test/IndependentStudyTest.php
 */
-require_once "/vagrant/public/php/StudentProfile.php";
-require_once "/vagrant/public/php/Course.php";
-require_once "/vagrant/public/php/RequirementsChecker.php";
+require_once __DIR__."/../php/StudentProfile.php";
+require_once __DIR__."/../php/Course.php";
+require_once __DIR__."/../php/RequirementsChecker.php";
+echo __DIR__;
 
 class IndependentStudyCheckerTest extends PHPUnit_Framework_TestCase
 {
