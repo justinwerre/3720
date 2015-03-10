@@ -85,8 +85,14 @@
   // returns true if >= 15 3000 and 4000 arts or arts&sci courses have been taken
   function check30004000Courses($studentProfile)
   {
+    $courses = array();
+    foreach($studentProfile->get("courses") as $course){
+      if($course->get("department") != "ADCS"){
+        $courses[] = $course->toArray();
+      }
+    }
     return array(
-      "result" => count($studentProfile->get("courses")) >= 15,
+      "result" => count($courses) >= 15,
       "reason" => true
     );
   } 
