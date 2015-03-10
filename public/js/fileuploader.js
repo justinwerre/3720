@@ -25,7 +25,7 @@ $(document).ready(function(){
         $report.append(GPAReport(response.gradCheck));
         $report.append(creditHoursReport(response.gradCheck));
         $report.append(oneThousandsReport(response.gradCheck));
-	$report.append(threeThousandsFourThousandsReport(response.gradCheck));
+        $report.append(threeThousandsFourThousandsReport(response.gradCheck));
       } 
     });
   });

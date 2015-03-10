@@ -87,7 +87,6 @@
   function check30004000Courses($studentProfile)
   {
     $courses = array();
-    $reason = array();
     foreach($studentProfile->get("courses") as $course){
       if ($course->get("courseNumber") >= 3000)
       {
@@ -97,15 +96,12 @@
             && $department != "NURS" && $department != "PUBH")
         {
           $courses[] = $course->toArray();
-        } else
-        {
-          $reason[] = $course;
         }
       }
     }
     return array(
       "result" => count($courses) >= 15,
-      "reason" => $reason
+      "reason" => $courses
     );
   } 
 
