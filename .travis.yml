@@ -8,7 +8,7 @@ script:
   
 notifications:
   webhooks:
-  urls:
-    - https://hall-hoos.herokuapp.com/travis-ci/buildnotification/66d44cca0eff4a9f7fa9ef644208a9e0
-  on_success: change
-  on_failure: always
+    urls:
+      - https://hall-hooks.herokuapp.com/travis-ci/buildnotification/66d44cca0eff4a9f7fa9ef644208a9e0
+    on_success: change
+    on_failure: always
