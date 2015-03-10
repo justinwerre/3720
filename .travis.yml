@@ -10,6 +10,6 @@ notifications:
   email: false
   webhooks:
     urls:
-      - https://hall-hooks.herokuapp.com/travis-ci/buildnotification/66d44cca0eff4a9f7fa9ef644208a9e0
+      - https://hall-hooks.herokuapp.com/travis-ci/buildnotification/0b9a16ba6f370c836a998bf0b41a3704
     on_success: always
     on_failure: always
