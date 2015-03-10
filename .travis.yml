@@ -5,7 +5,7 @@ php:
 script:
   - cd ./public
   - phpunit ./test
-  
+ 
 notifications:
   webhooks:
     urls:
