@@ -1,7 +1,7 @@
 <?php
 /*
  * run phpunit command from public folder
- * phpunit --bootstrap php/RequirementsChecker.php test/IndependentStudyTest.php
+ * phpunit --bootstrap php/RequirementsChecker.php test/30004000Test.php
 */
 require_once __DIR__."/../php/StudentProfile.php";
 require_once __DIR__."/../php/Course.php";
