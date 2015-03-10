@@ -100,7 +100,7 @@
 
     }
     return array(
-      "result" => count($courses) >= 15,
+      "result" => count($courses) == 15,
       "reason" => true
     );
   } 
