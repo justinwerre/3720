@@ -8,7 +8,8 @@
       $this->requirements = array(
         "GPA" => checkGPA($studentProfile),
         "creditHours" => checkCreditHours($studentProfile),
-        "oneThousands" => check1000Courses($studentProfile)
+        "oneThousands" => check1000Courses($studentProfile),
+        "threeThousandsFourThousands" => check30004000Courses($studentProfile)
       );  
     }
     
@@ -81,4 +82,28 @@
       "reason" => $independentStudyCourses
     );
   }
+
+  // returns true if >= 15 3000 and 4000 arts or arts&sci courses have been taken
+  function check30004000Courses($studentProfile)
+  {
+    $courses = array();
+    foreach($studentProfile->get("courses") as $course){
+      if ($course->get("courseNumber") >= 3000)
+      {
+        $department = $course->get("department");
+        if($department != "ADCS" && $department != "CDEV"&& $department != "CRED"
+            && $department != "EDUC" && $department != "HLCS" && $department != "MGT"
+            && $department != "NURS" && $department != "PUBH")
+        {
+          $courses[] = $course->toArray();
+        }
+      }
+    }
+    return array(
+      "result" => count($courses) >= 15,
+      "reason" => $courses
+    );
+  } 
+
+
 ?>
