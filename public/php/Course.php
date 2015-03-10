@@ -17,7 +17,7 @@
     }
     /*
     get() works with the following properties:
-    dept, courseNumber, courseTitle, weight, and totalPoints
+    department, courseNumber, courseTitle, weight, and totalPoints
     */
     public function get($property)
     {
@@ -44,7 +44,7 @@
     }
     /*
     set() works with the following properties:
-    dept, courseNumber, courseTitle, weight, and totalPoints
+    department, courseNumber, courseTitle, weight, and totalPoints
     */
     public function set($property,$newValue)
     {

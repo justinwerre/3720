@@ -3,7 +3,7 @@
  * run phpunit command from public folder
  * phpunit --bootstrap php/StudentProfile.php test/StudentProfileTest.php
 */
-require_once "/vagrant/public/php/Course.php";
+require_once "../php/Course.php";
 class StudentProfileTest extends PHPUnit_Framework_TestCase
 {
   public function testAddName()
