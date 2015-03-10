@@ -89,7 +89,7 @@
     foreach($studentProfile->get("courses") as $course){
       $department = $course->get("department");
       if($department != "ADCS" && $department != "CDEV"&& $department != "CRED"
-          && $department != "EDUC" && $department != "HLCS"){
+          && $department != "EDUC" && $department != "HLCS" && $department != "MGT"){
         $courses[] = $course->toArray();
       }
 
