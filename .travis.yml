@@ -7,10 +7,9 @@ script:
   - phpunit ./test
 
 notifications:
+  email: false
   webhooks:
-    email: false
     urls:
       - https://hall-hooks.herokuapp.com/travis-ci/buildnotification/66d44cca0eff4a9f7fa9ef644208a9e0
     on_success: always
     on_failure: always
-    on_start: true
