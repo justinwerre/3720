@@ -87,9 +87,11 @@
   {
     $courses = array();
     foreach($studentProfile->get("courses") as $course){
-      if($course->get("department") != "ADCS"){
+      $department = $course->get("department");
+      if($department != "ADCS" && $department != "CDEV"){
         $courses[] = $course->toArray();
       }
+
     }
     return array(
       "result" => count($courses) >= 15,
