@@ -49,6 +49,7 @@
         }
       }
     }
+      
     return array(
       "result" => count($courses) <= 12,
       "reason" => $courses

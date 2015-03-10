@@ -3,8 +3,8 @@
  * run phpunit command from public folder
  * phpunit --bootstrap php/RequirementsChecker.php test/RequirementsCheckerTest.php
 */
-require_once "../php/StudentProfile.php";
-require_once "../php/Course.php";
+require_once __DIR__."/../php/StudentProfile.php";
+require_once __DIR__."/../php/Course.php";
 
 class RequirementsCheckerTest extends PHPUnit_Framework_TestCase
 {
@@ -74,7 +74,7 @@ class RequirementsCheckerTest extends PHPUnit_Framework_TestCase
     {
       $course = new Course();
       $course->set("department", "MATH");
-      $course->set("courseNumber", 1000);
+      $course->set("courseNumber", 1000+$i);
       $student->set("courses", $course);
     }
     $status = check1000Courses($student);
