@@ -20,7 +20,7 @@
     public function __destruct()
     {}
   }
- 
+  // returns true if student has at least a 2.0 GPA
   function checkGPA($studentProfile)
   {
     return array(
@@ -28,7 +28,7 @@
       "reason" => $studentProfile->get("GPA")
     );
   }
-
+  // returns true if studetn has at least 120 credit hours
   function checkCreditHours($studentProfile)
   {
     return array(
@@ -116,7 +116,7 @@
       {
         $department = $course->get("department");
         if($department != "ADCS" && $department != "CDEV"&& $department != "CRED"
-            && $department != "EDUC" && $department != "HLCS" && $department != "MGT"
+            && $department != "EDUC" && $department != "HLSC" && $department != "MGT"
             && $department != "NURS" && $department != "PUBH")
         {
           $courses[] = $course->toArray();
@@ -128,6 +128,22 @@
       "reason" => $courses
     );
   } 
-
-
+  // returns true if student took <= 12 crhrs outside of arts and arts & sci
+  function checkNonfacultyCrhrs($studentProfile)
+  {
+    $totWeight=0.0;
+    foreach($studentProfile->get("courses") as $course)
+    {
+      $department = $course->get("department");
+      if ($department=="ADCS" || $department=="CDEV" || $department=="CRED" || $department=="EDUC" 
+        || $department=="HLSC" || $department=="MGT" || $department=="NURS" || $department=="PUBH")
+      {
+        $totWeight += $course->get("weight");
+      }
+    }
+    return array(
+      "result" => $totWeight <= 12,
+      "reason" => false
+    );
+  }
 ?>
