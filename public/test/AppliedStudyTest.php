@@ -54,8 +54,8 @@ class AppliedStudyCheckerTest extends PHPUnit_Framework_TestCase
   public function testGreaterThan2885()
   {
     $student = new StudentProfile();
-    $course1 = new Course();
-    $course1->set("courseNumber",2886);
+    $course = new Course();
+    $course->set("courseNumber",2886);
     $student->set("courses",$course);
     $status = checkAppliedStudy($student);
     $this->assertEquals(0, count($status["reason"]));
