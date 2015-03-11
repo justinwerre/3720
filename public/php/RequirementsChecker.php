@@ -86,6 +86,15 @@
   function checkAppliedStudy($studentProfile)
   {
     $appliedStudyCourses = array();
+    $courses = $studentProfile->get("courses");
+    foreach($courses as  $course)
+  	{
+        $courseNumber = $course->get("courseNumber");
+  	 	if($courseNumber == 2880)
+  		{
+  			$appliedStudyCourses[] = $course;
+  		}
+    }
     return array
   	(
       "result" => false,
