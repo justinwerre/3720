@@ -134,7 +134,10 @@
     $totWeight=0.0;
     foreach($studentProfile->get("courses") as $course)
     {
-      $totWeight += $course->get("weight");
+      if ($course->get("department")=="ADCS")
+      {
+        $totWeight += $course->get("weight");
+      }
     }
     return array(
       "result" => $totWeight <= 6,
