@@ -117,7 +117,10 @@
       {
   		$musePhacMaxCourses[] = $course;
       }
+      else
+        $musePhacMaxCourses[] = $course;
     }
+    
     return array
   	(
       "result" => false,
