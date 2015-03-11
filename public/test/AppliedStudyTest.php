@@ -105,4 +105,29 @@ class AppliedStudyCheckerTest extends PHPUnit_Framework_TestCase
     $status = checkAppliedStudy($student);
     $this->assertEquals(0, count($status["reason"]));
   }
+
+  public function test4880to4885()
+  {
+    $student = new StudentProfile();
+    $course0 = new Course();
+    $course0->set("courseNumber",4880);
+    $course1 = new Course();
+    $course1->set("courseNumber",4881);
+    $course2 = new Course();
+    $course2->set("courseNumber",4882);
+    $course3 = new Course();
+    $course3->set("courseNumber",4883);
+    $course4 = new Course();
+    $course4->set("courseNumber",4884);
+    $course5 = new Course();
+    $course5->set("courseNumber",4885);
+    $student->set("courses",$course0);
+    $student->set("courses",$course1);
+    $student->set("courses",$course2);
+    $student->set("courses",$course3);
+    $student->set("courses",$course4);
+    $student->set("courses",$course5);
+    $status = checkAppliedStudy($student);
+    $this->assertEquals(6, count($status["reason"]));
+  }
 }
