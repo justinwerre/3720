@@ -5,13 +5,17 @@
   require_once "fileparser.php";
 
   $filename = $_FILES['file']['tmp_name'];
-  $student = parseFile($filename);
-  
-  $requirementChecker = new RequirementsChecker($student);
-  $check = $requirementChecker->get();
-  header('Content-Type: application/json');
-  echo json_encode(array(
+  $students = array()
+  $parsedStudents = parseFile($filename, $students);
+  for ($i=0;$i<count($students);$i++)
+  {
+    $requirementChecker = new RequirementsChecker($student);
+    $check = $requirementChecker->get();
+    header('Content-Type: application/json');
+    echo json_encode(array(
     "gradCheck" => $check,
     "studentProfile" => $student->toArray()
-  ));
+    ));
+  }
+  
 ?>

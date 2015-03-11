@@ -2,10 +2,11 @@
   require_once "Course.php";
   require_once "StudentProfile.php";
 
-  function parseFile($filename)
+  function parseFile($filename, $students)
   {
     // Rename .lis to T.lis and place in php folder
     error_reporting(E_ALL);
+    $continueParsing = false;
     $file = fopen($filename, "r");
     $student = new StudentProfile();
     $gpaLine;
@@ -28,6 +29,8 @@
       $line = fgets($file);
       $arr = explode(" ", $line);
       
+      
+
       //Get name
       if($lineCount == 3)
       {
@@ -167,10 +170,25 @@
 
         $student->set("courses", $course);
       }
+      if (count($arr) > 1)
+      {
+		if ($arr[1]=="End")
+	  	{
+	  		$continueParsing = true;
+	  	}
+	  }
     }
     $student->set("creditHours", $totalCreditHours);
-    return $student;
-  
+    $students[] = $student; 
   }
- //parseFile("T.lis");
+
+  //If students remain to be parsed
+  if($continueParsing == true)
+  {
+  	parseFile($filename);
+  }
+  else 
+  {
+  	return $students;
+  }
 ?>
