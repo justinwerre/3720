@@ -136,7 +136,7 @@
     {
       $department = $course->get("department");
       if ($department=="ADCS" || $department=="CDEV" || $department=="CRED" || $department=="EDUC" 
-        || $department=="HLSC" || $department=="MGT")
+        || $department=="HLSC" || $department=="MGT" || $department=="NURS")
       {
         $totWeight += $course->get("weight");
       }
