@@ -21,7 +21,7 @@ class nonfacultyCrhrsTest extends PHPUnit_Framework_TestCase
     $this->assertEquals(true, $status["result"]);
   }
 
-  public function testOne7CrhrADCS()
+  public function testOne13CrhrADCS()
   {
     $student = new StudentProfile();
     $course = new Course();
