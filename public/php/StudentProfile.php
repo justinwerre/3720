@@ -44,7 +44,8 @@
           foreach($this->courses as &$course){
             if($course->get("department") == $newValue->get("department") &&
                $course->get("courseNumber") == $newValue->get("courseNumber") &&
-               $course->get("courseTitle") == $newValue->get("courseTitle")){
+               $course->get("courseTitle") == $newValue->get("courseTitle") &&
+               $course->get("semester") == $newValue->get("semester")){
               $inserted = true;
               $course->set("totalPoints", $newValue->get("totalPoints"));
             }

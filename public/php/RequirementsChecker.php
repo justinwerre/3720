@@ -113,14 +113,16 @@
     foreach($courses as  $course)
   	{
       $department = $course->get("department");
-      if($department == "MUSE" || $department == "PHAC")
+      /*if($department == "MUSE" || $department == "PHAC")
       {
   		$musePhacMaxCourses[] = $course;
-      }
-      else
+      }*/
+      //else
         $musePhacMaxCourses[] = $course;
     }
-    
+    $creditHours = $studentProfile->get("creditHours");
+    //$studentProfile->set("creditHours", $creditHours - (1.5 * ($numberOfActivityCourses - 6)));
+    $studentProfile->set("creditHours", sizeof($musePhacMaxCourses));
     return array
   	(
       "result" => false,
