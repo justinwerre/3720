@@ -83,6 +83,30 @@
     );
   }
 
+  function checkAppliedStudy($studentProfile)
+  {
+    $isAppStudy = true;
+    $appliedStudyCourses = array();
+    $courses = $studentProfile->get("courses");
+    foreach($courses as  $course)
+  	{
+        $courseNumber = $course->get("courseNumber");
+  	 	if(($courseNumber >= 2880 && $courseNumber <= 2885) || ($courseNumber >= 3880 && $courseNumber <= 3885) || ($courseNumber >= 4880 && $courseNumber <= 4885))
+  		{
+            $isAppStudy = true;
+  			$appliedStudyCourses[] = $course;
+  		}
+        else
+            $isAppStudy = false;
+    }
+    return array
+  	(
+      "result" => $isAppStudy,
+      "reason" => $appliedStudyCourses
+    ); 
+  }
+
+
   // returns true if >= 15 3000 and 4000 arts or arts&sci courses have been taken
   function check30004000Courses($studentProfile)
   {
