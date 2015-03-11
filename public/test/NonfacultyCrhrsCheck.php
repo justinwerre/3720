@@ -27,13 +27,13 @@ class nonfacultyCrhrsTest extends PHPUnit_Framework_TestCase
     $course = new Course();
     $course->set("department","ADCS");
     $course->set("courseNumber",2000);
-    $course->set("weight",7);
+    $course->set("weight",13);
     $student->set("courses",$course);
     $status = checkNonfacultyCrhrs($student);
     $this->assertEquals(false, $status["result"]);
   }
 
-  public function testThree3CrhrADCS()
+  public function testThree6CrhrADCS()
   {
     $student = new StudentProfile();
     $course1 = new Course();
@@ -41,13 +41,13 @@ class nonfacultyCrhrsTest extends PHPUnit_Framework_TestCase
     $course3 = new Course();
     $course1->set("department","ADCS");
     $course1->set("courseNumber",2000);
-    $course1->set("weight",3);
+    $course1->set("weight",6);
     $course2->set("department","ADCS");
     $course2->set("courseNumber",2001);
-    $course2->set("weight",3);
+    $course2->set("weight",6);
     $course3->set("department","ADCS");
     $course3->set("courseNumber",2002);
-    $course3->set("weight",3);
+    $course3->set("weight",6);
     $student->set("courses",$course1);
     $student->set("courses",$course2);
     $student->set("courses",$course3);
@@ -55,13 +55,13 @@ class nonfacultyCrhrsTest extends PHPUnit_Framework_TestCase
     $this->assertEquals(false, $status["result"]);
   }
 
-  public function test7ChrhrMath()
+  public function test13ChrhrMath()
   {
     $student = new StudentProfile();
     $course = new Course();
     $course->set("department","MATH");
     $course->set("courseNumber",2000);
-    $course->set("weight",7);
+    $course->set("weight",13);
     $student->set("courses",$course);
     $status = checkNonfacultyCrhrs($student);
     $this->assertEquals(true, $status["result"]);

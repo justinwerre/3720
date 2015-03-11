@@ -140,7 +140,7 @@
       }
     }
     return array(
-      "result" => $totWeight <= 6,
+      "result" => $totWeight <= 12,
       "reason" => false
     );
   }
