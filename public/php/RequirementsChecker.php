@@ -132,7 +132,7 @@
   function checkNonfacultyCrhrs($studentProfile)
   {
     return array(
-      "result" => false,
+      "result" => true,
       "reason" => false
     );
   }
