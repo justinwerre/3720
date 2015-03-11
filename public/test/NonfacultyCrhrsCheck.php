@@ -110,6 +110,28 @@ class nonfacultyCrhrsTest extends PHPUnit_Framework_TestCase
     $status = checkNonfacultyCrhrs($student);
     $this->assertEquals(false, $status["result"]);
   }
+
+  public function testThree6CrhrEDUC()
+  {
+    $student = new StudentProfile();
+    $course1 = new Course();
+    $course2 = new Course();
+    $course3 = new Course();
+    $course1->set("department","EDUC");
+    $course1->set("courseNumber",2000);
+    $course1->set("weight",6);
+    $course2->set("department","EDUC");
+    $course2->set("courseNumber",2001);
+    $course2->set("weight",6);
+    $course3->set("department","EDUC");
+    $course3->set("courseNumber",2002);
+    $course3->set("weight",6);
+    $student->set("courses",$course1);
+    $student->set("courses",$course2);
+    $student->set("courses",$course3);
+    $status = checkNonfacultyCrhrs($student);
+    $this->assertEquals(false, $status["result"]);
+  }
   // if($department != "ADCS" && $department != "CDEV"&& $department != "CRED"
   //           && $department != "EDUC" && $department != "HLCS" && $department != "MGT"
   //           && $department != "NURS" && $department != "PUBH")
