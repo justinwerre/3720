@@ -106,11 +106,11 @@ class check30004000Test extends PHPUnit_Framework_TestCase
     $this->assertEquals(false, $status["result"]);
   }
 
-  public function testFifteen3000WithHLCS()
+  public function testFifteen3000WithHLSC()
   {
     $student = new StudentProfile();
     $course = new Course();
-	$course->set("department", "HLCS");
+	$course->set("department", "HLSC");
 	$course->set("courseNumber", 3000);
 	$student->set("courses", $course);
     for($i=0;$i<14;$i++)
