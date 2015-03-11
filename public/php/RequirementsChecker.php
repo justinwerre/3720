@@ -106,6 +106,16 @@
     ); 
   }
 
+  function checkMusePhacMax($studentProfile)
+  {
+    $musePhacMaxCourses = array();
+    return array
+  	(
+      "result" => false,
+      "reason" => $musePhacMaxCourses
+    ); 
+  }
+
 
   // returns true if >= 15 3000 and 4000 arts or arts&sci courses have been taken
   function check30004000Courses($studentProfile)
