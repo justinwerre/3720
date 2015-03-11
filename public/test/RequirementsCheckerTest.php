@@ -145,6 +145,6 @@ class RequirementsCheckerTest extends PHPUnit_Framework_TestCase
       $student->set("courses", $course);
     }
     $status = check1000Courses($student);
-    $this->assertEquals(true, $status["result"]);
+    $this->assertEquals(false, $status["result"]);
   }
 }
