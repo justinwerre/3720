@@ -85,6 +85,7 @@
 
   function checkAppliedStudy($studentProfile)
   {
+    $isAppStudy = true;
     $appliedStudyCourses = array();
     $courses = $studentProfile->get("courses");
     foreach($courses as  $course)
@@ -92,12 +93,15 @@
         $courseNumber = $course->get("courseNumber");
   	 	if($courseNumber == 2880)
   		{
+            $isAppStudy = true;
   			$appliedStudyCourses[] = $course;
   		}
+        else
+            $isAppStudy = false;
     }
     return array
   	(
-      "result" => true,
+      "result" => $isAppStudy,
       "reason" => $appliedStudyCourses
     ); 
   }

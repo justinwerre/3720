@@ -28,4 +28,5 @@ class AppliedStudyCheckerTest extends PHPUnit_Framework_TestCase
     $status = checkAppliedStudy($student);
     $this->assertEquals(0, $status["result"]);
   }
+
 }
