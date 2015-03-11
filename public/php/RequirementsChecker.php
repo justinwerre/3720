@@ -109,6 +109,15 @@
   function checkMusePhacMax($studentProfile)
   {
     $musePhacMaxCourses = array();
+    $courses = $studentProfile->get("courses");
+    foreach($courses as  $course)
+  	{
+      $department = $course->get("department");
+      if($department == "MUSE")
+      {
+  		$musePhacMaxCourses[] = $course;
+      }
+    }
     return array
   	(
       "result" => false,
