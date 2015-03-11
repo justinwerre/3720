@@ -135,7 +135,7 @@
     foreach($studentProfile->get("courses") as $course)
     {
       $department = $course->get("department");
-      if ($department=="ADCS" || $department=="CDEV")
+      if ($department=="ADCS" || $department=="CDEV" || $department=="CRED")
       {
         $totWeight += $course->get("weight");
       }
