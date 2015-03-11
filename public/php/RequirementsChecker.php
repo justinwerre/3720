@@ -83,6 +83,7 @@
     );
   }
 
+  // returns array of applied studies courses; only 15 credit hours from applied studies courses are counted
   function checkAppliedStudy($studentProfile)
   {
     $isAppStudy = true;
@@ -103,6 +104,28 @@
   	(
       "result" => $isAppStudy,
       "reason" => $appliedStudyCourses
+    ); 
+  }
+
+  // returns array of Activity Courses; only 9 credit hours from activity courses are counted
+  function checkMusePhacMax($studentProfile)
+  {
+    $musePhacMaxCourses = array();
+    $courses = $studentProfile->get("courses");
+    foreach($courses as  $course)
+  	{
+      $department = $course->get("department");
+      if($department == "MUSE" || $department == "PHAC")
+      {
+  		$musePhacMaxCourses[] = $course;
+      }
+    }
+    $creditHours = $studentProfile->get("creditHours");
+    $studentProfile->set("creditHours", $studentProfile->get("creditHours") - (1.5 * (sizeof($musePhacMaxCourses) - 6)));
+    return array
+  	(
+      "result" => false,
+      "reason" => $musePhacMaxCourses
     ); 
   }
 
