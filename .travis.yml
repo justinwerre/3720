@@ -11,5 +11,6 @@ notifications:
   webhooks:
     urls:
       - https://hall-hooks.herokuapp.com/travis-ci/buildnotification/0b9a16ba6f370c836a998bf0b41a3704
+    on_start: always
     on_success: always
     on_failure: always
