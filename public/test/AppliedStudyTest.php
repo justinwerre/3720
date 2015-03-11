@@ -51,7 +51,8 @@ class AppliedStudyCheckerTest extends PHPUnit_Framework_TestCase
     $this->assertEquals(5, count($status["reason"]));
   }
 
-  public function testGreaterThan2885()
+    //should have named it test2886
+  public function test2886()
   {
     $student = new StudentProfile();
     $course = new Course();
@@ -59,5 +60,30 @@ class AppliedStudyCheckerTest extends PHPUnit_Framework_TestCase
     $student->set("courses",$course);
     $status = checkAppliedStudy($student);
     $this->assertEquals(0, count($status["reason"]));
+  }
+
+  public function test3880to3885()
+  {
+    $student = new StudentProfile();
+    $course0 = new Course();
+    $course0->set("courseNumber",3880);
+    $course1 = new Course();
+    $course1->set("courseNumber",3881);
+    $course2 = new Course();
+    $course2->set("courseNumber",3882);
+    $course3 = new Course();
+    $course3->set("courseNumber",3883);
+    $course4 = new Course();
+    $course4->set("courseNumber",3884);
+    $course5 = new Course();
+    $course5->set("courseNumber",3885);
+    $student->set("courses",$course0);
+    $student->set("courses",$course1);
+    $student->set("courses",$course2);
+    $student->set("courses",$course3);
+    $student->set("courses",$course4);
+    $student->set("courses",$course5);
+    $status = checkAppliedStudy($student);
+    $this->assertEquals(6, count($status["reason"]));
   }
 }
