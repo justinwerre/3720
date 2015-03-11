@@ -128,6 +128,14 @@
       "reason" => $courses
     );
   } 
+  // returns true if student took <= 12 crhrs outside of arts and arts & sci
+  function checkNonfacultyCrhrs($studentProfile)
+  {
+    return array(
+      "result" => false,
+      "reason" => false
+    );
+  }
 
 
 ?>
