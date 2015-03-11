@@ -131,20 +131,13 @@
   // returns true if student took <= 12 crhrs outside of arts and arts & sci
   function checkNonfacultyCrhrs($studentProfile)
   {
-    $returnval;
+    $totWeight=0.0;
     foreach($studentProfile->get("courses") as $course)
     {
-      if ($course->get("weight") <= 6)
-      {
-        $returnval = true;
-      }
-      else
-      {
-        $returnval = false;
-      }
+      $totWeight += $course->get("weight");
     }
     return array(
-      "result" => $returnval,
+      "result" => $totWeight <= 6,
       "reason" => false
     );
   }
