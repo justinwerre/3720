@@ -70,4 +70,14 @@ class MusePhacMaxCheckerTest extends PHPUnit_Framework_TestCase
     $status = checkMusePhacMax($student);
     $this->assertEquals(9, $student->get("creditHours"));
   }
+    
+  public function testNonMuseNorPhac()
+  {
+    $student = new StudentProfile();
+    $course = new Course();
+    $course->set("department","MATH");
+    $student->set("courses",$course);
+    $status = checkMusePhacMax($student);
+    $this->assertEquals(0, count($status["reason"]));
+  }
 }
