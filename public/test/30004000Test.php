@@ -19,7 +19,6 @@ class check30004000Test extends PHPUnit_Framework_TestCase
     $this->assertEquals(false, $status["result"]);
   }
 
-
   public function testFifteen3000()
   {
     $student = new StudentProfile();
