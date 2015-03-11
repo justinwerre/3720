@@ -133,19 +133,19 @@ class nonfacultyCrhrsTest extends PHPUnit_Framework_TestCase
     $this->assertEquals(false, $status["result"]);
   }
 
-  public function testThree6CrhrHLCS()
+  public function testThree6CrhrHLSC()
   {
     $student = new StudentProfile();
     $course1 = new Course();
     $course2 = new Course();
     $course3 = new Course();
-    $course1->set("department","HLCS");
+    $course1->set("department","HLSC");
     $course1->set("courseNumber",2000);
     $course1->set("weight",6);
-    $course2->set("department","HLCS");
+    $course2->set("department","HLSC");
     $course2->set("courseNumber",2001);
     $course2->set("weight",6);
-    $course3->set("department","HLCS");
+    $course3->set("department","HLSC");
     $course3->set("courseNumber",2002);
     $course3->set("weight",6);
     $student->set("courses",$course1);
