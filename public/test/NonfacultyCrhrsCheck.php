@@ -268,5 +268,51 @@ class nonfacultyCrhrsTest extends PHPUnit_Framework_TestCase
     $this->assertEquals(false, $status["result"]);
   }
   
+  public function testOneOfEachNonfaculty1crhr()
+  {
+    $student = new StudentProfile();
+    $course1 = new Course();
+    $course2 = new Course();
+    $course3 = new Course();
+    $course4 = new Course();
+    $course5 = new Course();
+    $course6 = new Course();
+    $course7 = new Course();
+    $course8 = new Course();
+    $course1->set("department","ADCS");
+    $course1->set("courseNumber",2000);
+    $course1->set("weight",1);
+    $course2->set("department","CDEV");
+    $course2->set("courseNumber",2001);
+    $course2->set("weight",1);
+    $course3->set("department","CRED");
+    $course3->set("courseNumber",2002);
+    $course3->set("weight",1);
+    $course4->set("department","EDUC");
+    $course4->set("courseNumber",2002);
+    $course4->set("weight",1);
+    $course5->set("department","HLCS");
+    $course5->set("courseNumber",2002);
+    $course5->set("weight",1);
+    $course6->set("department","MGT");
+    $course6->set("courseNumber",2002);
+    $course6->set("weight",1);
+    $course7->set("department","NURS");
+    $course7->set("courseNumber",2002);
+    $course7->set("weight",1);
+    $course8->set("department","PUBH");
+    $course8->set("courseNumber",2002);
+    $course8->set("weight",1);
+    $student->set("courses",$course1);
+    $student->set("courses",$course2);
+    $student->set("courses",$course3);
+    $student->set("courses",$course4);
+    $student->set("courses",$course5);
+    $student->set("courses",$course6);
+    $student->set("courses",$course7);
+    $student->set("courses",$course8);
+    $status = checkNonfacultyCrhrs($student);
+    $this->assertEquals(true, $status["result"]);
+  }
 
 }
