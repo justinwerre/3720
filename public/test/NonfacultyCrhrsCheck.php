@@ -25,7 +25,7 @@ class nonfacultyCrhrsTest extends PHPUnit_Framework_TestCase
     $student = new StudentProfile();
     $course = new Course();
     $course->set("department","HDCS");
-    $course->set("weight",8);
+    $course->set("weight",7);
     $student->set("courses",$course);
     $status = checkNonfacultyCrhrs($student);
     $this->assertEquals(false, $status["result"]);
