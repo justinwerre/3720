@@ -91,7 +91,7 @@
     foreach($courses as  $course)
   	{
         $courseNumber = $course->get("courseNumber");
-  	 	if($courseNumber == 2880)
+  	 	if($courseNumber >= 2880 && $courseNumber <= 2885)
   		{
             $isAppStudy = true;
   			$appliedStudyCourses[] = $course;
