@@ -20,7 +20,7 @@
     public function __destruct()
     {}
   }
- 
+  // returns true if student has at least a 2.0 GPA
   function checkGPA($studentProfile)
   {
     return array(
@@ -28,7 +28,7 @@
       "reason" => $studentProfile->get("GPA")
     );
   }
-
+  // returns true if studetn has at least 120 credit hours
   function checkCreditHours($studentProfile)
   {
     return array(
@@ -146,6 +146,4 @@
       "reason" => false
     );
   }
-
-
 ?>
