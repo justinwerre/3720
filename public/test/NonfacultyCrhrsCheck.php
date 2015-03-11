@@ -55,6 +55,18 @@ class nonfacultyCrhrsTest extends PHPUnit_Framework_TestCase
     $this->assertEquals(false, $status["result"]);
   }
 
+  public function test7ChrhrMath()
+  {
+    $student = new StudentProfile();
+    $course = new Course();
+    $course->set("department","MATH");
+    $course->set("courseNumber",2000);
+    $course->set("weight",7);
+    $student->set("courses",$course);
+    $status = checkNonfacultyCrhrs($student);
+    $this->assertEquals(true, $status["result"]);
+  }
+
   // if($department != "ADCS" && $department != "CDEV"&& $department != "CRED"
   //           && $department != "EDUC" && $department != "HLCS" && $department != "MGT"
   //           && $department != "NURS" && $department != "PUBH")
