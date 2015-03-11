@@ -113,7 +113,7 @@
     foreach($courses as  $course)
   	{
       $department = $course->get("department");
-      if($department == "MUSE")
+      if($department == "MUSE" || $department == "PHAC")
       {
   		$musePhacMaxCourses[] = $course;
       }
