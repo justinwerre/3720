@@ -26,6 +26,7 @@ $(document).ready(function(){
         $report.append(creditHoursReport(response.gradCheck));
         $report.append(oneThousandsReport(response.gradCheck));
         $report.append(threeThousandsFourThousandsReport(response.gradCheck));
+        $report.append(nonFacultyCrhrsReport(response.gradCheck));
       } 
     });
   });
@@ -126,6 +127,33 @@ function threeThousandsFourThousandsReport(response){
   
   if(!response.threeThousandsFourThousands.result || true){
     $.each(response.threeThousandsFourThousands.reason, function(name, value){
+      console.log(value);
+      var dept = $("<td />", {text: value.department});
+      var crsNmb = $("<td />", {text: value.courseNumber});
+      var crsTitle = $("<td />", {text: value.courseTitle});
+      returnArray.push($("<tr />", {
+        class: "info",
+        append: Array(dept, crsNmb, crsTitle)
+      }));
+    });
+  }
+  
+  return returnArray;
+}
+
+//creates table row for non faculty crhrs report
+function nonFacultyCrhrsReport(response){
+  var header = $("<td />", {text: "Non faculty courses:"});
+  var result = $("<td />", {text: response.nonfacultyCrhrs.result?"Pass":"Fail"});
+  var reason = $("<td />", {text: response.nonfacultyCrhrs.reason.length+" Non faculty courses"});
+  var returnArray = new Array($("<tr />",{
+      class: response.nonfacultyCrhrs.result?"success":"danger",
+      append: Array(header, result, reason)
+    })
+  );
+  
+  if(!response.nonfacultyCrhrs.result || true){
+    $.each(response.nonfacultyCrhrs.reason, function(name, value){
       console.log(value);
       var dept = $("<td />", {text: value.department});
       var crsNmb = $("<td />", {text: value.courseNumber});

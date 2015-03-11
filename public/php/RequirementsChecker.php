@@ -9,7 +9,8 @@
         "GPA" => checkGPA($studentProfile),
         "creditHours" => checkCreditHours($studentProfile),
         "oneThousands" => check1000Courses($studentProfile),
-        "threeThousandsFourThousands" => check30004000Courses($studentProfile)
+        "threeThousandsFourThousands" => check30004000Courses($studentProfile),
+        "nonfacultyCrhrs" => checkNonfacultyCrhrs($studentProfile)
       );  
     }
     
