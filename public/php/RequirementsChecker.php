@@ -121,8 +121,7 @@
         $musePhacMaxCourses[] = $course;
     }
     $creditHours = $studentProfile->get("creditHours");
-    //$studentProfile->set("creditHours", $creditHours - (1.5 * ($numberOfActivityCourses - 6)));
-    $studentProfile->set("creditHours", sizeof($musePhacMaxCourses));
+    $studentProfile->set("creditHours", $studentProfile->get("creditHours") - (1.5 * (sizeof($musePhacMaxCourses) - 6)));
     return array
   	(
       "result" => false,
