@@ -86,4 +86,14 @@ class AppliedStudyCheckerTest extends PHPUnit_Framework_TestCase
     $status = checkAppliedStudy($student);
     $this->assertEquals(6, count($status["reason"]));
   }
+         
+  public function test3879()
+  {
+    $student = new StudentProfile();
+    $course = new Course();
+    $course->set("courseNumber",3879);
+    $student->set("courses",$course);
+    $status = checkAppliedStudy($student);
+    $this->assertEquals(0, $status["result"]);
+  }
 }
