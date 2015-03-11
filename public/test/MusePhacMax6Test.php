@@ -18,4 +18,14 @@ class MusePhacMaxCheckerTest extends PHPUnit_Framework_TestCase
     $status = checkMusePhacMax($student);
     $this->assertEquals(1, count($status["reason"]));
   }
+
+  public function testPhac()
+  {
+    $student = new StudentProfile();
+    $course = new Course();
+    $course->set("department","PHAC");
+    $student->set("courses",$course);
+    $status = checkMusePhacMax($student);
+    $this->assertEquals(1, count($status["reason"]));
+  }
 }
