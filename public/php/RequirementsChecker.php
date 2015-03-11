@@ -97,7 +97,7 @@
     }
     return array
   	(
-      "result" => false,
+      "result" => true,
       "reason" => $appliedStudyCourses
     ); 
   }
