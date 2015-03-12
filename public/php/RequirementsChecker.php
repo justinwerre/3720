@@ -62,7 +62,7 @@
   // returns true if less than or equal to five independent Study courses have been taken
   function checkIndependentStudy($studentProfile)
   {
-  	$isIndStudy = true;
+  	$isIndStudy = false;
   	$independentStudyCourses = array();
   	$courses = $studentProfile->get("courses");
   	
