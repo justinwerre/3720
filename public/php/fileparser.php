@@ -170,13 +170,19 @@
 
         $student->set("courses", $course);
       }
+      
+      /* Section for processing multiple transcripts */
+
+      //if the row has multiple items in it
       if (count($arr) > 1)
       {
+      	// if end of transcript has been reached
 		if ($arr[1]=="End")
 	  	{
-	  		// echo "new student";
+	  		//add student to array of students
 	  		$student->set("creditHours", $totalCreditHours);
 	  		$students[] = $student; 
+	  		//create a new student profile and reset attribute values
 	  		$student = new StudentProfile();
 		    $gpaLine;
 		    $faculty = "";
@@ -184,7 +190,7 @@
 		    $major = "";
 		    $name = "";
 		    $totalCreditHours = 0;
-		    // var_dump($students);
+
 	  	}
 	  }
     }
