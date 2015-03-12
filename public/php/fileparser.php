@@ -194,6 +194,8 @@
 	  	}
 	  }
     }
+    
+    fclose($file);
     return $students;
   }
 
