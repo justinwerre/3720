@@ -2,10 +2,11 @@
   require_once "Course.php";
   require_once "StudentProfile.php";
 
-  function parseFile($filename)
+  function parseFile($filename, $students)
   {
     // Rename .lis to T.lis and place in php folder
     error_reporting(E_ALL);
+    $continueParsing = false;
     $file = fopen($filename, "r");
     $student = new StudentProfile();
     $gpaLine;
@@ -28,6 +29,8 @@
       $line = fgets($file);
       $arr = explode(" ", $line);
       
+      
+
       //Get name
       if($lineCount == 3)
       {
@@ -167,10 +170,32 @@
 
         $student->set("courses", $course);
       }
+      
+      /* Section for processing multiple transcripts */
+
+      //if the row has multiple items in it
+      if (count($arr) > 1)
+      {
+      	// if end of transcript has been reached
+		if ($arr[1]=="End")
+	  	{
+	  		//add student to array of students
+	  		$student->set("creditHours", $totalCreditHours);
+	  		$students[] = $student; 
+	  		//create a new student profile and reset attribute values
+	  		$student = new StudentProfile();
+		    $gpaLine;
+		    $faculty = "";
+		    $program = "";
+		    $major = "";
+		    $name = "";
+		    $totalCreditHours = 0;
+
+	  	}
+	  }
     }
-    $student->set("creditHours", $totalCreditHours);
-    return $student;
-  
+    return $students;
   }
- //parseFile("T.lis");
+
+
 ?>
