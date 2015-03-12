@@ -15,7 +15,6 @@ $(document).ready(function(){
       success: function(response, textStatus, jqXHR){
         // clear out the old server responce
         var $report = $("#report").empty();
-        console.log(response);
         
         // create a report for the user
         $report.append(nameReport(response.studentProfile));
@@ -101,7 +100,6 @@ function oneThousandsReport(response){
   
   if(!response.oneThousands.result || true){
     $.each(response.oneThousands.reason, function(name, value){
-      console.log(value);
       var dept = $("<td />", {text: value.department});
       var crsNmb = $("<td />", {text: value.courseNumber});
       var crsTitle = $("<td />", {text: value.courseTitle});
@@ -127,7 +125,6 @@ function threeThousandsFourThousandsReport(response){
   
   if(!response.threeThousandsFourThousands.result || true){
     $.each(response.threeThousandsFourThousands.reason, function(name, value){
-      console.log(value);
       var dept = $("<td />", {text: value.department});
       var crsNmb = $("<td />", {text: value.courseNumber});
       var crsTitle = $("<td />", {text: value.courseTitle});
