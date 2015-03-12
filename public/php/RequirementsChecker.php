@@ -52,10 +52,11 @@
       }
     }
       
-    return array(
+    return array
+         (
       "result" => count($courses) <= 12,
       "reason" => $courses
-    );
+   		 );
   } 
 
   // returns true if less than or equal to five independent Study courses have been taken
@@ -79,7 +80,7 @@
 
   	return array
   	(
-      "result" => $isIndStudy,
+      "result" => $isIndStudy,count($isIndStudy) <=5,
       "reason" => $independentStudyCourses
     );
   }

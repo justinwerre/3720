@@ -73,20 +73,26 @@ class IndependentStudyCheckerTest extends PHPUnit_Framework_TestCase
      $course6 = new Course();
     $course1->set("courseNumber",4990);
     $course1->set("courseTitle", "Test1");
+    $course1->set( "weight",3);
     $student->set("courses",$course1);
         $course2->set("courseNumber",3990);
         $course2->set("courseTitle", "Test2");
+        $course2->set( "weight",3);
     $student->set("courses",$course2);
     $course3->set("courseNumber",2990);
+    $course3->set( "weight",3);
     $course3->set("courseTitle", "Test3");
     $student->set("courses",$course3);
     $course4->set("courseNumber",3990);
+    $course4->set( "weight",3);
     $course4->set("courseTitle", "Test4");
     $student->set("courses",$course4);
     $course5->set("courseNumber",4990);
+    $course5->set( "weight",3);
     $course5->set("courseTitle", "Test5");
     $student->set("courses",$course5);
     $course6->set("courseNumber",3990);
+    $course6->set( "weight",3);
     $course6->set("courseTitle", "Test6");
     $student->set("courses",$course6);
 
