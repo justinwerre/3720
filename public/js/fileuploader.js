@@ -143,9 +143,9 @@ function threeThousandsFourThousandsReport(response){
 
 //creates table row for non faculty crhrs report
 function nonFacultyCrhrsReport(response){
-  var header = $("<td />", {text: "Non faculty courses:"});
+  var header = $("<td />", {text: "Non faculty credit hours:"});
   var result = $("<td />", {text: response.nonfacultyCrhrs.result?"Pass":"Fail"});
-  var reason = $("<td />", {text: response.nonfacultyCrhrs.reason.length+" Non faculty courses"});
+  var reason = $("<td />", {text: response.nonfacultyCrhrs.reason+" Non faculty credit hours"});
   var returnArray = new Array($("<tr />",{
       class: response.nonfacultyCrhrs.result?"success":"danger",
       append: Array(header, result, reason)
