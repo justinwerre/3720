@@ -118,20 +118,14 @@
       			$weightCRStr = $arr[9];
       			$weightCR = $weightCRStr[1];
       			$cTitle = "Transfer Credit";
-      			// echo $dept;
-      			// echo $cNum;
-      			// echo $weightCR;
-      			// echo $cTitle;
-      			// echo $arr[8];
-
       		}
+      		// set UNSPEC to 2550
       		else
       		{
       			$cNum = 2550;
       			$weightCR = 3;
       			$cTitle = "Transfer Credit";
       		}
-      		// var_dump($arr);
       		$course = new Course();
 	        $course->set("department", $dept);
 	        $course->set("courseNumber", $cNum);
