@@ -52,10 +52,11 @@
       }
     }
       
-    return array(
+    return array
+         (
       "result" => count($courses) <= 12,
       "reason" => $courses
-    );
+   		 );
   } 
 
   // returns true if less than or equal to five independent Study courses have been taken
@@ -65,16 +66,18 @@
   	$independentStudyCourses = array();
   	$courses = $studentProfile->get("courses");
   	
-  	foreach($courses as  $course)
-  	{ 
-       
+  	foreach($courses as  $course) 
+  	{                                   
+  		    
   	  	$courseNumber = $course->get("courseNumber");
+  	  
   	 	if($courseNumber == 2990 || $courseNumber == 3990 || $courseNumber == 4990)
-  		{
+  		    {
   			$isIndStudy = true;
   			$independentStudyCourses[] = $course;
-  		}
-  	
+  		
+  		     }
+  	    
     }
 
   	return array
