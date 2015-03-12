@@ -16,6 +16,7 @@
     $name = "";
     $lineCount = 0;
     $totalCreditHours = 0;
+    $transferCredit = false;
     
     while(!feof($file))
     { 
@@ -32,6 +33,7 @@
       
 
       //Get name
+      // double check this for multiple transcripts
       if($lineCount == 3)
       {
         $name = $arr[0];
@@ -100,6 +102,59 @@
         $student->set("major",$major);
       }
       
+      /* 
+       * Transfer Credit Parser
+       */
+      
+      if ($transferCredit == true)
+      {
+      	if (sizeof($arr) > 1)
+      	{
+      		// begin transfer credit parsing
+      		$dept = $arr[7];
+      		if ($arr[8] != "UNSPEC")
+      		{
+      			$cNum = $arr[8];
+      			$weightCRStr = $arr[9];
+      			$weightCR = $weightCRStr[1];
+      			$cTitle = "Transfer Credit";
+      		}
+      		// set UNSPEC to 2550
+      		else
+      		{
+      			$cNum = 2550;
+      			$weightCR = 3;
+      			$cTitle = "Transfer Credit";
+      		}
+      		$course = new Course();
+	        $course->set("department", $dept);
+	        $course->set("courseNumber", $cNum);
+	        $course->set("courseTitle", $cTitle);
+	        $course->set("weight", $weightCR);
+	        $course->set("totalPoints", $tPoints);
+	        
+	        $totalCreditHours += $weightCR;
+
+	        $student->set("courses", $course);
+      	}
+      	else
+      	{
+      		//set transfer credit flag to false if last line of transfer credits reached
+      		$transferCredit = false;
+      	}
+      	// var_dump($arr);
+      	
+      }
+      //check if array[7] can be checked
+      if (sizeof($arr) > 7)
+      {
+      	// if "TRANSFER" appears on the 7th spot, set transfer credit flag to true
+      	if($arr[7] == "TRANSFER")
+      	{
+      		$transferCredit = true;
+      	}
+      }
+
       //~~~Parse out courses~~~//
       if(ctype_upper($arr[0])) 
       {
@@ -108,7 +163,6 @@
       	//If course is a withdrawl, just skip, if it is just for credit, get weight and set flag to skip getting total points in cTitle loop.
       	if($arr[$size-1][0] == '-')
       	{
-
           if($arr[$size-7] == 3)
           {
             //Credit course
@@ -177,7 +231,7 @@
       if (count($arr) > 1)
       {
       	// if end of transcript has been reached
-		if ($arr[1]=="End")
+			if ($arr[1]=="End")
 	  	{
 	  		//add student to array of students
 	  		$student->set("creditHours", $totalCreditHours);
