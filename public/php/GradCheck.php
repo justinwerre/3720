@@ -5,9 +5,10 @@
   require_once "fileparser.php";
 
   $filename = $_FILES['file']['tmp_name'];
-  $students = array()
+  $students = array();
+  $parsedStudents = array();
   $parsedStudents = parseFile($filename, $students);
-  for ($i=0;$i<count($students);$i++)
+  foreach($parsedStudents as $student)
   {
     $requirementChecker = new RequirementsChecker($student);
     $check = $requirementChecker->get();

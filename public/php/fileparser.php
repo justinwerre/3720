@@ -174,21 +174,22 @@
       {
 		if ($arr[1]=="End")
 	  	{
-	  		$continueParsing = true;
+	  		// echo "new student";
+	  		$student->set("creditHours", $totalCreditHours);
+	  		$students[] = $student; 
+	  		$student = new StudentProfile();
+		    $gpaLine;
+		    $faculty = "";
+		    $program = "";
+		    $major = "";
+		    $name = "";
+		    $totalCreditHours = 0;
+		    // var_dump($students);
 	  	}
 	  }
     }
-    $student->set("creditHours", $totalCreditHours);
-    $students[] = $student; 
+    return $students;
   }
 
-  //If students remain to be parsed
-  if($continueParsing == true)
-  {
-  	parseFile($filename);
-  }
-  else 
-  {
-  	return $students;
-  }
+
 ?>
