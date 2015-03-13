@@ -122,8 +122,25 @@
       		// set UNSPEC to 2550
       		else
       		{
-      			$cNum = 2550;
-      			$weightCR = 3;
+      			$cNumStr = $arr[9];
+      			$cNumDigit = $cNumStr[1];
+      			switch ($cNumDigit)
+      			{
+      				case "1":
+      					$cNum = 1999;
+      					break;
+      				case 2:
+      					$cNum = 2999;
+      					break;
+      				case 3:
+      					$cNum = 3999;
+      					break;
+      				case 4:
+      					$cnum = 4999;
+      					break;
+      			}
+      			$weightCRStr = $arr[11];
+      			$weightCR = $weightCRStr[1];
       			$cTitle = "Transfer Credit";
       		}
       		$course = new Course();
