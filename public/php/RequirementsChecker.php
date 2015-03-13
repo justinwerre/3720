@@ -73,9 +73,13 @@
         if($courseNumber == 2990 || $courseNumber == 3990 || $courseNumber == 4990 ) 
   		  {
   			  $isIndStudy = true;
-  			  $counter+3;
+  			  $counter += 3;
           $independentStudyCourses[] = $course;
-
+          if($counter>15)
+          { 
+            $course->set("weight",0);
+            $counter = 15;
+          } 
   		  }
   	
     }
