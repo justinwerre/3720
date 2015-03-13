@@ -73,7 +73,6 @@ class IndependentStudyCheckerTest extends PHPUnit_Framework_TestCase
      $course6 = new Course();
     $course1->set("courseNumber",4990);
     $student->set("courses",$course1);
-    
     $course2->set("courseNumber",3990);
     $student->set("courses",$course2);
     $course3->set("courseNumber",2990);
@@ -85,7 +84,7 @@ class IndependentStudyCheckerTest extends PHPUnit_Framework_TestCase
     $course6->set("courseNumber",2990);
     $student->set("courses",$course6);
     $status = checkIndependentStudy($student);
-    $this->assertEquals(5, count($status["reason"]));
+    $this->assertEquals(3, count($status["reason"]));
   }
     public function testCountE5InStudy()
   {
@@ -96,17 +95,22 @@ class IndependentStudyCheckerTest extends PHPUnit_Framework_TestCase
     $course4 = new Course();
     $course5 = new Course();
     $course1->set("courseNumber",4990);
+    $course1->set("CourseTitle","test1");
     $student->set("courses",$course1);
     $course2->set("courseNumber",3990);
+    $course2->set("CourseTitle","test2");
     $student->set("courses",$course2);
     $course3->set("courseNumber",2990);
+    $course3->set("CourseTitle","test3");
     $student->set("courses",$course3);
     $course4->set("courseNumber",4990);
+    $course4->set("CourseTitle","test4");
     $student->set("courses",$course4);
     $course5->set("courseNumber",3990);
+    $course5->set("CourseTitle","test5");
     $student->set("courses",$course5);
     $status = checkIndependentStudy($student);
-    $this->assertEquals(5, count($status["reason"]));
+    $this->assertEquals(3, count($status["reason"]));
   }
 }
 

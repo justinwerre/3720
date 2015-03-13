@@ -69,9 +69,10 @@
   	{ 
        
   	  	$courseNumber = $course->get("courseNumber");
-  	 	if($courseNumber == 2990 || $courseNumber == 3990 || $courseNumber == 4990)
+  	  	 if($courseNumber == 2990 || $courseNumber == 3990 || $courseNumber == 4990 ) 
+  	  	    
   		{
-  			$isIndStudy = True;
+  			$isIndStudy = false;
   			$independentStudyCourses[] = $course;
   		}
   	
