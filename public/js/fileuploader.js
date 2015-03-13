@@ -16,8 +16,7 @@ $(document).ready(function(){
         // clear out the old server responce
         var $report = $("#report").empty();
         //loop through all student profiles
-				
-				console.log(response);
+
 				$.each(response, function(index, value){
           // create a report for the user
           $report.append(nameReport(value.studentProfile));
