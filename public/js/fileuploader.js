@@ -16,19 +16,20 @@ $(document).ready(function(){
         // clear out the old server responce
         var $report = $("#report").empty();
         //loop through all student profiles
-        for (index = 0; index < response.studentProfile.length; index++) {
-        
+				
+				console.log(response);
+				$.each(response, function(index, value){
           // create a report for the user
-          $report.append(nameReport(response.studentProfile[index]));
-          $report.append(facultyReport(response.studentProfile[index]));
-          $report.append(majorReport(response.studentProfile[index]));
-          $report.append(programReport(response.studentProfile[index]));
-          $report.append(GPAReport(response.gradCheck[index]));
-          $report.append(creditHoursReport(response.gradCheck[index]));
-          $report.append(oneThousandsReport(response.gradCheck[index]));
-          $report.append(threeThousandsFourThousandsReport(response.gradCheck[index]));
-          $report.append(nonFacultyCrhrsReport(response.gradCheck[index]));
-        }
+          $report.append(nameReport(value.studentProfile));
+          $report.append(facultyReport(value.studentProfile));
+          $report.append(majorReport(value.studentProfile));
+          $report.append(programReport(value.studentProfile));
+          $report.append(GPAReport(value.gradCheck));
+          $report.append(creditHoursReport(value.gradCheck));
+          $report.append(oneThousandsReport(value.gradCheck));
+          $report.append(threeThousandsFourThousandsReport(value.gradCheck));
+          $report.append(nonFacultyCrhrsReport(value.gradCheck));
+				});
       } 
     });
   });

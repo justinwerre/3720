@@ -9,17 +9,21 @@
   $parsedStudents = array();
   $checks = array();
   $parsedStudents = parseFile($filename, $students);
+	$studentResults = array();
+
   foreach($parsedStudents as $student)
   {
     $requirementChecker = new RequirementsChecker($student);
     $check = $requirementChecker->get();
-    $checks[] = $check;
+    $studentResults[] = array
+		(
+			"gradCheck" => $check,
+			"studentProfile" => $student->toArray()
+		);
     
   }
+
   header('Content-Type: application/json');
-    echo json_encode(array(
-    "gradCheck" => $checks,
-    "studentProfile" => $parsedStudents
-    ));
+  echo json_encode($studentResults);
   
 ?>
