@@ -72,7 +72,7 @@
   	  	 if($courseNumber == 2990 || $courseNumber == 3990 || $courseNumber == 4990 ) 
   	  	    
   		{
-  			$isIndStudy = false;
+  			$isIndStudy = true;
   			$independentStudyCourses[] = $course;
   		}
   	
