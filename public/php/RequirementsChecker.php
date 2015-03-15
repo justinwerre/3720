@@ -149,33 +149,35 @@
   function check24Discipline($studentProfile)
   {
     $max24Discipline = array();
-    $max24Discipline1 = array();
-    $max24Discipline2 = array();
+    $largest = array();
+    $sizeLargest = 0;
     $courses = $studentProfile->get("courses");
     foreach($courses as  $course)
   	{
+      $tempArray = array();
+      $tempArray[] = $course;
       $department = $course->get("department");
-      if($department == "MUSE")
+      if(!array_key_exists($department, $max24Discipline))
       {
-  		$max24Discipline1[] = $course;
+        $max24Discipline[$department] = $tempArray;
       }
       else
       {
-        $max24Discipline2[] = $course;      
+        $max24Discipline[$department] = array_merge($max24Discipline[$department], $tempArray);
       }
     }
-    if($max24Discipline1 > $max24Discipline2)
+    foreach($max24Discipline as $dept)
     {
-      $max24Discipline = $max24Discipline1;
-    }
-    else
-    {
-      $max24Discipline = $max24Discipline2;
+      if(count($dept) > $sizeLargest)
+      {
+        $sizeLargest = count($dept);
+        $largest = $dept;
+      }
     }
     return array
   	(
-      "result" => count($max24Discipline) >= 1,
-      "reason" => $max24Discipline
+      "result" => $sizeLargest >= 1,
+      "reason" => $largest
     ); 
   }
 
