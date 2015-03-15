@@ -33,5 +33,21 @@
 			$test = $econCheck->get();
 			$this->assertEquals(true, $test['4thousands']["result"]);
 		}
+		
+		public function testThree4000()
+		{
+			$student = new StudentProfile();
+			for($i = 0; $i <= 3; $i++)
+			{
+				$course = new Course();
+				$course->set("courseNumber",4000+$i);
+				$course->set("department", "ECON");
+				$student->set("courses",$course);
+				$econCheck = new EconGradCheck($student);
+			}
+
+			$test = $econCheck->get();
+			$this->assertEquals(true, $test['4thousands']["result"]);
+		}
 	}
 ?>
