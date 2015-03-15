@@ -54,7 +54,7 @@
 		{
 			return array
 			(
-				'result' => count($this->studentProfile->get('courses')) == 15
+				'result' => count($this->studentProfile->get('courses')) >= 14
 			);
 		}
 	}
