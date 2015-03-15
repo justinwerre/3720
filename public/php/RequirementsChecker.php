@@ -160,7 +160,7 @@
     }
     return array
   	(
-      "result" => count($max24Discipline) == 0,
+      "result" => count($max24Discipline) == 1,
       "reason" => $max24Discipline
     ); 
   }
