@@ -52,9 +52,20 @@
 		
 		private function checkNumberClasses()
 		{
+			$courses = $this->studentProfile->get('courses');
+			$count = 0;
+			
+			foreach($courses as $course)
+			{
+				if($course->get('department') == 'ECON')
+				{
+					$count++;	
+				}
+			}
+			
 			return array
 			(
-				'result' => count($this->studentProfile->get('courses')) >= 14
+				'result' => $count >= 14
 			);
 		}
 	}
