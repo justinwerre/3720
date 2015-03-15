@@ -152,11 +152,11 @@
     $courses = $studentProfile->get("courses");
     foreach($courses as  $course)
   	{
-      //$department = $course->get("department");
-      //if($department == "MUSE")
-      //{
+      $department = $course->get("department");
+      if($department == "MUSE")
+      {
   		$max24Discipline[] = $course;
-      //}
+      }
     }
     return array
   	(
