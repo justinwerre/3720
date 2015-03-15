@@ -50,6 +50,7 @@ class max24DisciplineCheckerTest extends PHPUnit_Framework_TestCase
     $student->set("courses",$course2);
     $course3 = new Course();
     $course3->set("department","MUSE");
+    $course3->set("courseTitle","MUSE");
     $student->set("courses",$course3);
     $status = check24Discipline($student);
     if(count($status["reason"]) == 2 && $status["result"] == true)
