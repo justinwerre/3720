@@ -71,11 +71,11 @@
     public function toArray()
     {
       return array(
-        "department" => $this->department,
-        "courseNumber" => $this->courseNumber,
-        "courseTitle" => $this->courseTitle,
-        "weight" => $this->weight,
-        "totalPoints" => $this->totalPoints,
+        "department" => trim($this->department),
+        "courseNumber" => trim($this->courseNumber),
+        "courseTitle" => trim($this->courseTitle),
+        "weight" => trim($this->weight),
+        "totalPoints" => trim($this->totalPoints),
       );
     }
 

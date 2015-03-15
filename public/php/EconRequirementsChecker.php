@@ -16,6 +16,7 @@
 			
 			$this->studentProfile = $sp;
 			$this->requirements["fourThousands"] = $this->checkFourThousands();
+			$this->requirements['classes'] = $this->checkNumberClasses();
 		}
 
 		public function get(){
@@ -30,21 +31,42 @@
 		private function checkFourThousands()
 		{
 			$courses = $this->studentProfile->get('courses');
-			$count = 0;
 			$econCourses = array();
 			
 			foreach($courses as $course)
 			{
 				if($course->get('courseNumber') >= 4000 && $course->get('department') == 'ECON')
 				{
-					$count++;
 					$econCourses[] = $course->toArray();
 				}
 			}
 			
 			return array
 			(
-				'result' => $count >= 3,
+				'result' => count($econCourses) >= 3,
+				'reason' => $econCourses
+			);
+		}
+		
+		// Checks the students courses to see if they have taken 14 econ classes
+		// including stats 1770
+		private function checkNumberClasses()
+		{
+			$courses = $this->studentProfile->get('courses');
+			$econCourses = array();
+			
+			foreach($courses as $course)
+			{
+				if($course->get('department') == 'ECON' || 
+					 ($course->get('department') == 'STAT' && $course->get('courseNumber') == 1770))
+				{
+					$econCourses[] = $course->toArray();
+				}
+			}
+			
+			return array
+			(
+				'result' => count($econCourses) >= 14,
 				'reason' => $econCourses
 			);
 		}
