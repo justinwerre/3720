@@ -66,11 +66,23 @@
 			$this->assertEquals(1, count($test['requiredCourses']["reason"]));
 		}
 		
-			public function testEcon2900()
+		public function testEcon2900()
 		{
 			$student = new StudentProfile();
 			$course = new Course();
 			$course->set("courseNumber", 2900);
+			$course->set("department", "ECON");
+			$student->set("courses",$course);
+			$econCheck = new EconRequirementsChecker($student);
+			$test = $econCheck->get();
+			$this->assertEquals(1, count($test['requiredCourses']["reason"]));
+		}
+		
+		public function testEcon3010()
+		{
+			$student = new StudentProfile();
+			$course = new Course();
+			$course->set("courseNumber", 3010);
 			$course->set("department", "ECON");
 			$student->set("courses",$course);
 			$econCheck = new EconRequirementsChecker($student);
