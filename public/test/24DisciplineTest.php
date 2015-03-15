@@ -177,7 +177,7 @@ class max24DisciplineCheckerTest extends PHPUnit_Framework_TestCase
     $course3->set("department","MUSE");
     $student->set("courses",$course3);
     $status = check24Discipline($student);
-    if(count($status["reason"]) == 1 && $status["result"] == true && $status["dept"] == "MUSI")
+    if(count($status["reason"]) == 2 && $status["result"] == true && $status["dept"] == "MUSI")
         $result = true;
     $this->assertEquals(true, $result);
   }

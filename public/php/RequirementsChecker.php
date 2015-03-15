@@ -174,7 +174,7 @@
       {
         $sizeLargest = count($dept);
         $largest = $dept;
-        //$department = $dept[0]->get("department");
+        $department = $dept[0]->get("department");
       }
     }
     return array
