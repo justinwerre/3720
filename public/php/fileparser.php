@@ -109,7 +109,9 @@
       
       if ($transferCredit == true)
       {
-      	if (sizeof($arr) > 1)
+        //check if line has something in it and that the first space is blank
+        //this is done because of end of line '----' bug
+      	if (sizeof($arr) > 1 && $arr[0]=="")
       	{
       		// begin transfer credit parsing
       		$dept = $arr[7];
