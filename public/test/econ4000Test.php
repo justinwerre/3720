@@ -82,5 +82,27 @@
 			$test = $econCheck->get();
 			$this->assertEquals(1, count($test['4thousands']['reason']));
 		}
+		
+		public function testTwoEconCourses()
+		{
+			$student = new StudentProfile();
+			$course1 = new Course();
+			$course1->set("courseNumber", 4000);
+			$course1->set("department", "ECON");
+			$student->set("courses", $course1);
+			$course2 = new Course();
+			$course2->set("courseNumber", 4001);
+			$course2->set("department", "ECON");
+			$student->set("courses", $course2);
+			$course3 = new Course();
+			$course3->set("courseNumber", 4000);
+			$course3->set("department", "CPSC");
+			$course3->set("courses", $course3);
+			
+			
+			$econCheck = new EconGradCheck($student);
+			$test = $econCheck->get();
+			$this->assertEquals(2, count($test['4thousands']['reason']));
+		}
 	}
 ?>
