@@ -104,7 +104,7 @@ class MusePhacMaxCheckerTest extends PHPUnit_Framework_TestCase
     $this->assertEquals(true, $result);
   }
     
-  public function testMusicMajor()
+  public function testMusicMajorGreaterThan8()
   {
     $result = false;
     $student = new StudentProfile();
@@ -129,8 +129,24 @@ class MusePhacMaxCheckerTest extends PHPUnit_Framework_TestCase
     $course5->set("department","PHAC");
     $course5->set("courseTitle","Fall 2012");
     $student->set("courses",$course5);
+    $course6 = new Course();
+    $course6->set("department","PHAC");
+    $course6->set("courseTitle","Spring 2013");
+    $student->set("courses",$course6);
+    $course7 = new Course();
+    $course7->set("department","PHAC");
+    $course7->set("courseTitle","Fall 2013");
+    $student->set("courses",$course7);
+    $course8 = new Course();
+    $course8->set("department","PHAC");
+    $course8->set("courseTitle","Spring 2014");
+    $student->set("courses",$course8);
+    $course9 = new Course();
+    $course9->set("department","PHAC");
+    $course9->set("courseTitle","Fall 2014");
+    $student->set("courses",$course9);
     $status = checkMusePhacMax($student);
-    if(count($status["reason"]) == 7 && $status["result"] == false)
+    if(count($status["reason"]) == 9 && $status["result"] == false)
         $result = true;
     $this->assertEquals(true, $result);
   }

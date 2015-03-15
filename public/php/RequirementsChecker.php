@@ -114,6 +114,15 @@
   // returns array of Activity Courses; only 9 credit hours from activity courses are counted
   function checkMusePhacMax($studentProfile)
   {
+    $maxCourses = 4;
+    if($studentProfile->get("major") == "Music")
+    {
+      $maxCourses = 10;
+    }
+    /*elseif($studentProfile->get("major") == "Kinesiology")
+    {
+      $maxCourses = 10
+    }*/
     $musePhacMaxCourses = array();
     $courses = $studentProfile->get("courses");
     foreach($courses as  $course)
@@ -126,7 +135,8 @@
     }
     return array
   	(
-      "result" => count($musePhacMaxCourses) <= 4,
+      
+      "result" => count($musePhacMaxCourses) <= $maxCourses,
       "reason" => $musePhacMaxCourses
     ); 
   }
