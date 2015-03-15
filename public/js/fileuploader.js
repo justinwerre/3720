@@ -203,6 +203,7 @@ function maxAppliedStudyCreditHoursReport(response){
 function econTests(studentInfo, $report){
 	if(studentInfo.studentProfile.major == "Economics"){
 		$report.append(econFourThousands(studentInfo.gradCheck.fourThousands));
+		$report.append(econNumberOfCourses(studentInfo.gradCheck.classes));
 	}
 }
 
@@ -210,6 +211,31 @@ function econFourThousands(results){
 	var header = $("<td />", {text: "Economics Four Thousands Taken:"});
 	var result = $("<td />", {text: results.result?"Pass":"Fail"});
   var reason = $("<td />", {text: results.reason.length+" 4000 courses"});
+  var returnArray = new Array($("<tr />",{
+      class: results.result?"success":"danger",
+      append: Array(header, result, reason)
+    })
+  );
+
+  if(!results.result || true){
+    $.each(results.reason, function(name, value){
+      var dept = $("<td />", {text: value.department});
+      var crsNmb = $("<td />", {text: value.courseNumber});
+      var crsTitle = $("<td />", {text: value.courseTitle});
+      returnArray.push($("<tr />", {
+        class: "info",
+        append: Array(dept, crsNmb, crsTitle)
+      }));
+    });
+  }
+	
+  return returnArray;
+}
+
+function econNumberOfCourses(results){
+	var header = $("<td />", {text: "Economics Classes Taken:"});
+	var result = $("<td />", {text: results.result?"Pass":"Fail"});
+  var reason = $("<td />", {text: results.reason.length+" courses"});
   var returnArray = new Array($("<tr />",{
       class: results.result?"success":"danger",
       append: Array(header, result, reason)

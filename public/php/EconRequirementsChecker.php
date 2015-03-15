@@ -48,6 +48,8 @@
 			);
 		}
 		
+		// Checks the students courses to see if they have taken 14 econ classes
+		// including stats 1770
 		private function checkNumberClasses()
 		{
 			$courses = $this->studentProfile->get('courses');
