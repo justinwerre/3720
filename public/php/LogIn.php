@@ -14,7 +14,9 @@ while(!feof($file))
 
     var_dump($arr);
 
-    $salt = 1234;
+    $storedUser = $arr[0];
+    $storedPass = $arr[1];
+    $storedSalt = $arr[2];
 
     if($storedUser == $username && $storedPass == crypt($username, $storedSalt))
     {
