@@ -23,6 +23,17 @@ class max24DisciplineCheckerTest extends PHPUnit_Framework_TestCase
     $this->assertEquals(true, $result);
   }
     
+    //passes with no courses
+  public function testZeroDiscipline()
+  {
+    $result = false;
+    $student = new StudentProfile();
+    $status = check24Discipline($student);
+    if(count($status["reason"]) == 0 && $status["result"] == true)
+        $result = true;
+    $this->assertEquals(true, $result);
+  }
+    
     //detects that there are two different disciplines
   public function testTwoDisciplines()
   {
@@ -99,18 +110,20 @@ class max24DisciplineCheckerTest extends PHPUnit_Framework_TestCase
     $student->set("courses",$course3);
     $course4 = new Course();
     $course4->set("department","CPSC");
-    $student->set("courses",$course);
+    $student->set("courses",$course4);
     $course5 = new Course();
     $course5->set("department","CPSC");
-    $student->set("courses",$course2);
+    $course5->set("courseTitle","MUSI");
+    $student->set("courses",$course5);
     $course6 = new Course();
     $course6->set("department","CPSC");
     $course6->set("courseTitle","MUSE");
-    $student->set("courses",$course3);
+    $student->set("courses",$course6);
     $status = check24Discipline($student);
     if(count($status["reason"]) == 3 && $status["result"] == true)
         $result = true;
-    $this->assertEquals(true, $result);
+    //$this->assertEquals(true, $result);
+      $this->assertEquals(3, count($status["reason"]));
   }
     
 }
