@@ -105,7 +105,7 @@
     }
     return array
   	(
-      "result" => true,
+      "result" => count($appliedStudyCourses) <= 5,
       "reason" => $appliedStudyCourses
     ); 
   }
