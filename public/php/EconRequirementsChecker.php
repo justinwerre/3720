@@ -17,7 +17,7 @@
 			$this->studentProfile = $sp;
 			$this->requirements["fourThousands"] = $this->checkFourThousands();
 			$this->requirements['classes'] = $this->checkNumberClasses();
-			$this->requirements['requiredCourses'] = array('reason' => array());
+			$this->requirements['requiredCourses'] = array('reason' => array('something'));
 		}
 
 		public function get(){
