@@ -111,10 +111,11 @@
     ); 
   }
 
-  // returns array of Activity Courses; only 9 credit hours from activity courses are counted
+  // returns array of Activity Courses; only 6 credit hours from activity courses are counted
+  // 12 credit hours for Music majors and 10 credit hours for Kinesiology majors
   function checkMusePhacMax($studentProfile)
   {
-    $maxCourses = 4;
+    $maxCourses = 0;
     if($studentProfile->get("major") == "Music")
     {
       $maxCourses = 8;
@@ -122,6 +123,10 @@
     elseif($studentProfile->get("major") == "Kinesiology")
     {
       $maxCourses = 10;
+    }
+    else
+    {
+      $maxCourses = 4;   
     }
     $musePhacMaxCourses = array();
     $courses = $studentProfile->get("courses");
@@ -135,7 +140,6 @@
     }
     return array
   	(
-      
       "result" => count($musePhacMaxCourses) <= $maxCourses,
       "reason" => $musePhacMaxCourses
     ); 
