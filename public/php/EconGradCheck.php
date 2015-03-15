@@ -4,11 +4,13 @@
 	class EconGradCheck extends RequirementsChecker
 	{
 		private $requirements;
-
-		public function __construct($studentProfile)
+		private $studentProfile;
+		
+		public function __construct($sp)
 		{
+			$this->studentProfile = $sp;
 			$this->requirements = array(
-				"4thousands" => array("result" => false)
+				"4thousands" => $this->checkFourThousands()
 			);  
 		}
 
@@ -18,5 +20,23 @@
 
 		public function __destruct()
 		{}
+		
+		private function checkFourThousands()
+		{
+			$courses = $this->studentProfile->get('courses');
+			$count = 0;
+			foreach($courses as $course)
+			{
+				if($course->get('courseNumber') > 4000)
+				{
+					$count++;
+				}
+			}
+			
+			return array
+			(
+				'result' => $count > 3
+			);
+		}
 	}
 ?>
