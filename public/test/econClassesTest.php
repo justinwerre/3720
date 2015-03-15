@@ -37,5 +37,21 @@
 			$test = $econCheck->get();
 			$this->assertEquals(true, $test['classes']["result"]);
 		}
+		
+		public function test14EconClasses()
+		{
+			$student = new StudentProfile();
+			for($i = 0; $i < 14; $i++)
+			{
+				$course = new Course();
+				$course->set("courseNumber",4000+$i);
+				$course->set("department", "ECON");
+				$student->set("courses",$course);
+			}
+			
+			$econCheck = new EconRequirementsChecker($student);
+			$test = $econCheck->get();
+			$this->assertEquals(true, $test['classes']["result"]);
+		}
 	}
 ?>
