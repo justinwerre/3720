@@ -21,10 +21,13 @@
 		public function __destruct()
 		{}
 		
+		// Checks the students courses to see if they have taken 
+		// four 4000 level economics courses
 		private function checkFourThousands()
 		{
 			$courses = $this->studentProfile->get('courses');
 			$count = 0;
+			
 			foreach($courses as $course)
 			{
 				if($course->get('courseNumber') > 4000)
