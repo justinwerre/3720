@@ -39,7 +39,7 @@
 			return array
 			(
 				'result' => $count >= 3,
-				'reason' => array()
+				'reason' => array($course)
 			);
 		}
 	}
