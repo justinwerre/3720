@@ -27,19 +27,21 @@
 		{
 			$courses = $this->studentProfile->get('courses');
 			$count = 0;
+			$econCourses = array();
 			
 			foreach($courses as $course)
 			{
-				if($course->get('courseNumber') > 4000 && $course->get('department') == 'ECON')
+				if($course->get('courseNumber') >= 4000 && $course->get('department') == 'ECON')
 				{
 					$count++;
+					$econCourses[] = $course;
 				}
 			}
 			
 			return array
 			(
 				'result' => $count >= 3,
-				'reason' => array($course)
+				'reason' => $econCourses
 			);
 		}
 	}
