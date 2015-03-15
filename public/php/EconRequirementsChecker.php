@@ -77,7 +77,11 @@
 			$courses = $this->studentProfile->get('courses');
 			$econCourses = array();
 			
-			if($courses[0]->get('department') == 'ECON' && $courses[0]->get('courseNumber') == 1010)
+			if($courses[0]->get('department') == 'ECON' && 
+				 ($courses[0]->get('courseNumber') == 1010 ||
+					$courses[0]->get('courseNumber') == 1012
+				 )
+				)
 			{
 				$econCourses = $courses[0];
 			}
