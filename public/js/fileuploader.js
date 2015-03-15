@@ -134,8 +134,11 @@ function threeThousandsFourThousandsReport(response){
     $.each(response.threeThousandsFourThousands.reason, function(name, value){
       var dept = $("<td />", {text: value.department});
       var crsNmb = $("<td />", {text: value.courseNumber});
-      var crsTitle = $("<td />", {text: value.courseTitle});
-      returnArray.push($("<tr />", {
+       var crsTitle = $("<td />", {text: value.courseTitle});
+       if(value.weight<1){
+        crsTitle = $("<td />", {text:"In Progress"});
+       }
+       returnArray.push($("<tr />", {
         class: "info",
         append: Array(dept, crsNmb, crsTitle)
       }));
@@ -162,6 +165,9 @@ function nonFacultyCrhrsReport(response){
       var dept = $("<td />", {text: value.department});
       var crsNmb = $("<td />", {text: value.courseNumber});
       var crsTitle = $("<td />", {text: value.courseTitle});
+      if(value.weight<1){
+        crsTitle = $("<td />", {text:"In Progress"});
+      }
       returnArray.push($("<tr />", {
         class: "info",
         append: Array(dept, crsNmb, crsTitle)
