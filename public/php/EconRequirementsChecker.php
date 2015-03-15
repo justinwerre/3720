@@ -54,6 +54,7 @@
 		{
 			$courses = $this->studentProfile->get('courses');
 			$count = 0;
+			$econCourses = array();
 			
 			foreach($courses as $course)
 			{
@@ -61,13 +62,14 @@
 					 ($course->get('department') == 'STAT' && $course->get('courseNumber') == 1770))
 				{
 					$count++;	
+					$econCourses[] = $course->toArray();
 				}
 			}
 			
 			return array
 			(
 				'result' => $count >= 14,
-				'reason' => 0
+				'reason' => $econCourses
 			);
 		}
 	}
