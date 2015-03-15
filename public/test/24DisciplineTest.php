@@ -125,7 +125,7 @@ class max24DisciplineCheckerTest extends PHPUnit_Framework_TestCase
     $this->assertEquals(true, $result);
   }
     
-    //detects that there are many(too many to predict) disciplines, and counts the correct amount of courses in the returned array
+    //detects 24 courses in one department and results to true
   public function testOneDiscipline24Courses()
   {
     $result = false;
@@ -143,7 +143,7 @@ class max24DisciplineCheckerTest extends PHPUnit_Framework_TestCase
     $this->assertEquals(true, $result);
   }
     
-    //detects that there are many(too many to predict) disciplines, and counts the correct amount of courses in the returned array
+    //detects 25 courses in one department and results to false
   public function testOneDiscipline25Courses()
   {
     $result = false;

@@ -30,6 +30,7 @@ $(document).ready(function(){
           $report.append(nonFacultyCrhrsReport(value.gradCheck));
           $report.append(maxActivityCreditHoursReport(value.gradCheck));
           $report.append(maxAppliedStudyCreditHoursReport(value.gradCheck));
+          $report.append(max24DisciplineReport(value.gradCheck));
 					econTests(value, $report);
 				});
       } 
@@ -192,6 +193,19 @@ function maxAppliedStudyCreditHoursReport(response){
   var reason = $("<td />", {text: response.maxAppliedStudyCreditHours.reason.length * 3 +" applied studies course credit hours"});
   var returnArray = new Array($("<tr />",{
       class: response.maxAppliedStudyCreditHours.result?"success":"danger",
+		  append: Array(header, result, reason)
+    })
+  );
+  return returnArray;
+}
+
+//creates table row for max 24 courses in any one discipline report
+function max24DisciplineReport(response){
+  var header = $("<td />", {text: "Most taken discipline credit hours:"});
+  var result = $("<td />", {text: response.max24Discipline.result?"Pass":"Fail"});
+  var reason = $("<td />", {text: response.max24Discipline.reason.length * 3 +" credit hours from most taken discipline"});
+  var returnArray = new Array($("<tr />",{
+      class: response.max24Discipline.result?"success":"danger",
 		  append: Array(header, result, reason)
     })
   );
