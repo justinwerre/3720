@@ -21,10 +21,10 @@
 		public function testFour4000()
 		{
 			$student = new StudentProfile();
-			for($i = 0; $i <= 4; $i++)
+			for($i = 0; $i < 4; $i++)
 			{
 				$course = new Course();
-				$course->set("courseNumber",4000+$i);
+				$course->set("courseNumber",4001+$i);
 				$course->set("department", "ECON");
 				$student->set("courses",$course);
 			}
@@ -37,10 +37,10 @@
 		public function testThree4000()
 		{
 			$student = new StudentProfile();
-			for($i = 0; $i <= 3; $i++)
+			for($i = 0; $i < 3; $i++)
 			{
 				$course = new Course();
-				$course->set("courseNumber",4000+$i);
+				$course->set("courseNumber",4001+$i);
 				$course->set("department", "ECON");
 				$student->set("courses",$course);
 			}
@@ -58,7 +58,7 @@
 			$course->set("department", "CPSC");
 			$student->set("courses", $course);
 			
-			for($i = 0; $i <= 2; $i++)
+			for($i = 0; $i < 2; $i++)
 			{
 				$course = new Course();
 				$course->set("courseNumber",4001+$i);
