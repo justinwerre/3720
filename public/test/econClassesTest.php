@@ -74,5 +74,26 @@
 			$test = $econCheck->get();
 			$this->assertEquals(false, $test['classes']["result"]);
 		}
+		
+		public function testStat1770()
+		{
+			$student = new StudentProfile();
+			for($i = 0; $i < 13; $i++)
+			{
+				$course = new Course();
+				$course->set("courseNumber",4000+$i);
+				$course->set("department", "ECON");
+				$student->set("courses",$course);
+			}
+			
+			$course = new Course();
+			$course->set("courseNumber",1770);
+			$course->set("department", "STAT");
+			$student->set("courses",$course);
+			
+			$econCheck = new EconRequirementsChecker($student);
+			$test = $econCheck->get();
+			$this->assertEquals(true, $test['classes']["result"]);
+		}
 	}
 ?>
