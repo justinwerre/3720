@@ -8,7 +8,7 @@
 		public function __construct($studentProfile)
 		{
 			$this->requirements = array(
-				"4thousands" => "4thousands"
+				"4thousands" => array("result" => false)
 			);  
 		}
 
