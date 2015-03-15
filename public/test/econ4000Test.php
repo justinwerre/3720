@@ -70,5 +70,17 @@
 			$test = $econCheck->get();
 			$this->assertEquals(false, $test['4thousands']["result"]);
 		}
+		
+		public function testCourseNumber4000()
+		{
+			$student = new StudentProfile();
+			$course = new Course();
+			$course->set("courseNumber", 4000);
+			$course->set("department", "ECON");
+			$student->set("courses", $course);
+			$econCheck = new EconGradCheck($student);
+			$test = $econCheck->get();
+			$this->assertEquals(1, count($test['4thousands']['reason']));
+		}
 	}
 ?>
