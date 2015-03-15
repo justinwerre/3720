@@ -35,7 +35,7 @@ class MusePhacMaxCheckerTest extends PHPUnit_Framework_TestCase
     $this->assertEquals(true, $result);
   }
 
-  public function testGreaterThan6Activity()
+  public function testGreaterThan4Activity()
   {
     $result = false;
     $student = new StudentProfile();
@@ -59,21 +59,13 @@ class MusePhacMaxCheckerTest extends PHPUnit_Framework_TestCase
     $course5->set("department","PHAC");
     $course5->set("courseTitle","Fall 2012");
     $student->set("courses",$course5);
-    $course6 = new Course();
-    $course6->set("department","MUSE");
-    $course6->set("courseTitle","Spring 2012");
-    $student->set("courses",$course6);
-    $course7 = new Course();
-    $course7->set("department","PHAC");
-    $course7->set("courseTitle","Fall 2013");
-    $student->set("courses",$course7);
     $status = checkMusePhacMax($student);
     if(count($status["reason"]) == 7 && $status["result"] == false)
         $result = true;
     $this->assertEquals(true, $result);
   }
     
-  public function test6Activity()
+  public function test4Activity()
   {
     $result = false;
     $student = new StudentProfile();
@@ -93,14 +85,6 @@ class MusePhacMaxCheckerTest extends PHPUnit_Framework_TestCase
     $course4->set("department","MUSE");
     $course4->set("courseTitle","Spring 2011");
     $student->set("courses",$course4);
-    $course5 = new Course();
-    $course5->set("department","PHAC");
-    $course5->set("courseTitle","Fall 2012");
-    $student->set("courses",$course5);
-    $course6 = new Course();
-    $course6->set("department","MUSE");
-    $course6->set("courseTitle","Spring 2012");
-    $student->set("courses",$course6);
     $status = checkMusePhacMax($student);
     if(count($status["reason"]) == 6 && $status["result"] == true)
         $result = true;
