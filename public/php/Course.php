@@ -6,7 +6,6 @@
     private $courseTitle;
     private $weight;
     private $totalPoints;
-    private $semester;
 
     public function __construct()
     {
@@ -15,7 +14,6 @@
       $this->courseTitle = "";
       $this->weight = "";
       $this->totalPoints = "";
-      $this->semester = "";
     }
     /*
     get() works with the following properties:
@@ -40,9 +38,6 @@
           break;
         case "totalPoints":
           $returnValue = $this->totalPoints;
-          break;
-        case "semester":
-          $returnValue = $this->semester;
           break;
       }
       return $returnValue;
@@ -70,9 +65,6 @@
         case "totalPoints":
           $this->totalPoints = $newValue;
           break;
-        case "semester":
-          $this->semester = $newValue;
-          break;
       }
     }
     
@@ -84,7 +76,6 @@
         "courseTitle" => $this->courseTitle,
         "weight" => $this->weight,
         "totalPoints" => $this->totalPoints,
-        "semester" => $this->semester
       );
     }
 
