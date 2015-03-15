@@ -94,6 +94,7 @@
 			
 			return array
 			(
+				'result' => false,
 				'reason' => $econCourses
 			);
 		}
