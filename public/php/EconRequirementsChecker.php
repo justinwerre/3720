@@ -16,6 +16,7 @@
 			
 			$this->studentProfile = $sp;
 			$this->requirements["fourThousands"] = $this->checkFourThousands();
+			$this->requirements['classes'] = array('result' => "fhdio");
 		}
 
 		public function get(){
