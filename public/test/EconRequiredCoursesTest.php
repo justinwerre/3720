@@ -113,5 +113,17 @@
 			$test = $econCheck->get();
 			$this->assertEquals(1, count($test['requiredCourses']["reason"]));
 		}
+		
+		public function testStats1770()
+		{
+			$student = new StudentProfile();
+			$course = new Course();
+			$course->set("courseNumber", 1770);
+			$course->set("department", "STAT");
+			$student->set("courses",$course);
+			$econCheck = new EconRequirementsChecker($student);
+			$test = $econCheck->get();
+			$this->assertEquals(1, count($test['requiredCourses']["reason"]));
+		}
 	}
 ?>
