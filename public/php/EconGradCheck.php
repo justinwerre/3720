@@ -30,7 +30,7 @@
 			
 			foreach($courses as $course)
 			{
-				if($course->get('courseNumber') > 4000)
+				if($course->get('courseNumber') > 4000 && $course->get('department') == 'ECON')
 				{
 					$count++;
 				}
