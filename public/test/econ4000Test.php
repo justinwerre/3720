@@ -1,7 +1,7 @@
 <?php
 	require_once __DIR__."/../php/StudentProfile.php";
 	require_once __DIR__."/../php/Course.php";
-	require_once __DIR__."/../php/EconGradCheck.php";
+	require_once __DIR__."/../php/EconRequirementsChecker.php";
 
 
 	class econ4000Test extends PHPUnit_Framework_TestCase
@@ -13,7 +13,7 @@
 			$course->set("courseNumber",4000);
 			$course->set("department", "ECON");
 			$student->set("courses",$course);
-			$econCheck = new EconGradCheck($student);
+			$econCheck = new EconRequirementsChecker($student);
 			$test = $econCheck->get();
 			$this->assertEquals(false, $test['4thousands']["result"]);
 		}
@@ -29,7 +29,7 @@
 				$student->set("courses",$course);
 			}
 
-			$econCheck = new EconGradCheck($student);
+			$econCheck = new EconRequirementsChecker($student);
 			$test = $econCheck->get();
 			$this->assertEquals(true, $test['4thousands']["result"]);
 		}
@@ -45,7 +45,7 @@
 				$student->set("courses",$course);
 			}
 
-			$econCheck = new EconGradCheck($student);
+			$econCheck = new EconRequirementsChecker($student);
 			$test = $econCheck->get();
 			$this->assertEquals(true, $test['4thousands']["result"]);
 		}
@@ -66,7 +66,7 @@
 				$student->set("courses", $course);
 			}
 
-			$econCheck = new EconGradCheck($student);
+			$econCheck = new EconRequirementsChecker($student);
 			$test = $econCheck->get();
 			$this->assertEquals(false, $test['4thousands']["result"]);
 		}
@@ -78,7 +78,7 @@
 			$course->set("courseNumber", 4000);
 			$course->set("department", "ECON");
 			$student->set("courses", $course);
-			$econCheck = new EconGradCheck($student);
+			$econCheck = new EconRequirementsChecker($student);
 			$test = $econCheck->get();
 			$this->assertEquals(1, count($test['4thousands']['reason']));
 		}
@@ -100,7 +100,7 @@
 			$course3->set("courses", $course3);
 			
 			
-			$econCheck = new EconGradCheck($student);
+			$econCheck = new EconRequirementsChecker($student);
 			$test = $econCheck->get();
 			$this->assertEquals(2, count($test['4thousands']['reason']));
 		}

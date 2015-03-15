@@ -1,7 +1,7 @@
 <?php
 	require_once "RequirementsChecker.php"; 
 
-	class EconGradCheck extends RequirementsChecker
+	class EconRequirementsChecker extends RequirementsChecker
 	{
 		private $requirements;
 		private $studentProfile;
