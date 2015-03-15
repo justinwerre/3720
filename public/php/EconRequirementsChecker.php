@@ -31,21 +31,19 @@
 		private function checkFourThousands()
 		{
 			$courses = $this->studentProfile->get('courses');
-			$count = 0;
 			$econCourses = array();
 			
 			foreach($courses as $course)
 			{
 				if($course->get('courseNumber') >= 4000 && $course->get('department') == 'ECON')
 				{
-					$count++;
 					$econCourses[] = $course->toArray();
 				}
 			}
 			
 			return array
 			(
-				'result' => $count >= 3,
+				'result' => count($econCourses) >= 3,
 				'reason' => $econCourses
 			);
 		}
@@ -53,7 +51,6 @@
 		private function checkNumberClasses()
 		{
 			$courses = $this->studentProfile->get('courses');
-			$count = 0;
 			$econCourses = array();
 			
 			foreach($courses as $course)
@@ -61,14 +58,13 @@
 				if($course->get('department') == 'ECON' || 
 					 ($course->get('department') == 'STAT' && $course->get('courseNumber') == 1770))
 				{
-					$count++;	
 					$econCourses[] = $course->toArray();
 				}
 			}
 			
 			return array
 			(
-				'result' => $count >= 14,
+				'result' => count($econCourses) >= 14,
 				'reason' => $econCourses
 			);
 		}
