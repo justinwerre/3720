@@ -9,6 +9,7 @@ require_once __DIR__."/../php/RequirementsChecker.php";
 
 class max24DisciplineCheckerTest extends PHPUnit_Framework_TestCase
 {
+    //detects a course of any department
   public function testOneDiscipline()
   {
     $result = false;
@@ -22,6 +23,7 @@ class max24DisciplineCheckerTest extends PHPUnit_Framework_TestCase
     $this->assertEquals(true, $result);
   }
     
+    //detects that there are two different disciplines
   public function testTwoDisciplines()
   {
     $result = false;
@@ -38,6 +40,7 @@ class max24DisciplineCheckerTest extends PHPUnit_Framework_TestCase
     $this->assertEquals(true, $result);
   }
 
+    //detects that there are two disciplines, and counts the correct amount of courses in the returned array
   public function testTwoDisciplinesDiffAmtCourses()
   {
     $result = false;
@@ -58,6 +61,7 @@ class max24DisciplineCheckerTest extends PHPUnit_Framework_TestCase
     $this->assertEquals(true, $result);
   }
 
+    //detects that there are two disciplines, and counts the correct amount of courses in the returned array, opposite(swapped) disciplines
   public function testTwoDisciplinesDiffAmtSwap()
   {
     $result = false;

@@ -149,14 +149,28 @@
   function check24Discipline($studentProfile)
   {
     $max24Discipline = array();
+    $max24Discipline1 = array();
+    $max24Discipline2 = array();
     $courses = $studentProfile->get("courses");
     foreach($courses as  $course)
   	{
       $department = $course->get("department");
       if($department == "MUSE")
       {
-  		$max24Discipline[] = $course;
+  		$max24Discipline1[] = $course;
       }
+      else
+      {
+        $max24Discipline2[] = $course;      
+      }
+    }
+    if($max24Discipline1 > $max24Discipline2)
+    {
+      $max24Discipline = $max24Discipline1;
+    }
+    else
+    {
+      $max24Discipline = $max24Discipline2;
     }
     return array
   	(
