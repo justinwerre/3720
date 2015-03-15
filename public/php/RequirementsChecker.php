@@ -11,7 +11,8 @@
         "oneThousands" => check1000Courses($studentProfile),
         "threeThousandsFourThousands" => check30004000Courses($studentProfile),
         "nonfacultyCrhrs" => checkNonfacultyCrhrs($studentProfile),
-        "maxActivityCreditHours" => checkMusePhacMax($studentProfile)
+        "maxActivityCreditHours" => checkMusePhacMax($studentProfile),
+        "maxAppliedStudyCreditHours" => checkAppliedStudy($studentProfile)
       );  
     }
     
@@ -93,7 +94,6 @@
   // returns array of applied studies courses; only 15 credit hours from applied studies courses are counted
   function checkAppliedStudy($studentProfile)
   {
-    $isAppStudy = true;
     $appliedStudyCourses = array();
     $courses = $studentProfile->get("courses");
     foreach($courses as  $course)
@@ -101,15 +101,12 @@
         $courseNumber = $course->get("courseNumber");
   	 	if(($courseNumber >= 2880 && $courseNumber <= 2885) || ($courseNumber >= 3880 && $courseNumber <= 3885) || ($courseNumber >= 4880 && $courseNumber <= 4885))
   		{
-            $isAppStudy = true;
   			$appliedStudyCourses[] = $course;
   		}
-        else
-            $isAppStudy = false;
     }
     return array
   	(
-      "result" => $isAppStudy,
+      "result" => count($appliedStudyCourses) <= 5,
       "reason" => $appliedStudyCourses
     ); 
   }

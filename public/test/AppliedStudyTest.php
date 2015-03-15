@@ -11,26 +11,33 @@ class AppliedStudyCheckerTest extends PHPUnit_Framework_TestCase
 {
   public function test2880()
   {
+    $result = false;
     $student = new StudentProfile();
     $course = new Course();
     $course->set("courseNumber",2880);
     $student->set("courses",$course);
     $status = checkAppliedStudy($student);
-    $this->assertEquals(1, count($status["reason"]));
+    if(count($status["reason"]) == 1 && $status["result"] == true)
+        $result = true;
+    $this->assertEquals(true, $result);
   }
      
   public function test2879()
   {
+    $result = false;
     $student = new StudentProfile();
     $course = new Course();
     $course->set("courseNumber",2879);
     $student->set("courses",$course);
     $status = checkAppliedStudy($student);
-    $this->assertEquals(0, $status["result"]);
+    if(count($status["reason"]) == 0 && $status["result"] == true)
+        $result = true;
+    $this->assertEquals(true, $result);
   }
 
   public function test2881to2885()
   {
+    $result = false;
     $student = new StudentProfile();
     $course1 = new Course();
     $course1->set("courseNumber",2881);
@@ -48,21 +55,27 @@ class AppliedStudyCheckerTest extends PHPUnit_Framework_TestCase
     $student->set("courses",$course4);
     $student->set("courses",$course5);
     $status = checkAppliedStudy($student);
-    $this->assertEquals(5, count($status["reason"]));
+    if(count($status["reason"]) == 5 && $status["result"] == true)
+        $result = true;
+    $this->assertEquals(true, $result);
   }
 
   public function test2886()
   {
+    $result = false;
     $student = new StudentProfile();
     $course = new Course();
     $course->set("courseNumber",2886);
     $student->set("courses",$course);
     $status = checkAppliedStudy($student);
-    $this->assertEquals(0, count($status["reason"]));
+    if(count($status["reason"]) == 0 && $status["result"] == true)
+        $result = true;
+    $this->assertEquals(true, $result);
   }
 
   public function test3880to3885()
   {
+    $result = false;
     $student = new StudentProfile();
     $course0 = new Course();
     $course0->set("courseNumber",3880);
@@ -83,31 +96,40 @@ class AppliedStudyCheckerTest extends PHPUnit_Framework_TestCase
     $student->set("courses",$course4);
     $student->set("courses",$course5);
     $status = checkAppliedStudy($student);
-    $this->assertEquals(6, count($status["reason"]));
+    if(count($status["reason"]) == 6 && $status["result"] == false)
+        $result = true;
+    $this->assertEquals(true, $result);
   }
-         
+       
   public function test3879()
   {
+    $result = false;
     $student = new StudentProfile();
     $course = new Course();
     $course->set("courseNumber",3879);
     $student->set("courses",$course);
     $status = checkAppliedStudy($student);
-    $this->assertEquals(0, $status["result"]);
+    if(count($status["reason"]) == 0 && $status["result"] == true)
+        $result = true;
+    $this->assertEquals(true, $result);
   }
 
   public function test3886()
   {
+    $result = false;
     $student = new StudentProfile();
     $course = new Course();
     $course->set("courseNumber",3886);
     $student->set("courses",$course);
     $status = checkAppliedStudy($student);
-    $this->assertEquals(0, count($status["reason"]));
+    if(count($status["reason"]) == 0 && $status["result"] == true)
+        $result = true;
+    $this->assertEquals(true, $result);
   }
 
   public function test4880to4885()
   {
+    $result = false;
     $student = new StudentProfile();
     $course0 = new Course();
     $course0->set("courseNumber",4880);
@@ -128,26 +150,34 @@ class AppliedStudyCheckerTest extends PHPUnit_Framework_TestCase
     $student->set("courses",$course4);
     $student->set("courses",$course5);
     $status = checkAppliedStudy($student);
-    $this->assertEquals(6, count($status["reason"]));
+    if(count($status["reason"]) == 6 && $status["result"] == false)
+        $result = true;
+    $this->assertEquals(true, $result);
   }
-         
+ 
   public function test4879()
   {
+    $result = false;
     $student = new StudentProfile();
     $course = new Course();
     $course->set("courseNumber",4879);
     $student->set("courses",$course);
     $status = checkAppliedStudy($student);
-    $this->assertEquals(0, $status["result"]);
+    if(count($status["reason"]) == 0 && $status["result"] == true)
+        $result = true;
+    $this->assertEquals(true, $result);
   }
              
   public function test4886()
   {
+    $result = false;
     $student = new StudentProfile();
     $course = new Course();
     $course->set("courseNumber",4886);
     $student->set("courses",$course);
     $status = checkAppliedStudy($student);
-    $this->assertEquals(0, $status["result"]);
+    if(count($status["reason"]) == 0 && $status["result"] == true)
+        $result = true;
+    $this->assertEquals(true, $result);
   }
 }
