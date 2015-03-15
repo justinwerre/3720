@@ -66,7 +66,8 @@
 			
 			return array
 			(
-				'result' => $count >= 14
+				'result' => $count >= 14,
+				'reason' => 0
 			);
 		}
 	}
