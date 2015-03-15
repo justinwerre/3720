@@ -178,7 +178,7 @@
       	$size = count($arr);
         $justCredit = false;
       	//If course is a withdrawl, just skip, if it is just for credit, get weight and set flag to skip getting total points in cTitle loop.
-      	if($arr[$size-1][0] == '-')
+      	if(($arr[$size-1][0] == '-')||($arr[$size-1][0] == '0'))
       	{
           if($arr[$size-7] == 3)
           {
