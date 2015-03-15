@@ -83,7 +83,8 @@
 					$courses[0]->get('courseNumber') == 2750 ||
 					$courses[0]->get('courseNumber') == 2900 ||
 					$courses[0]->get('courseNumber') == 3010 ||
-					$courses[0]->get('courseNumber') == 3012
+					$courses[0]->get('courseNumber') == 3012 ||
+					$courses[0]->get('courseNumber') == 3950
 				 )
 				)
 			{
