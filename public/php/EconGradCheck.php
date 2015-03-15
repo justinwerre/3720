@@ -38,7 +38,7 @@
 			
 			return array
 			(
-				'result' => $count > 3
+				'result' => $count >= 3
 			);
 		}
 	}
