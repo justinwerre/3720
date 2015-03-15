@@ -10,7 +10,8 @@
         "creditHours" => checkCreditHours($studentProfile),
         "oneThousands" => check1000Courses($studentProfile),
         "threeThousandsFourThousands" => check30004000Courses($studentProfile),
-        "nonfacultyCrhrs" => checkNonfacultyCrhrs($studentProfile)
+        "nonfacultyCrhrs" => checkNonfacultyCrhrs($studentProfile),
+        "activityCourses" => checkMusePhacMax($studentProfile)
       );  
     }
     
@@ -126,11 +127,11 @@
   		$musePhacMaxCourses[] = $course;
       }
     }
-    $creditHours = $studentProfile->get("creditHours");
     $studentProfile->set("creditHours", $studentProfile->get("creditHours") - (1.5 * (sizeof($musePhacMaxCourses) - 6)));
     return array
   	(
-      "result" => false,
+      //"result" => count($musePhacMaxCourses) <= 5,
+        "result" => true,
       "reason" => $musePhacMaxCourses
     ); 
   }
