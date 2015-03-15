@@ -28,6 +28,7 @@ $(document).ready(function(){
           $report.append(oneThousandsReport(value.gradCheck));
           $report.append(threeThousandsFourThousandsReport(value.gradCheck));
           $report.append(nonFacultyCrhrsReport(value.gradCheck));
+					econTests(value, $report);
 				});
       } 
     });
@@ -115,6 +116,7 @@ function oneThousandsReport(response){
   
   return returnArray;
 }
+
 //creates table row for 3000/4000 check
 function threeThousandsFourThousandsReport(response){
   var header = $("<td />", {text: "3000/4000 courses:"});
@@ -155,6 +157,39 @@ function nonFacultyCrhrsReport(response){
   if(!response.nonfacultyCrhrs.result || true){
     $.each(response.nonfacultyCrhrs.reason, function(name, value){
       console.log(value);
+      var dept = $("<td />", {text: value.department});
+      var crsNmb = $("<td />", {text: value.courseNumber});
+      var crsTitle = $("<td />", {text: value.courseTitle});
+      returnArray.push($("<tr />", {
+        class: "info",
+        append: Array(dept, crsNmb, crsTitle)
+      }));
+    });
+  }
+  
+  return returnArray;
+}
+
+// checks to see if the student is a economics major and reports 
+// additinal test results specific to that major
+function econTests(studentInfo, $report){
+	if(studentInfo.studentProfile.major == "Economics"){
+		$report.append(econFourThousands(studentInfo.gradCheck.fourThousands));
+	}
+}
+
+function econFourThousands(results){
+	var header = $("<td />", {text: "Economics Four Thousands Taken:"});
+	var result = $("<td />", {text: results.result?"Pass":"Fail"});
+  var reason = $("<td />", {text: results.reason.length+" 4000 courses"});
+  var returnArray = new Array($("<tr />",{
+      class: results.result?"success":"danger",
+      append: Array(header, result, reason)
+    })
+  );
+  
+  if(!results.result || true){
+    $.each(results.reason, function(name, value){
       var dept = $("<td />", {text: value.department});
       var crsNmb = $("<td />", {text: value.courseNumber});
       var crsTitle = $("<td />", {text: value.courseTitle});

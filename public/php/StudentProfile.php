@@ -98,13 +98,12 @@
     
     public function toArray(){
       return array(
-        "name" => $this->name,
-        "faculty" => $this->faculty,
-        "program" => $this->program,
-        "major" => $this->major,
-        "courses" => $this->courses,
-        "creditHours" => $this->creditHours,
-        "GPA" => $this->GPA
+        "name" => trim($this->name),
+        "faculty" => trim($this->faculty),
+        "program" => trim($this->program),
+        "major" => trim($this->major),
+        "creditHours" => trim($this->creditHours),
+        "GPA" => trim($this->GPA)
       );
     }
 

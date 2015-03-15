@@ -8,10 +8,14 @@
 		
 		public function __construct($sp)
 		{
+			// need to perform the requirements checking in the parent class
+			// and mix the results in with the more specific testing performed 
+			// in this class
+			parent::__construct($sp);
+			$this->requirements = parent::get();
+			
 			$this->studentProfile = $sp;
-			$this->requirements = array(
-				"4thousands" => $this->checkFourThousands()
-			);  
+			$this->requirements["fourThousands"] = $this->checkFourThousands();
 		}
 
 		public function get(){
@@ -34,7 +38,7 @@
 				if($course->get('courseNumber') >= 4000 && $course->get('department') == 'ECON')
 				{
 					$count++;
-					$econCourses[] = $course;
+					$econCourses[] = $course->toArray();
 				}
 			}
 			

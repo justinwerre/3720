@@ -15,7 +15,7 @@
 			$student->set("courses",$course);
 			$econCheck = new EconRequirementsChecker($student);
 			$test = $econCheck->get();
-			$this->assertEquals(false, $test['4thousands']["result"]);
+			$this->assertEquals(false, $test['fourThousands']["result"]);
 		}
 		
 		public function testFour4000()
@@ -31,7 +31,7 @@
 
 			$econCheck = new EconRequirementsChecker($student);
 			$test = $econCheck->get();
-			$this->assertEquals(true, $test['4thousands']["result"]);
+			$this->assertEquals(true, $test['fourThousands']["result"]);
 		}
 		
 		public function testThree4000()
@@ -47,7 +47,7 @@
 
 			$econCheck = new EconRequirementsChecker($student);
 			$test = $econCheck->get();
-			$this->assertEquals(true, $test['4thousands']["result"]);
+			$this->assertEquals(true, $test['fourThousands']["result"]);
 		}
 		
 		public function testNonEconCourses()
@@ -68,7 +68,7 @@
 
 			$econCheck = new EconRequirementsChecker($student);
 			$test = $econCheck->get();
-			$this->assertEquals(false, $test['4thousands']["result"]);
+			$this->assertEquals(false, $test['fourThousands']["result"]);
 		}
 		
 		public function testCourseNumber4000()
@@ -80,7 +80,7 @@
 			$student->set("courses", $course);
 			$econCheck = new EconRequirementsChecker($student);
 			$test = $econCheck->get();
-			$this->assertEquals(1, count($test['4thousands']['reason']));
+			$this->assertEquals(1, count($test['fourThousands']['reason']));
 		}
 		
 		public function testTwoEconCourses()
@@ -102,7 +102,7 @@
 			
 			$econCheck = new EconRequirementsChecker($student);
 			$test = $econCheck->get();
-			$this->assertEquals(2, count($test['4thousands']['reason']));
+			$this->assertEquals(2, count($test['fourThousands']['reason']));
 		}
 	}
 ?>

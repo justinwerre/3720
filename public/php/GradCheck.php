@@ -2,6 +2,7 @@
   require_once "Course.php";
   require_once "StudentProfile.php";
   require_once "RequirementsChecker.php";
+	require_once "EconRequirementsChecker.php";
   require_once "fileparser.php";
 
   $filename = $_FILES['file']['tmp_name'];
@@ -13,7 +14,17 @@
 
   foreach($parsedStudents as $student)
   {
-    $requirementChecker = new RequirementsChecker($student);
+		$major = $student->get('major');
+		
+		if(trim($major) == "Economics")
+		{
+			$requirementChecker = new EconRequirementsChecker($student);
+		}
+		else
+		{
+			$requirementChecker = new RequirementsChecker($student);
+		}
+		
     $check = $requirementChecker->get();
     $studentResults[] = array
 		(
