@@ -203,7 +203,7 @@ function maxAppliedStudyCreditHoursReport(response){
 function max24DisciplineReport(response){
   var header = $("<td />", {text: "Most taken discipline credit hours:"});
   var result = $("<td />", {text: response.max24Discipline.result?"Pass":"Fail"});
-  var reason = $("<td />", {text: response.max24Discipline.reason.length * 3 +" credit hours from most taken discipline"});
+  var reason = $("<td />", {text: response.max24Discipline.reason.length * 3 +" credit hours in discipline "+ response.max24Discipline.dept});
   var returnArray = new Array($("<tr />",{
       class: response.max24Discipline.result?"success":"danger",
 		  append: Array(header, result, reason)

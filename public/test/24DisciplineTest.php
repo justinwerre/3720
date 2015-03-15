@@ -156,7 +156,28 @@ class max24DisciplineCheckerTest extends PHPUnit_Framework_TestCase
       $student->set("courses",$course);
     }
     $status = check24Discipline($student);
-    if(count($status["reason"]) == 24 && $status["result"] == false)
+    if(count($status["reason"]) == 25 && $status["result"] == false)
+        $result = true;
+    $this->assertEquals(true, $result);
+  }
+    
+    //returns the correct name of discipline
+  public function testDisciplineNameReturn()
+  {
+    $result = false;
+    $student = new StudentProfile();
+    $course = new Course();
+    $course->set("department","MUSI");
+    $student->set("courses",$course);
+    $course2 = new Course();
+    $course2->set("department","MUSI");
+    $course2->set("courseTitle","MUSE");
+    $student->set("courses",$course2);
+    $course3 = new Course();
+    $course3->set("department","MUSE");
+    $student->set("courses",$course3);
+    $status = check24Discipline($student);
+    if(count($status["reason"]) == 1 && $status["result"] == true && $status["dept"] == "MUSI")
         $result = true;
     $this->assertEquals(true, $result);
   }

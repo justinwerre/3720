@@ -152,6 +152,7 @@
     $max24Discipline = array();
     $largest = array();
     $sizeLargest = 0;
+    $department = "";
     $courses = $studentProfile->get("courses");
     foreach($courses as  $course)
   	{
@@ -173,12 +174,14 @@
       {
         $sizeLargest = count($dept);
         $largest = $dept;
+        //$department = $dept[0]->get("department");
       }
     }
     return array
   	(
       "result" => $sizeLargest <= 24,
-      "reason" => $largest
+      "reason" => $largest,
+      "dept" => $department
     ); 
   }
 
