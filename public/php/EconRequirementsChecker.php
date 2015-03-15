@@ -79,7 +79,8 @@
 			
 			if($courses[0]->get('department') == 'ECON' && 
 				 ($courses[0]->get('courseNumber') == 1010 ||
-					$courses[0]->get('courseNumber') == 1012
+					$courses[0]->get('courseNumber') == 1012 ||
+					$courses[0] ->get('courseNumber') == 2750
 				 )
 				)
 			{
