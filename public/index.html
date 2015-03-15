@@ -6,11 +6,19 @@
     <link href="/css/bootstrap.css" rel="stylesheet" />
   </head>
   <body>
-      <h4>Please Log In!</h4>
-      <form method="post" action="/php/LogIn.php">
-          Username: <input type="text" name="user"/> <br>
-          Password: <input type="text" name="pass"/> <br>
+      <h4>Please Log In</h4>
+      <form method="post" action="php/LogIn.php">
+          Username: <input type="text" name="username"/> <br>
+          Password: <input type="text" name="password"/> <br>
           <input type="submit" value="Log In"/>
       </form>
+
+      <h3>Add User</h3>
+      <form method="post" action="/php/AddUser.php">
+          Username: <input type="text" name="username"/> <br>
+          Password: <input type="text" name="password"/> <br>
+          Username for new user: <input type="text" name="newUser"/> <br>
+          Password for new user: <input type="text" name="newPass"/> <br>
+          <input type="submit" value="Add User"/>
   </body>
 </html>
