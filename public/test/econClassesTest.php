@@ -12,7 +12,7 @@
 			for($i = 0; $i < 13; $i++)
 			{
 				$course = new Course();
-				$course->set("courseNumber",4000);
+				$course->set("courseNumber",4000+$i);
 				$course->set("department", "ECON");
 				$student->set("courses",$course);
 			}
@@ -20,6 +20,22 @@
 			$econCheck = new EconRequirementsChecker($student);
 			$test = $econCheck->get();
 			$this->assertEquals(false, $test['classes']["result"]);
+		}
+		
+		public function test15EconClasses()
+		{
+			$student = new StudentProfile();
+			for($i = 0; $i < 15; $i++)
+			{
+				$course = new Course();
+				$course->set("courseNumber",4000+$i);
+				$course->set("department", "ECON");
+				$student->set("courses",$course);
+			}
+			
+			$econCheck = new EconRequirementsChecker($student);
+			$test = $econCheck->get();
+			$this->assertEquals(true, $test['classes']["result"]);
 		}
 	}
 ?>
