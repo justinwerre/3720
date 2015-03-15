@@ -27,9 +27,9 @@
 				$course->set("courseNumber",4000+$i);
 				$course->set("department", "ECON");
 				$student->set("courses",$course);
-				$econCheck = new EconGradCheck($student);
 			}
 
+			$econCheck = new EconGradCheck($student);
 			$test = $econCheck->get();
 			$this->assertEquals(true, $test['4thousands']["result"]);
 		}
@@ -43,11 +43,32 @@
 				$course->set("courseNumber",4000+$i);
 				$course->set("department", "ECON");
 				$student->set("courses",$course);
-				$econCheck = new EconGradCheck($student);
 			}
 
+			$econCheck = new EconGradCheck($student);
 			$test = $econCheck->get();
 			$this->assertEquals(true, $test['4thousands']["result"]);
+		}
+		
+		public function testNonEconCourses()
+		{
+			$student = new StudentProfile();
+			$course = new Course();
+			$course->set("courseNumber",4001);
+			$course->set("department", "CPSC");
+			$student->set("courses", $course);
+			
+			for($i = 0; $i <= 2; $i++)
+			{
+				$course = new Course();
+				$course->set("courseNumber",4001+$i);
+				$course->set("department", "ECON");
+				$student->set("courses", $course);
+			}
+
+			$econCheck = new EconGradCheck($student);
+			$test = $econCheck->get();
+			$this->assertEquals(false, $test['4thousands']["result"]);
 		}
 	}
 ?>
