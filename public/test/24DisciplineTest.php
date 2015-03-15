@@ -81,5 +81,36 @@ class max24DisciplineCheckerTest extends PHPUnit_Framework_TestCase
         $result = true;
     $this->assertEquals(true, $result);
   }
+
+    //detects that there are many(too many to predict) disciplines, and counts the correct amount of courses in the returned array
+  public function testManyDisciplinesDiffAmt()
+  {
+    $result = false;
+    $student = new StudentProfile();
+    $course = new Course();
+    $course->set("department","MUSE");
+    $student->set("courses",$course);
+    $course2 = new Course();
+    $course2->set("department","MUSI");
+    $student->set("courses",$course2);
+    $course3 = new Course();
+    $course3->set("department","MUSI");
+    $course3->set("courseTitle","MUSE");
+    $student->set("courses",$course3);
+    $course4 = new Course();
+    $course4->set("department","CPSC");
+    $student->set("courses",$course);
+    $course5 = new Course();
+    $course5->set("department","CPSC");
+    $student->set("courses",$course2);
+    $course6 = new Course();
+    $course6->set("department","CPSC");
+    $course6->set("courseTitle","MUSE");
+    $student->set("courses",$course3);
+    $status = check24Discipline($student);
+    if(count($status["reason"]) == 3 && $status["result"] == true)
+        $result = true;
+    $this->assertEquals(true, $result);
+  }
     
 }
