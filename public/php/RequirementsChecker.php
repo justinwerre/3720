@@ -117,7 +117,7 @@
     $maxCourses = 4;
     if($studentProfile->get("major") == "Music")
     {
-      $maxCourses = 8;
+      $maxCourses = 7;
     }
     /*elseif($studentProfile->get("major") == "Kinesiology")
     {
