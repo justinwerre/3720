@@ -174,7 +174,7 @@ function nonFacultyCrhrsReport(response){
 
 //creates table row for max activity courses report
 function maxActivityCreditHoursReport(response){
-  var header = $("<td />", {text: "Activity Credit Hours:"});
+  var header = $("<td />", {text: "Activity credit hours:"});
   var result = $("<td />", {text: response.maxActivityCreditHours.result?"Pass":"Fail"});
   var reason = $("<td />", {text: response.maxActivityCreditHours.reason.length * 1.5 +" activity course credit hours"});
   var returnArray = new Array($("<tr />",{
@@ -182,11 +182,12 @@ function maxActivityCreditHoursReport(response){
 		  append: Array(header, result, reason)
     })
   );
+  return returnArray;
 }
 
 //creates table row for max applied studies courses report
 function maxAppliedStudyCreditHoursReport(response){
-  var header = $("<td />", {text: "Applied Study Credit Hours:"});
+  var header = $("<td />", {text: "Applied studies credit hours:"});
   var result = $("<td />", {text: response.maxAppliedStudyCreditHours.result?"Pass":"Fail"});
   var reason = $("<td />", {text: response.maxAppliedStudyCreditHours.reason.length * 3 +" applied studies course credit hours"});
   var returnArray = new Array($("<tr />",{
@@ -194,6 +195,7 @@ function maxAppliedStudyCreditHoursReport(response){
 		  append: Array(header, result, reason)
     })
   );
+  return returnArray;
 }
 		
 // checks to see if the student is a economics major and reports 
