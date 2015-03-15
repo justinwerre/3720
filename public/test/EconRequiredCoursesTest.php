@@ -30,5 +30,16 @@
 			$this->assertEquals(0, count($test['requiredCourses']["reason"]));
 		}
 		
+		public function testNonRequiredEconCourse()
+		{
+			$student = new StudentProfile();
+			$course = new Course();
+			$course->set("courseNumber",1000);
+			$course->set("department", "ECON");
+			$student->set("courses",$course);
+			$econCheck = new EconRequirementsChecker($student);
+			$test = $econCheck->get();
+			$this->assertEquals(0, count($test['requiredCourses']["reason"]));
+		}
 	}
 ?>
