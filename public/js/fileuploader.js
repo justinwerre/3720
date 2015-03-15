@@ -28,6 +28,7 @@ $(document).ready(function(){
           $report.append(oneThousandsReport(value.gradCheck));
           $report.append(threeThousandsFourThousandsReport(value.gradCheck));
           $report.append(nonFacultyCrhrsReport(value.gradCheck));
+          $report.append(maxActivityCreditHoursReport(value.gradCheck));
 				});
       } 
     });
@@ -145,7 +146,7 @@ function threeThousandsFourThousandsReport(response){
 function nonFacultyCrhrsReport(response){
   var header = $("<td />", {text: "Non faculty credit hours:"});
   var result = $("<td />", {text: response.nonfacultyCrhrs.result?"Pass":"Fail"});
-  var reason = $("<td />", {text: response.nonfacultyCrhrs.reason+" Non faculty credit hours"});
+  var reason = $("<td />", {text: response.nonfacultyCrhrs.reason+" non faculty credit hours"});
   var returnArray = new Array($("<tr />",{
       class: response.nonfacultyCrhrs.result?"success":"danger",
       append: Array(header, result, reason)
@@ -164,6 +165,20 @@ function nonFacultyCrhrsReport(response){
       }));
     });
   }
+  
+  return returnArray;
+}
+
+//creates table row for max activity courses report
+function maxActivityCreditHoursReport(response){
+  var header = $("<td />", {text: "Activity Credit Hours:"});
+  var result = $("<td />", {text: response.maxActivityCreditHours.result?"Pass":"Fail"});
+  var reason = $("<td />", {text: response.maxActivityCreditHours.reason.length * 1.5+" activity course credit hours"});
+  var returnArray = new Array($("<tr />",{
+      class: response.maxActivityCreditHours.result?"success":"danger",
+      append: Array(header, result, reason)
+    })
+  );
   
   return returnArray;
 }
