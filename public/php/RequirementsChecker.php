@@ -145,6 +145,25 @@
     ); 
   }
 
+  // returns array of courses of discipline of most credit hours; maximum is 24 from any discipline
+  function check24Discipline($studentProfile)
+  {
+    $max24Discipline = array();
+    $courses = $studentProfile->get("courses");
+    foreach($courses as  $course)
+  	{
+      //$department = $course->get("department");
+      //if($department == "MUSE")
+      //{
+  		$max24Discipline[] = $course;
+      //}
+    }
+    return array
+  	(
+      "result" => count($max24Discipline) == 0,
+      "reason" => $max24Discipline
+    ); 
+  }
 
   // returns true if >= 15 3000 and 4000 arts or arts&sci courses have been taken
   function check30004000Courses($studentProfile)
