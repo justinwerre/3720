@@ -12,8 +12,6 @@ while(!feof($file))
     $line = fgets($file);
     $arr = explode(" ", $line);
 
-    var_dump($arr);
-
     $storedUser = $arr[0];
     $storedPass = $arr[1];
     $storedSalt = $arr[2];
@@ -21,14 +19,12 @@ while(!feof($file))
     if($storedUser == $username && $storedPass == crypt($username, $storedSalt))
     {
         $_SESSION['username']=$username;
-        header("/html/checker.html");
-    }
-    else 
-    {
-        echo "Wrong Username or Password, redirecting in 3 seconds..."
-        header("refresh:3;url:index.html");
+        header("Location:../html/checker.html");
     }
 }
+
+echo "Wrong Username or Password, redirecting in 3 seconds..."
+header("refresh:3;Location:../index.html");
 
 fclose($file);
 ?>
