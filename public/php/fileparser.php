@@ -37,7 +37,7 @@
       if($lineCount == 3)
       {
         $name = $arr[0];
-        for($i = 1; $i < count($arr); $i++)
+        for($i = 1; $i < 3; $i++)
         {
           if(!is_numeric($arr[$i]))
           {
@@ -261,6 +261,7 @@
 		    $major = "";
 		    $name = "";
 		    $totalCreditHours = 0;
+        $lineCount = 0;
 
 	  	}
 	  }
