@@ -126,7 +126,7 @@ class AppliedStudyCheckerTest extends PHPUnit_Framework_TestCase
         $result = true;
     $this->assertEquals(true, $result);
   }
-/*
+
   public function test4880to4885()
   {
     $result = false;
@@ -150,11 +150,11 @@ class AppliedStudyCheckerTest extends PHPUnit_Framework_TestCase
     $student->set("courses",$course4);
     $student->set("courses",$course5);
     $status = checkAppliedStudy($student);
-    if(count($status["reason"]) == 6 && $status["result"] == true)
+    if(count($status["reason"]) == 6 && $status["result"] == false)
         $result = true;
     $this->assertEquals(true, $result);
   }
-      */   
+ 
   public function test4879()
   {
     $result = false;
