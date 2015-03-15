@@ -180,7 +180,7 @@
       	//If course is a withdrawl, just skip, if it is just for credit, get weight and set flag to skip getting total points in cTitle loop.
       	if(($arr[$size-1][0] == '-')||($arr[$size-1][0] == '0'))
       	{
-          if($arr[$size-7] == 3)
+          if($arr[$size-7] == 3 && $arr[$size-15]!="F")
           {
             //Credit course
             $weightCR = $arr[$size-7];
