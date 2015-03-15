@@ -37,7 +37,7 @@
       if($lineCount == 3)
       {
         $name = $arr[0];
-        for($i = 1; $i < count($arr); $i++)
+        for($i = 1; $i < 3; $i++)
         {
           if(!is_numeric($arr[$i]))
           {
@@ -71,6 +71,7 @@
         }
         $student->set("faculty",$faculty);
         //Find program value and write it to student profile class
+        $program = "";
         for($j = count($arr) - 1; $j >= 0; $j--)
         {
           if($arr[$j] != "Program:")
@@ -178,9 +179,9 @@
       	$size = count($arr);
         $justCredit = false;
       	//If course is a withdrawl, just skip, if it is just for credit, get weight and set flag to skip getting total points in cTitle loop.
-      	if($arr[$size-1][0] == '-')
+      	if(($arr[$size-1][0] == '-')||($arr[$size-1][0] == '0'))
       	{
-          if($arr[$size-7] == 3)
+          if($arr[$size-7] == 3 && $arr[$size-15]!="F")
           {
             //Credit course
             $weightCR = $arr[$size-7];
@@ -261,6 +262,7 @@
 		    $major = "";
 		    $name = "";
 		    $totalCreditHours = 0;
+        $lineCount = 0;
 
 	  	}
 	  }
