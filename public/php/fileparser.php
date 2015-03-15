@@ -71,6 +71,7 @@
         }
         $student->set("faculty",$faculty);
         //Find program value and write it to student profile class
+        $program = "";
         for($j = count($arr) - 1; $j >= 0; $j--)
         {
           if($arr[$j] != "Program:")
