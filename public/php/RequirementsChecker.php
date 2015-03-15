@@ -124,10 +124,9 @@
   		$musePhacMaxCourses[] = $course;
       }
     }
-    $studentProfile->set("creditHours", $studentProfile->get("creditHours") - (1.5 * (sizeof($musePhacMaxCourses) - 6)));
     return array
   	(
-      "result" => count($musePhacMaxCourses) <= 6,
+      "result" => count($musePhacMaxCourses) <= 4,
       "reason" => $musePhacMaxCourses
     ); 
   }
