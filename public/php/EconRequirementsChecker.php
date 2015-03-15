@@ -57,7 +57,8 @@
 			
 			foreach($courses as $course)
 			{
-				if($course->get('department') == 'ECON')
+				if($course->get('department') == 'ECON' || 
+					 ($course->get('department') == 'STAT' && $course->get('courseNumber') == 1770))
 				{
 					$count++;	
 				}
