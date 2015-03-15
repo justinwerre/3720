@@ -17,7 +17,7 @@
 			$this->studentProfile = $sp;
 			$this->requirements["fourThousands"] = $this->checkFourThousands();
 			$this->requirements['classes'] = $this->checkNumberClasses();
-			$this->requirements['requiredCourses'] = array('reason' => array('something'));
+			$this->requirements['requiredCourses'] = $this->checkRequiredCourses();
 		}
 
 		public function get(){
@@ -68,6 +68,22 @@
 			return array
 			(
 				'result' => count($econCourses) >= 14,
+				'reason' => $econCourses
+			);
+		}
+		
+		private function checkRequiredCourses()
+		{
+			$courses = $this->studentProfile->get('courses');
+			$econCourses = array();
+			
+			if($courses[0]->get('department') == 'ECON')
+			{
+				$econCourses = $courses[0];
+			}
+			
+			return array
+			(
 				'reason' => $econCourses
 			);
 		}
