@@ -106,7 +106,7 @@ class MusePhacMaxCheckerTest extends PHPUnit_Framework_TestCase
         $result = true;
     $this->assertEquals(true, $result);
   }
- /*   
+
   public function testNonMuseNorPhac()
   {
     $result = false;
@@ -115,9 +115,8 @@ class MusePhacMaxCheckerTest extends PHPUnit_Framework_TestCase
     $course->set("department","MATH");
     $student->set("courses",$course);
     $status = checkMusePhacMax($student);
-    //if(count($status["reason"]) == 0 && $status["result"] == false)
-    //    $result = true;
-    //$this->assertEquals(true, $result);
-      $this->assertEquals(true, $status["result"]);
-  }*/
+    if(count($status["reason"]) == 0 && $status["result"] == true)
+        $result = true;
+    $this->assertEquals(true, $result);
+  }
 }
