@@ -11,7 +11,8 @@
         "oneThousands" => check1000Courses($studentProfile),
         "threeThousandsFourThousands" => check30004000Courses($studentProfile),
         "nonfacultyCrhrs" => checkNonfacultyCrhrs($studentProfile),
-        "maxActivityCreditHours" => checkMusePhacMax($studentProfile)
+        "maxActivityCreditHours" => checkMusePhacMax($studentProfile),
+        "maxAppliedStudyCreditHours" => checkAppliedStudy($studentProfile)
       );  
     }
     
