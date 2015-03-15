@@ -176,7 +176,7 @@
     }
     return array
   	(
-      "result" => $sizeLargest >= 1,
+      "result" => $sizeLargest < 4,
       "reason" => $largest
     ); 
   }
