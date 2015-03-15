@@ -121,7 +121,7 @@
     }
     elseif($studentProfile->get("major") == "Kinesiology")
     {
-      $maxCourses = 12;
+      $maxCourses = 9;
     }
     $musePhacMaxCourses = array();
     $courses = $studentProfile->get("courses");
