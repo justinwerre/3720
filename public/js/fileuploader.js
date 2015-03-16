@@ -31,6 +31,8 @@ $(document).ready(function(){
           $report.append(maxActivityCreditHoursReport(value.gradCheck));
           $report.append(maxAppliedStudyCreditHoursReport(value.gradCheck));
           $report.append(max24DisciplineReport(value.gradCheck));
+          $report.append(max5IndStudyReport(value.gradCheck));
+
 					econTests(value, $report);
 				});
       } 
@@ -217,6 +219,19 @@ function max24DisciplineReport(response){
   );
   return returnArray;
 }
+
+function max5IndStudyReport(response){
+  var header = $("<td />", {text: "Independent studies credit hours:"});
+  var result = $("<td />", {text: response.max5IndStudy.result?"Pass":"Fail"});
+  var reason = $("<td />", {text: response.max5IndStudy.reason.length * 3 +" independent studies course credit hours"});
+  var returnArray = new Array($("<tr />",{
+      class: response.max5IndStudy.result?"success":"danger",
+      append: Array(header, result, reason)
+    })
+  );
+  return returnArray;
+}
+
 		
 // checks to see if the student is a economics major and reports 
 // additinal test results specific to that major

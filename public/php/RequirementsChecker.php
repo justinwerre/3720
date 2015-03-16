@@ -13,7 +13,8 @@
         "nonfacultyCrhrs" => checkNonfacultyCrhrs($studentProfile),
         "maxActivityCreditHours" => checkMusePhacMax($studentProfile),
         "maxAppliedStudyCreditHours" => checkAppliedStudy($studentProfile),
-        "max24Discipline" => check24Discipline($studentProfile)
+        "max24Discipline" => check24Discipline($studentProfile),
+        "max5IndStudy" => checkIndependentStudy($studentProfile)
       );  
     }
     
