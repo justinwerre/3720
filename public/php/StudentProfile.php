@@ -48,9 +48,11 @@
                $course->get("semester") == $newValue->get("semester")){
               $inserted = true;
               $course->set("totalPoints", $newValue->get("totalPoints"));
+
             }
           }
           if(!$inserted){
+            $this->creditHours += $newValue->get("weight");
             $this->courses[] = $newValue;
           }
           break;

@@ -15,7 +15,7 @@
     $major = "";
     $name = "";
     $lineCount = 0;
-    $totalCreditHours = 0;
+    // $totalCreditHours = 0;
     $transferCredit = false;
     
     while(!feof($file))
@@ -153,7 +153,7 @@
 	        $course->set("weight", $weightCR);
 	        $course->set("totalPoints", $tPoints);
 	        
-	        $totalCreditHours += $weightCR;
+	        // $totalCreditHours += $weightCR;
 
 	        $student->set("courses", $course);
       	}
@@ -240,7 +240,7 @@
         $course->set("weight", $weightCR);
         $course->set("totalPoints", $tPoints);
         
-        $totalCreditHours += $weightCR;
+        // $totalCreditHours += $weightCR;
 
         $student->set("courses", $course);
       }
@@ -254,7 +254,7 @@
 			if ($arr[1]=="End")
 	  	{
 	  		//add student to array of students
-	  		$student->set("creditHours", $totalCreditHours);
+	  		// $student->set("creditHours", $totalCreditHours);
 	  		$students[] = $student; 
 	  		//create a new student profile and reset attribute values
 	  		$student = new StudentProfile();
