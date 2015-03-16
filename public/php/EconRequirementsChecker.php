@@ -76,29 +76,39 @@
 		{
 			$courses = $this->studentProfile->get('courses');
 			$econCourses = array();
-			
-			if(($courses[0]->get('department') == 'ECON' && 
-				 ($courses[0]->get('courseNumber') == 1010 ||
-					$courses[0]->get('courseNumber') == 1012 ||
-					$courses[0]->get('courseNumber') == 2750 ||
-					$courses[0]->get('courseNumber') == 2900 ||
-					$courses[0]->get('courseNumber') == 3010 ||
-					$courses[0]->get('courseNumber') == 3012 ||
-					$courses[0]->get('courseNumber') == 3950
-				 )) || ($courses[0]->get('department') == 'STAT' &&
-								$courses[0]->get('courseNumber') == 1770)
-				)
-			{
-				$econCourses = $courses[0];
+			$missingCourses = $this->listRequiredCourses();
+
+			foreach($courses as $course){
+				foreach($missingCourses as $key => $missing){
+					if($course->get("department") == $missing['department'] && 
+						$course->get('courseNumber') == $missing['course']){
+						$econCourses[] = $course->toArray();
+						unset($missingCourses[$key]);
+					}
+				}
 			}
 			
 			return array
 			(
-				'result' => true,
+				'result' => count($econCourses) == 8,
 				'reason' => array(
 					'taken' => $econCourses,
-					'missing' => array()
+					'missing' => $missingCourses
 					)
+			);
+		}
+
+		private function listRequiredCourses()
+		{
+			return array(
+				array('course' => 1010, 'department' => 'ECON'),
+				array('course' => 1012, 'department' => 'ECON'),
+				array('course' => 2750, 'department' => 'ECON'),
+				array('course' => 2900, 'department' => 'ECON'),
+				array('course' => 3010, 'department' => 'ECON'),
+				array('course' => 3012, 'department' => 'ECON'),
+				array('course' => 3950, 'department' => 'ECON'),
+				array('course' => 1770, 'department' => 'STAT')
 			);
 		}
 	}

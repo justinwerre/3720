@@ -230,7 +230,7 @@
 			$econCheck = new EconRequirementsChecker($student);
 			$test = $econCheck->get();
 			$this->assertEquals(false, $test['requiredCourses']["result"]);
-			$this->assertEquals(1, count($test['requiredCourses']['results']['missing']));
+			$this->assertEquals(1, count($test['requiredCourses']['reason']['missing']));
 		}
 	}
 ?>
