@@ -7,6 +7,7 @@
     private $program;
     private $major;
     private $creditHours;
+    private $inProgressCreditHours;
     private $GPA;
 
     public function __construct()
@@ -17,6 +18,7 @@
       $this->major = "";
       $this->courses = array();
       $this->creditHours = 0;
+      $this->inProgressCreditHours = 0;
       $this->GPA = 0.0;
     }
     /*
@@ -48,9 +50,15 @@
                $course->get("semester") == $newValue->get("semester")){
               $inserted = true;
               $course->set("totalPoints", $newValue->get("totalPoints"));
+
             }
           }
           if(!$inserted){
+            if ($newValue->get("weight")==0)
+            {
+              $this->inProgressCreditHours += 3;
+            }
+            $this->creditHours += $newValue->get("weight");
             $this->courses[] = $newValue;
           }
           break;
@@ -88,6 +96,9 @@
           break;
         case "creditHours":
           $returnValue = $this->creditHours;
+          break;
+        case "inProgressCreditHours":
+          $returnValue = $this->inProgressCreditHours;
           break;
         case "GPA":
           $returnValue = $this->GPA;

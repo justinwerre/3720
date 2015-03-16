@@ -85,16 +85,36 @@ function GPAReport(response){
     class: response.GPA.result?"success":"danger",
     append: Array(header, result, reason)
   });
+  
 } 
 
 function creditHoursReport(response){
   var header = $("<td />", {text: "Credit Hours:"});
   var result = $("<td />", {text: response.creditHours.result?"Pass":"Fail"});
-  var reason = $("<td />", {text: response.creditHours.reason+" credit hours"});
-  return $("<tr />", {
-    class: response.creditHours.result?"success":"danger",
-    append: Array(header, result, reason)
-  });
+  var reason = $("<td />", {text: (response.creditHours.reason[0]+response.creditHours.reason[1])+" credit hours"});
+  var returnArray = new Array($("<tr />",{
+      class: response.creditHours.result?"success":"danger",
+      append: Array(header, result, reason)
+    })
+  );
+
+  var blank = $("<td />", {text: " "});
+  var completeTxt = $("<td />", {text: "Completed Credit Hours:"});
+  var completeVal = $("<td />", {text: response.creditHours.reason[0]});
+  returnArray.push($("<tr />", {
+        class: "info",
+        append: Array(blank, completeTxt, completeVal)
+  }));
+
+  var blank = $("<td />", {text: " "});
+  var completeTxt = $("<td />", {text: "In Progress Credit Hours:"});
+  var completeVal = $("<td />", {text: response.creditHours.reason[1]});
+  returnArray.push($("<tr />", {
+        class: "info",
+        append: Array(blank, completeTxt, completeVal)
+  }));
+
+  return returnArray;
 }
 
 function oneThousandsReport(response){
