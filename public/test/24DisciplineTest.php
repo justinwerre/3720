@@ -15,7 +15,7 @@ class max24DisciplineCheckerTest extends PHPUnit_Framework_TestCase
     $result = false;
     $student = new StudentProfile();
     $course = new Course();
-    $course->set("department","MUSE");
+    $course->set("department","CPSC");
     $student->set("courses",$course);
     $status = check24Discipline($student);
     if(count($status["reason"]) == 1 && $status["result"] == true)
@@ -43,7 +43,7 @@ class max24DisciplineCheckerTest extends PHPUnit_Framework_TestCase
     $course->set("department","MUSI");
     $student->set("courses",$course);
     $course2 = new Course();
-    $course2->set("department","MUSE");
+    $course2->set("department","CPSC");
     $student->set("courses",$course2);
     $status = check24Discipline($student);
     if(count($status["reason"]) == 1 && $status["result"] == true)
@@ -60,11 +60,11 @@ class max24DisciplineCheckerTest extends PHPUnit_Framework_TestCase
     $course->set("department","MUSI");
     $student->set("courses",$course);
     $course2 = new Course();
-    $course2->set("department","MUSE");
+    $course2->set("department","CPSC");
     $student->set("courses",$course2);
     $course3 = new Course();
-    $course3->set("department","MUSE");
-    $course3->set("courseTitle","MUSE");
+    $course3->set("department","CPSC");
+    $course3->set("courseTitle","CPSC");
     $student->set("courses",$course3);
     $status = check24Discipline($student);
     if(count($status["reason"]) == 2 && $status["result"] == true)
@@ -78,14 +78,14 @@ class max24DisciplineCheckerTest extends PHPUnit_Framework_TestCase
     $result = false;
     $student = new StudentProfile();
     $course = new Course();
-    $course->set("department","MUSE");
+    $course->set("department","CPSC");
     $student->set("courses",$course);
     $course2 = new Course();
     $course2->set("department","MUSI");
     $student->set("courses",$course2);
     $course3 = new Course();
     $course3->set("department","MUSI");
-    $course3->set("courseTitle","MUSE");
+    $course3->set("courseTitle","CPSC");
     $student->set("courses",$course3);
     $status = check24Discipline($student);
     if(count($status["reason"]) == 2 && $status["result"] == true)
@@ -99,14 +99,14 @@ class max24DisciplineCheckerTest extends PHPUnit_Framework_TestCase
     $result = false;
     $student = new StudentProfile();
     $course = new Course();
-    $course->set("department","MUSE");
+    $course->set("department","CPSC");
     $student->set("courses",$course);
     $course2 = new Course();
     $course2->set("department","MUSI");
     $student->set("courses",$course2);
     $course3 = new Course();
     $course3->set("department","MUSI");
-    $course3->set("courseTitle","MUSE");
+    $course3->set("courseTitle","CPSC");
     $student->set("courses",$course3);
     $course4 = new Course();
     $course4->set("department","CPSC");
@@ -117,7 +117,7 @@ class max24DisciplineCheckerTest extends PHPUnit_Framework_TestCase
     $student->set("courses",$course5);
     $course6 = new Course();
     $course6->set("department","CPSC");
-    $course6->set("courseTitle","MUSE");
+    $course6->set("courseTitle","CPSC");
     $student->set("courses",$course6);
     $status = check24Discipline($student);
     if(count($status["reason"]) == 3 && $status["result"] == true)
@@ -171,10 +171,10 @@ class max24DisciplineCheckerTest extends PHPUnit_Framework_TestCase
     $student->set("courses",$course);
     $course2 = new Course();
     $course2->set("department","MUSI");
-    $course2->set("courseTitle","MUSE");
+    $course2->set("courseTitle","CPSC");
     $student->set("courses",$course2);
     $course3 = new Course();
-    $course3->set("department","MUSE");
+    $course3->set("department","CPSC");
     $student->set("courses",$course3);
     $status = check24Discipline($student);
     if(count($status["reason"]) == 2 && $status["result"] == true && $status["dept"] == "MUSI")
@@ -191,10 +191,30 @@ class max24DisciplineCheckerTest extends PHPUnit_Framework_TestCase
     $course->set("department","MUSI");
     $student->set("courses",$course);
     $course2 = new Course();
-    $course2->set("department","MUSE");
+    $course2->set("department","CPSC");
     $student->set("courses",$course2);
     $status = check24Discipline($student);
-    if(count($status["reason"]) == 1 && $status["result"] == true && ($status["dept"] == ("MUSE,MUSI") || $status["dept"] == ("MUSI,MUSE")))
+    if(count($status["reason"]) == 1 && $status["result"] == true && $status["dept"] == ("MUSI,CPSC"))
+        $result = true;
+    $this->assertEquals(true, $result);
+  }
+    
+    //ignores activity courses
+  public function testIgnoreActivity()
+  {
+    $result = false;
+    $student = new StudentProfile();
+    $course2 = new Course();
+    $course2->set("department","MUSE");
+    $student->set("courses",$course2);
+    $course = new Course();
+    $course->set("department","MUSI");
+    $student->set("courses",$course);
+    $course3 = new Course();
+    $course3->set("department","PHAC");
+    $student->set("courses",$course3);
+    $status = check24Discipline($student);
+    if(count($status["reason"]) == 1 && $status["result"] == true && $status["dept"] == "MUSI" )
         $result = true;
     $this->assertEquals(true, $result);
   }

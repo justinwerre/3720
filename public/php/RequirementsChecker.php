@@ -176,6 +176,10 @@
         $largest = $dept;
         $department = $dept[0]->get("department");
       }
+      elseif(count($dept) == $sizeLargest)
+      {
+        $department = $department . "," . $dept[0]->get("department");
+      }
     }
     return array
   	(
