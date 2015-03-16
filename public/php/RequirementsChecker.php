@@ -82,7 +82,7 @@
 
   	return array
   	(
-      "result" => count($independentStudyCourses)<2,
+      "result" => count($independentStudyCourses)<=5,
       "reason" => $independentStudyCourses
     );
   }
