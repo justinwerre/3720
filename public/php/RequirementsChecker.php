@@ -12,7 +12,8 @@
         "threeThousandsFourThousands" => check30004000Courses($studentProfile),
         "nonfacultyCrhrs" => checkNonfacultyCrhrs($studentProfile),
         "maxActivityCreditHours" => checkMusePhacMax($studentProfile),
-        "maxAppliedStudyCreditHours" => checkAppliedStudy($studentProfile)
+        "maxAppliedStudyCreditHours" => checkAppliedStudy($studentProfile),
+        "max24Discipline" => check24Discipline($studentProfile)
       );  
     }
     
@@ -145,6 +146,51 @@
     ); 
   }
 
+  // returns array of courses of discipline of most credit hours; maximum is 24 from any discipline
+  function check24Discipline($studentProfile)
+  {
+    $max24Discipline = array();
+    $largest = array();
+    $sizeLargest = 0;
+    $department = "";
+    $courses = $studentProfile->get("courses");
+    foreach($courses as  $course)
+  	{
+      $tempArray = array();
+      $tempArray[] = $course;
+      $department = $course->get("department");
+      if($department != "PHAC" && $department != "MUSE")
+      {
+        if(!array_key_exists($department, $max24Discipline))
+        {
+          $max24Discipline[$department] = $tempArray;
+        }
+        else
+        {
+          $max24Discipline[$department] = array_merge($max24Discipline[$department], $tempArray);
+        }
+      }
+    }
+    foreach($max24Discipline as $dept)
+    {
+      if(count($dept) > $sizeLargest)
+      {
+        $sizeLargest = count($dept);
+        $largest = $dept;
+        $department = $dept[0]->get("department");
+      }
+      elseif(count($dept) == $sizeLargest)
+      {
+        $department = $department . "," . $dept[0]->get("department");
+      }
+    }
+    return array
+  	(
+      "result" => $sizeLargest <= 24,
+      "reason" => $largest,
+      "dept" => $department
+    ); 
+  }
 
   // returns true if >= 15 3000 and 4000 arts or arts&sci courses have been taken
   function check30004000Courses($studentProfile)
