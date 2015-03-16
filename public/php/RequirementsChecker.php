@@ -36,9 +36,12 @@
   function checkCreditHours($studentProfile)
   {
     $totalCreditHours = $studentProfile->get("creditHours") + $studentProfile->get("inProgressCreditHours");
+    $creditHoursArray = array();
+    $creditHoursArray[] = $studentProfile->get("creditHours");
+    $creditHoursArray[] = $studentProfile->get("inProgressCreditHours");
     return array(
       "result" => $totalCreditHours >= 120,
-      "reason" => $totalCreditHours
+      "reason" => $creditHoursArray
     );
   }
 
