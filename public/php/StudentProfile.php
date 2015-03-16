@@ -54,7 +54,7 @@
             }
           }
           if(!$inserted){
-            if ($newValue->get("weight")<1)
+            if ($newValue->get("weight")==0)
             {
               $this->inProgressCreditHours += 3;
             }

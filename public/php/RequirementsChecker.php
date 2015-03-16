@@ -35,7 +35,9 @@
   // returns true if studetn has at least 120 credit hours
   function checkCreditHours($studentProfile)
   {
+    //total credit hours is the sum of completed courses and in progress courses
     $totalCreditHours = $studentProfile->get("creditHours") + $studentProfile->get("inProgressCreditHours");
+    //create and load array with credit hours at [0] and in progress credit hours at [1]
     $creditHoursArray = array();
     $creditHoursArray[] = $studentProfile->get("creditHours");
     $creditHoursArray[] = $studentProfile->get("inProgressCreditHours");
