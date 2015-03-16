@@ -11,44 +11,56 @@ class IndependentStudyCheckerTest extends PHPUnit_Framework_TestCase
 {
   public function test2990()
   {
+  	$result = false;
     $student = new StudentProfile();
     $course = new Course();
     $course->set("courseNumber",2990);
     $student->set("courses",$course);
     $status = checkIndependentStudy($student);
-    $this->assertEquals(1, count($status["reason"]));
+    if($status["result"] == true && count($status["reason"]) == 1)
+    	$result = true;
+    $this->assertEquals(true, $result);
   }
 
   public function test2991()
   {
+  	$result = false;
     $student = new StudentProfile();
     $course = new Course();
     $course->set("courseNumber",2991);
     $student->set("courses",$course);
     $status = checkIndependentStudy($student);
-    $this->assertEquals(0, count($status["reason"]));
+    if($status["result"] == true && count($status["reason"]) == 0)
+    	$result = true;
+    $this->assertEquals(true, $result);
   }
 
   public function test3990()
   {
+  	$result = false;
     $student = new StudentProfile();
     $course = new Course();
     $course->set("courseNumber",3990);
     $student->set("courses",$course);
     $status = checkIndependentStudy($student);
-    $this->assertEquals(1, count($status["reason"]));
+    if($status["result"] == true && count($status["reason"]) == 1)
+    	$result = true;
+    $this->assertEquals(true, $result);
   }
 
   public function test4990()
   {
+  	$result = false;
     $student = new StudentProfile();
     $course = new Course();
     $course->set("courseNumber",4990);
     $student->set("courses",$course);
     $status = checkIndependentStudy($student);
-    $this->assertEquals(1, count($status["reason"]));
+    if($status["result"] == true && count($status["reason"]) == 1)
+    	$result = true;
+    $this->assertEquals(true, $result);
   }
-
+/*
 
   public function testCount5InStudy()
   {
@@ -112,6 +124,6 @@ class IndependentStudyCheckerTest extends PHPUnit_Framework_TestCase
     $student->set("courses",$course5);
     $status = checkIndependentStudy($student);
     $this->assertEquals(5, count($status["reason"]));
-  }
+  }*/
 }
 
