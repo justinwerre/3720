@@ -250,23 +250,22 @@
       //if the row has multiple items in it
       if (count($arr) > 1)
       {
-      	// if end of transcript has been reached
-			if ($arr[1]=="End")
-	  	{
-	  		//add student to array of students
-	  		// $student->set("creditHours", $totalCreditHours);
-	  		$students[] = $student; 
-	  		//create a new student profile and reset attribute values
-	  		$student = new StudentProfile();
-		    $gpaLine;
-		    $faculty = "";
-		    $program = "";
-		    $major = "";
-		    $name = "";
-		    $totalCreditHours = 0;
-        $lineCount = 0;
+  		// if end of transcript has been reached
+		if ($arr[1]=="End")
+  		{
+  		//add student to array of students
+  		// $student->set("creditHours", $totalCreditHours);
+  		$students[] = $student; 
+  		//create a new student profile and reset attribute values
+  		$student = new StudentProfile();
+	    $gpaLine;
+	    $faculty = "";
+	    $program = "";
+	    $major = "";
+	    $name = "";
+    	$lineCount = 0;
 
-	  	}
+  		}
 	  }
     }
     
