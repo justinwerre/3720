@@ -7,6 +7,7 @@
     private $program;
     private $major;
     private $creditHours;
+    private $inProcessCreditHours;
     private $GPA;
 
     public function __construct()
@@ -17,6 +18,7 @@
       $this->major = "";
       $this->courses = array();
       $this->creditHours = 0;
+      $this->inProcessCreditHours = 0;
       $this->GPA = 0.0;
     }
     /*
