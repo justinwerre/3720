@@ -17,6 +17,7 @@
 			$this->studentProfile = $sp;
 			$this->requirements["fourThousands"] = $this->checkFourThousands();
 			$this->requirements['classes'] = $this->checkNumberClasses();
+			$this->requirements['requiredCourses'] = $this->checkRequiredCourses();
 		}
 
 		public function get(){
@@ -68,6 +69,46 @@
 			(
 				'result' => count($econCourses) >= 14,
 				'reason' => $econCourses
+			);
+		}
+		
+		private function checkRequiredCourses()
+		{
+			$courses = $this->studentProfile->get('courses');
+			$econCourses = array();
+			$missingCourses = $this->listRequiredCourses();
+
+			foreach($courses as $course){
+				foreach($missingCourses as $key => $missing){
+					if($course->get("department") == $missing['department'] && 
+						$course->get('courseNumber') == $missing['course']){
+						$econCourses[] = $course->toArray();
+						unset($missingCourses[$key]);
+					}
+				}
+			}
+			
+			return array
+			(
+				'result' => count($econCourses) == 8,
+				'reason' => array(
+					'taken' => $econCourses,
+					'missing' => $missingCourses
+					)
+			);
+		}
+
+		private function listRequiredCourses()
+		{
+			return array(
+				array('course' => 1010, 'department' => 'ECON'),
+				array('course' => 1012, 'department' => 'ECON'),
+				array('course' => 2750, 'department' => 'ECON'),
+				array('course' => 2900, 'department' => 'ECON'),
+				array('course' => 3010, 'department' => 'ECON'),
+				array('course' => 3012, 'department' => 'ECON'),
+				array('course' => 3950, 'department' => 'ECON'),
+				array('course' => 1770, 'department' => 'STAT')
 			);
 		}
 	}
