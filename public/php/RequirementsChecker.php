@@ -159,13 +159,16 @@
       $tempArray = array();
       $tempArray[] = $course;
       $department = $course->get("department");
-      if(!array_key_exists($department, $max24Discipline))
+      if($department != "PHAC" && $department != "MUSE")
       {
-        $max24Discipline[$department] = $tempArray;
-      }
-      else
-      {
-        $max24Discipline[$department] = array_merge($max24Discipline[$department], $tempArray);
+        if(!array_key_exists($department, $max24Discipline))
+        {
+          $max24Discipline[$department] = $tempArray;
+        }
+        else
+        {
+          $max24Discipline[$department] = array_merge($max24Discipline[$department], $tempArray);
+        }
       }
     }
     foreach($max24Discipline as $dept)
