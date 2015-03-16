@@ -15,7 +15,7 @@
 			$student->set("courses",$course);
 			$econCheck = new EconRequirementsChecker($student);
 			$test = $econCheck->get();
-			$this->assertEquals(1, count($test['requiredCourses']["reason"]));
+			$this->assertEquals(1, count($test['requiredCourses']["reason"]['taken']));
 		}
 		
 		public function testNonEconCourse()
@@ -27,7 +27,7 @@
 			$student->set("courses",$course);
 			$econCheck = new EconRequirementsChecker($student);
 			$test = $econCheck->get();
-			$this->assertEquals(0, count($test['requiredCourses']["reason"]));
+			$this->assertEquals(0, count($test['requiredCourses']["reason"]['taken']));
 		}
 		
 		public function testNonRequiredEconCourse()
@@ -39,7 +39,7 @@
 			$student->set("courses",$course);
 			$econCheck = new EconRequirementsChecker($student);
 			$test = $econCheck->get();
-			$this->assertEquals(0, count($test['requiredCourses']["reason"]));
+			$this->assertEquals(0, count($test['requiredCourses']["reason"]['taken']));
 		}
 		
 		public function testEcon1012()
@@ -51,7 +51,7 @@
 			$student->set("courses",$course);
 			$econCheck = new EconRequirementsChecker($student);
 			$test = $econCheck->get();
-			$this->assertEquals(1, count($test['requiredCourses']["reason"]));
+			$this->assertEquals(1, count($test['requiredCourses']["reason"]['taken']));
 		}
 		
 		public function testEcon2750()
@@ -63,7 +63,7 @@
 			$student->set("courses",$course);
 			$econCheck = new EconRequirementsChecker($student);
 			$test = $econCheck->get();
-			$this->assertEquals(1, count($test['requiredCourses']["reason"]));
+			$this->assertEquals(1, count($test['requiredCourses']["reason"]['taken']));
 		}
 		
 		public function testEcon2900()
@@ -75,7 +75,7 @@
 			$student->set("courses",$course);
 			$econCheck = new EconRequirementsChecker($student);
 			$test = $econCheck->get();
-			$this->assertEquals(1, count($test['requiredCourses']["reason"]));
+			$this->assertEquals(1, count($test['requiredCourses']["reason"]['taken']));
 		}
 		
 		public function testEcon3010()
@@ -87,7 +87,7 @@
 			$student->set("courses",$course);
 			$econCheck = new EconRequirementsChecker($student);
 			$test = $econCheck->get();
-			$this->assertEquals(1, count($test['requiredCourses']["reason"]));
+			$this->assertEquals(1, count($test['requiredCourses']["reason"]['taken']));
 		}
 		
 		public function testEcon3012()
@@ -99,7 +99,7 @@
 			$student->set("courses",$course);
 			$econCheck = new EconRequirementsChecker($student);
 			$test = $econCheck->get();
-			$this->assertEquals(1, count($test['requiredCourses']["reason"]));
+			$this->assertEquals(1, count($test['requiredCourses']["reason"]['taken']));
 		}
 		
 		public function testEcon3950()
@@ -111,7 +111,7 @@
 			$student->set("courses",$course);
 			$econCheck = new EconRequirementsChecker($student);
 			$test = $econCheck->get();
-			$this->assertEquals(1, count($test['requiredCourses']["reason"]));
+			$this->assertEquals(1, count($test['requiredCourses']["reason"]['taken']));
 		}
 		
 		public function testStats1770()
@@ -123,7 +123,7 @@
 			$student->set("courses",$course);
 			$econCheck = new EconRequirementsChecker($student);
 			$test = $econCheck->get();
-			$this->assertEquals(1, count($test['requiredCourses']["reason"]));
+			$this->assertEquals(1, count($test['requiredCourses']["reason"]['taken']));
 		}
 
 		public function testMeetsRequirements()
@@ -180,6 +180,57 @@
 			$econCheck = new EconRequirementsChecker($student);
 			$test = $econCheck->get();
 			$this->assertEquals(true, $test['requiredCourses']["result"]);
+		}
+
+		public function testMissingStats()
+		{
+			$student = new StudentProfile();
+			// econ 1010
+			$e1010 = new Course();
+			$e1010->set("courseNumber", 1010);
+			$e1010->set("department", "ECON");
+			$student->set("courses", $e1010);
+
+			// econ 1012
+			$e1012 = new Course();
+			$e1012->set("courseNumber", 1012);
+			$e1012->set("department", "ECON");
+			$student->set("courses", $e1012);
+
+			// econ 2750
+			$e2750 = new Course();
+			$e2750->set("courseNumber", 2750);
+			$e2750->set("department", "ECON");
+			$student->set("courses", $e2750);
+
+			// econ 2900
+			$e2900 = new Course();
+			$e2900->set("courseNumber", 2900);
+			$e2900->set("department", "ECON");
+			$student->set("courses", $e2900);
+
+			// econ 3010
+			$e3010 = new Course();
+			$e3010->set("courseNumber", 3010);
+			$e3010->set("department", "ECON");
+			$student->set("courses", $e3010);
+
+			// econ 3012
+			$e3012 = new Course();
+			$e3012->set("courseNumber", 3012);
+			$e3012->set("department", "ECON");
+			$student->set("courses", $e3012);
+
+			// econ 3950
+			$e3950 = new Course();
+			$e3950->set("courseNumber", 3950);
+			$e3950->set("department", "ECON");
+			$student->set("courses", $e3950);
+
+			$econCheck = new EconRequirementsChecker($student);
+			$test = $econCheck->get();
+			$this->assertEquals(false, $test['requiredCourses']["result"]);
+			$this->assertEquals(1, count($test['requiredCourses']['results']['missing']));
 		}
 	}
 ?>

@@ -95,7 +95,10 @@
 			return array
 			(
 				'result' => true,
-				'reason' => $econCourses
+				'reason' => array(
+					'taken' => $econCourses,
+					'missing' => array()
+					)
 			);
 		}
 	}
