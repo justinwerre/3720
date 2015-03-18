@@ -233,4 +233,28 @@
       "reason" => $totWeight
     );
   }
+
+  function checkUlethTotal60Attendance($studentProfile)
+  {
+    $ulethCredits = 0;
+    foreach($studentProfile->get("courses") as $course)
+    {
+      $title = $course->get("courseTitle");
+      if($title != "Transfer Credit")
+      { 
+          $ulethCredits += $course->get("weight");
+      }
+    }
+      
+    return array
+    (
+      "result" => $ulethCredits >= 60,
+      "reason" => $ulethCredits
+    );
+  }
+
+  function checkUlethLast30Attendance($studentProfile)
+  {
+    return false;
+  }
 ?>
