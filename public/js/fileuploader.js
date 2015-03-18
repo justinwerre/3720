@@ -18,22 +18,24 @@ $(document).ready(function(){
         //loop through all student profiles
 
 				$.each(response, function(index, value){
-          // create a report for the user
-          $report.append(nameReport(value.studentProfile));
-          $report.append(facultyReport(value.studentProfile));
-          $report.append(majorReport(value.studentProfile));
-          $report.append(programReport(value.studentProfile));
-          $report.append(GPAReport(value.gradCheck));
-          $report.append(creditHoursReport(value.gradCheck));
-          $report.append(oneThousandsReport(value.gradCheck));
-          $report.append(threeThousandsFourThousandsReport(value.gradCheck));
-          $report.append(nonFacultyCrhrsReport(value.gradCheck));
-          $report.append(maxActivityCreditHoursReport(value.gradCheck));
-          $report.append(maxAppliedStudyCreditHoursReport(value.gradCheck));
-          $report.append(max24DisciplineReport(value.gradCheck));
-          $report.append(max5IndStudyReport(value.gradCheck));
+          var $table = $("<table />", {class: "table", appendTo: $report});
 
-					econTests(value, $report);
+          // create a report for the user
+          $table.append(nameReport(value.studentProfile));
+          $table.append(facultyReport(value.studentProfile));
+          $table.append(majorReport(value.studentProfile));
+          $table.append(programReport(value.studentProfile));
+          $table.append(GPAReport(value.gradCheck));
+          $table.append(creditHoursReport(value.gradCheck));
+          $table.append(oneThousandsReport(value.gradCheck));
+          $table.append(threeThousandsFourThousandsReport(value.gradCheck));
+          $table.append(nonFacultyCrhrsReport(value.gradCheck));
+          $table.append(maxActivityCreditHoursReport(value.gradCheck));
+          $table.append(maxAppliedStudyCreditHoursReport(value.gradCheck));
+          $table.append(max24DisciplineReport(value.gradCheck));
+          $table.append(max5IndStudyReport(value.gradCheck));
+
+					econTests(value, $table);
 				});
       } 
     });
