@@ -46,8 +46,10 @@ $(document).ready(function(){
 function nameReport(response){
   var header = $("<td />", {text: "Student name:"});
   var name = $("<td />", {text: response.name});
+  var blank = $("<td />", {text: " "});
   return $("<tr />",{
-    append: Array(header, name)
+    append: Array(header, name, blank),
+    class: "header"
   });
 }
 
@@ -55,8 +57,10 @@ function nameReport(response){
 function facultyReport(response){
   var header = $("<td />", {text: "Faculty:"});
   var faculty = $("<td />", {text: response.faculty});
+  var blank = $("<td />", {text: " "});
   return $("<tr />",{
-    append: Array(header, faculty)
+    append: Array(header, faculty, blank),
+    class: "header"
   });
 }
 
@@ -64,8 +68,10 @@ function facultyReport(response){
 function majorReport(response){
   var header = $("<td />", {text: "Major:"});
   var major = $("<td />", {text: response.major});
+  var blank = $("<td />", {text: " "});
   return $("<tr />",{
-    append: Array(header, major)
+    append: Array(header, major, blank),
+    class: "header"
   });
 }
 
@@ -73,8 +79,10 @@ function majorReport(response){
 function programReport(response){
   var header = $("<td />", {text: "Program:"});
   var program = $("<td />", {text: response.program});
+  var blank = $("<td />", {text: " "});
   return $("<tr />",{
-    append: Array(header, program)
+    append: Array(header, program, blank),
+    class: "header"
   });
 }
 
