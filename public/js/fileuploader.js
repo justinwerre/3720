@@ -18,22 +18,28 @@ $(document).ready(function(){
         //loop through all student profiles
 
 				$.each(response, function(index, value){
-          // create a report for the user
-          $report.append(nameReport(value.studentProfile));
-          $report.append(facultyReport(value.studentProfile));
-          $report.append(majorReport(value.studentProfile));
-          $report.append(programReport(value.studentProfile));
-          $report.append(GPAReport(value.gradCheck));
-          $report.append(creditHoursReport(value.gradCheck));
-          $report.append(oneThousandsReport(value.gradCheck));
-          $report.append(threeThousandsFourThousandsReport(value.gradCheck));
-          $report.append(nonFacultyCrhrsReport(value.gradCheck));
-          $report.append(maxActivityCreditHoursReport(value.gradCheck));
-          $report.append(maxAppliedStudyCreditHoursReport(value.gradCheck));
-          $report.append(max24DisciplineReport(value.gradCheck));
-          $report.append(max5IndStudyReport(value.gradCheck));
+          var $table = $("<table />", {
+            class: "table table-outside-border", 
+            appendTo: $report,
+            click: toggleProfile
+          });
 
-					econTests(value, $report);
+          // create a report for the user
+          $table.append(nameReport(value.studentProfile));
+          $table.append(facultyReport(value.studentProfile));
+          $table.append(majorReport(value.studentProfile));
+          $table.append(programReport(value.studentProfile));
+          $table.append(GPAReport(value.gradCheck));
+          $table.append(creditHoursReport(value.gradCheck));
+          $table.append(oneThousandsReport(value.gradCheck));
+          $table.append(threeThousandsFourThousandsReport(value.gradCheck));
+          $table.append(nonFacultyCrhrsReport(value.gradCheck));
+          $table.append(maxActivityCreditHoursReport(value.gradCheck));
+          $table.append(maxAppliedStudyCreditHoursReport(value.gradCheck));
+          $table.append(max24DisciplineReport(value.gradCheck));
+          $table.append(max5IndStudyReport(value.gradCheck));
+
+					econTests(value, $table);
 				});
       } 
     });
@@ -44,8 +50,10 @@ $(document).ready(function(){
 function nameReport(response){
   var header = $("<td />", {text: "Student name:"});
   var name = $("<td />", {text: response.name});
+  var blank = $("<td />", {text: " "});
   return $("<tr />",{
-    append: Array(header, name)
+    append: Array(header, name, blank),
+    class: "header"
   });
 }
 
@@ -53,8 +61,10 @@ function nameReport(response){
 function facultyReport(response){
   var header = $("<td />", {text: "Faculty:"});
   var faculty = $("<td />", {text: response.faculty});
+  var blank = $("<td />", {text: " "});
   return $("<tr />",{
-    append: Array(header, faculty)
+    append: Array(header, faculty, blank),
+    class: "header"
   });
 }
 
@@ -62,8 +72,10 @@ function facultyReport(response){
 function majorReport(response){
   var header = $("<td />", {text: "Major:"});
   var major = $("<td />", {text: response.major});
+  var blank = $("<td />", {text: " "});
   return $("<tr />",{
-    append: Array(header, major)
+    append: Array(header, major, blank),
+    class: "header"
   });
 }
 
@@ -71,8 +83,10 @@ function majorReport(response){
 function programReport(response){
   var header = $("<td />", {text: "Program:"});
   var program = $("<td />", {text: response.program});
+  var blank = $("<td />", {text: " "});
   return $("<tr />",{
-    append: Array(header, program)
+    append: Array(header, program, blank),
+    class: "header"
   });
 }
 
@@ -345,4 +359,12 @@ function econRequiredCourses(results){
   }
   
   return returnArray;
+}
+
+function toggleProfile(event){
+  var row = $(event.target).parent();
+
+  if(row.is(".header")){
+    $("tr:not(.header)", row.parent()).toggle();
+  }
 }
