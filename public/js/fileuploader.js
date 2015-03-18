@@ -19,7 +19,7 @@ $(document).ready(function(){
 
 				$.each(response, function(index, value){
           var $table = $("<table />", {
-            class: "table", 
+            class: "table table-outside-border", 
             appendTo: $report,
             click: toggleProfile
           });
