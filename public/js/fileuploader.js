@@ -18,7 +18,11 @@ $(document).ready(function(){
         //loop through all student profiles
 
 				$.each(response, function(index, value){
-          var $table = $("<table />", {class: "table", appendTo: $report});
+          var $table = $("<table />", {
+            class: "table", 
+            appendTo: $report,
+            click: toggleProfile
+          });
 
           // create a report for the user
           $table.append(nameReport(value.studentProfile));
@@ -355,4 +359,12 @@ function econRequiredCourses(results){
   }
   
   return returnArray;
+}
+
+function toggleProfile(event){
+  var row = $(event.target).parent();
+
+  if(row.is(".header")){
+    $("tr:not(.header)", row.parent()).toggle();
+  }
 }
