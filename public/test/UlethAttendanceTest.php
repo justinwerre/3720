@@ -8,48 +8,43 @@ require_once __DIR__."/../php/Course.php";
 require_once __DIR__."/../php/RequirementsChecker.php";
 
 class checkUlethAttendanceTest extends PHPUnit_Framework_TestCase
-{/*
-  public function testTotalUnder60HoursAttendance()
+{
+  public function test60TotalUlethHoursNotIncludingTransfer()
   {
     $student = new StudentProfile();
-    for($i=0;$i<3;$i++)
-    {
-   		$course = new Course();
-    	$course->set("department", "Transfer Credit");
-    	$student->set("courses", $course);
-    }
+    //Checking that it skips transfer courses
+   	$course = new Course();
+    $course->set("courseTitle", "Transfer Credit");
+    $course->set("weight", 3);
+    $student->set("courses", $course);
     //19 * 3 weight = 57
-    //Adding Transfer credits should still cause a failure
     for($i=0;$i<19;$i++)
     {
       $course = new Course();
-      $course->set("courseTitle", "TEST");
+      $course->set("courseTitle", "ULETH");
+      $course->set("courseNumber",4000+$i);
+      $course->set("weight", 3);
       $student->set("courses", $course);
-	}
-	$status = checkUlethTotal60Attendance($student);
-	$this->assertEquals(false, $status["result"]);
-   }*/
+	  }
+	  $status = checkUleth60TotalAttendance($student);
+	  $this->assertEquals(false, $status["result"]);
+   }
 
-  public function testTotalOver60HoursAttendance()
-  {  
-  	$result = false;
+  public function test60TotalHoursUleth()
+  {
   	$student = new StudentProfile();
-  	$course = new Course();
-    $course->set("courseTitle", "Transfer Credit");
-    $student->set("courses", $course);
    	//25 * 3 weight = 75
     for($i=0;$i<25;$i++)
     {
      	$course = new Course();
-     	$course->set("courseTitle", "TEST");
+     	$course->set("courseTitle", "ULETH");
+      $course->set("courseNumber",4000+$i);
      	$course->set("weight", 3);
      	$student->set("courses", $course);
-	}
-	$status = checkUlethTotal60Attendance($student);
-	if(count($status["reason"]) > 10)
-    	$result = true;
-    $this->assertEquals(true, $result);
-   }
+    }
+	  $status = checkUleth60TotalAttendance($student);
+    $this->assertEquals(true, $status["result"]);
+  }
 /*
   public function testLastUnder30HoursAttendance()
   {

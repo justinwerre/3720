@@ -234,7 +234,7 @@
     );
   }
 
-  function checkUlethTotal60Attendance($studentProfile)
+  function checkUleth60TotalAttendance($studentProfile)
   {
     $ulethCredits = 0;
     foreach($studentProfile->get("courses") as $course)
@@ -253,7 +253,7 @@
     );
   }
 
-  function checkUlethLast30Attendance($studentProfile)
+  function checkUleth30LastAttendance($studentProfile)
   {
     return false;
   }
