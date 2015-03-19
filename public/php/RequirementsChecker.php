@@ -253,8 +253,24 @@
     );
   }
 
-  function checkUleth30LastAttendance($studentProfile)
+  function checkUlethLast30Attendance($studentProfile)
   {
-    return false;
+    $ulethCredits = 0;
+
+    //for($i = count($studentProfile->courses); $i >= 0; $i--)
+    foreach(array_reverse($studentProfile->get("courses")) as $course)
+    {
+        if($course->get("courseTitle") == "Transfer Credit" && $ulethCredits < 30)
+        {
+          break;
+        }
+        $ulethCredits += $course->get("weight");
+    }
+
+    return array
+    (
+      "result" => $ulethCredits >= 30,
+      "reason" => $ulethCredits
+    );
   }
 ?>

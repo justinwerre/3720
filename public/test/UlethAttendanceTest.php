@@ -45,36 +45,42 @@ class checkUlethAttendanceTest extends PHPUnit_Framework_TestCase
 	  $status = checkUleth60TotalAttendance($student);
     $this->assertEquals(true, $status["result"]);
   }
-/*
-  public function testLastUnder30HoursAttendance()
+
+  public function testLast30AtUlethWithTransfer()
   {
-  	$student = new StudentProfile();
+    $student = new StudentProfile();
+    //Checking that it dosen't count transfer courses
     $course = new Course();
-    $course->set("department", "Transfer Credit");
+    $course->set("courseTitle", "Transfer Credit");
+    $course->set("weight", 3);
     $student->set("courses", $course);
-  	//5 * 3 weight = 15
-  	for($i=0;$i<5;$i++)
+    //9 * 3 weight = 27
+    for($i=0;$i<9;$i++)
     {
-     	$course = new Course();
-     	$course->set("department", "TEST");
-     	$student->set("courses", $course);
+      $course = new Course();
+      $course->set("courseTitle", "ULETH");
+      $course->set("courseNumber",4000+$i);
+      $course->set("weight", 3);
+      $student->set("courses", $course);
     }
     $status = checkUlethLast30Attendance($student);
     $this->assertEquals(false, $status["result"]);
   }
 
-  public function testLastOver30HoursAttendance()
+  public function testLast30AtUleth()
   {
-  	$student = new StudentProfile();
-  	//15 * 3 weight = 45
-  	for($i=0;$i<15;$i++)
+    $student = new StudentProfile();
+    //10 * 3 weight = 30
+    for($i=0;$i<10;$i++)
     {
-      	$course = new Course();
-      	$course->set("department", "TEST");
-      	$student->set("courses", $course);
+      $course = new Course();
+      $course->set("courseTitle", "ULETH");
+      $course->set("courseNumber",4000+$i);
+      $course->set("weight", 3);
+      $student->set("courses", $course);
     }
     $status = checkUlethLast30Attendance($student);
     $this->assertEquals(true, $status["result"]);
-  }*/
+  }
 }
 ?>
