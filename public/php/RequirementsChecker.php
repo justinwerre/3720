@@ -204,7 +204,8 @@
         $department = $course->get("department");
         if($department != "ADCS" && $department != "CDEV"&& $department != "CRED"
             && $department != "EDUC" && $department != "HLSC" && $department != "MGT"
-            && $department != "NURS" && $department != "PUBH")
+            && $department != "NURS" && $department != "PUBH" && $department != "MUSE"
+            && $department != "PHAC")
         {
           $courses[] = $course->toArray();
         }
