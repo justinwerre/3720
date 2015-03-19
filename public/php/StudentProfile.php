@@ -43,13 +43,16 @@
         case "courses":
           $inserted = false;
           foreach($this->courses as &$course){
-            if($course->get("department") == $newValue->get("department") &&
-               $course->get("courseNumber") == $newValue->get("courseNumber") &&
-               $course->get("courseTitle") == $newValue->get("courseTitle") &&
-               $course->get("semester") == $newValue->get("semester")){
-              $inserted = true;
-              $course->set("totalPoints", $newValue->get("totalPoints"));
-
+            if ($course->get("courseNumber")!=1999 && $course->get("courseNumber")!=2999 &&
+              $course->get("courseNumber")!=3999 && $course->get("courseNumber")!=4999)
+            {
+              if($course->get("department") == $newValue->get("department") &&
+                 $course->get("courseNumber") == $newValue->get("courseNumber") &&
+                 $course->get("courseTitle") == $newValue->get("courseTitle") &&
+                 $course->get("semester") == $newValue->get("semester")){
+                $inserted = true;
+                $course->set("totalPoints", $newValue->get("totalPoints"));
+              }
             }
           }
           if(!$inserted){
