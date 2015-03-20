@@ -220,10 +220,11 @@
       if ($course->get("courseNumber") >= 3000)
       {
         $department = $course->get("department");
-        if($department != "ADCS" && $department != "CDEV"&& $department != "CRED"
+        $courseNumber = $course->get("courseNumber");
+        if(($department != "ADCS" && $department != "CDEV"&& $department != "CRED"
             && $department != "EDUC" && $department != "HLSC" && $department != "MGT"
             && $department != "NURS" && $department != "PUBH" && $department != "MUSE"
-            && $department != "PHAC")
+            && $department != "PHAC") || ($department=="HLSC" && $courseNumber == 3450) || ($department=="MGT" && $courseNumber == 3780))
         {
           $courses[] = $course->toArray();
         }
@@ -242,11 +243,16 @@
     foreach($studentProfile->get("courses") as $course)
     {
       $department = $course->get("department");
+      $courseNumber = $course->get("courseNumber");
       if ($department=="ADCS" || $department=="CDEV" || $department=="CRED" || $department=="EDUC" 
         || $department=="HLSC" || $department=="MGT" || $department=="NURS" || $department=="PUBH")
       {
-        $totWeight += $course->get("weight");
-        $courseList[] = $course->toArray();
+        if(($department=="HLSC" && $courseNumber == 3450) || ($department=="MGT" && $courseNumber == 3780)){}
+        else
+        {
+          $totWeight += $course->get("weight");
+          $courseList[] = $course->toArray();
+        }
       }
     }
     return array(
