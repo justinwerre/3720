@@ -273,6 +273,7 @@
 	    $major = "";
 	    $name = "";
     	$lineCount = 0;
+        $majorLine = 0;
 
   		}
 	  }
