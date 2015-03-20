@@ -31,6 +31,7 @@ $(document).ready(function(){
           $table.append(programReport(value.studentProfile));
           $table.append(GPAReport(value.gradCheck));
           $table.append(creditHoursReport(value.gradCheck));
+          $table.append(listInProgressCoursesReport(value.gradCheck));
           $table.append(oneThousandsReport(value.gradCheck));
           $table.append(threeThousandsFourThousandsReport(value.gradCheck));
           $table.append(nonFacultyCrhrsReport(value.gradCheck));
@@ -107,9 +108,29 @@ function creditHoursReport(response){
   var result = $("<td />", {text: response.creditHours.result?"Pass":"Fail"});
   var reason = $("<td />", {text: response.creditHours.reason+" credit hours"});
   return $("<tr />",{
-      class: response.creditHours.result?"success":"danger",
-      append: Array(header, result, reason)
+    class: response.creditHours.result?"success":"danger",
+    append: Array(header, result, reason)
+  });
+}
+
+function listInProgressCoursesReport(response){
+  var returnArray = new Array($("<tr />"));
+  if(!response.listInProgressCourses.result || true){
+    $.each(response.listInProgressCourses.reason, function(name, value){
+      var dept = $("<td />", {text: value.department});
+      var crsNmb = $("<td />", {text: value.courseNumber});
+      var crsTitle = $("<td />", {text: value.courseTitle});
+      if(value.weight<1){
+        crsTitle = $("<td />", {text:"In Progress"});
+       }
+      returnArray.push($("<tr />", {
+        class: "info",
+        append: Array(dept, crsNmb, crsTitle)
+      }));
     });
+  }
+
+  return returnArray;
 
 }
 

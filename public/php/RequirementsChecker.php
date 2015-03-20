@@ -8,6 +8,7 @@
       $this->requirements = array(
         "GPA" => checkGPA($studentProfile),
         "creditHours" => checkCreditHours($studentProfile),
+        "listInProgressCourses" => listInProgressCourses($studentProfile),
         "oneThousands" => check1000Courses($studentProfile),
         "threeThousandsFourThousands" => check30004000Courses($studentProfile),
         "nonfacultyCrhrs" => checkNonfacultyCrhrs($studentProfile),
@@ -41,6 +42,22 @@
     return array(
       "result" => $totalCreditHours >= 120,
       "reason" => $totalCreditHours
+    );
+  }
+
+  // returns the list of in progress courses
+  function listInProgressCourses($studentProfile)
+  {
+    $courses = array();
+    foreach($studentProfile->get("courses") as $course){
+      if($course->get("weight") == 0){
+        $courses[] = $course->toArray();
+      }
+    }
+      
+    return array(
+      "result" => true,
+      "reason" => $courses
     );
   }
 
