@@ -56,8 +56,9 @@
             }
           }
           if(!$inserted){
-            $this->creditHours += $newValue->get("weight");
+            // $this->creditHours += $newValue->get("weight");
             $this->courses[] = $newValue;
+            $this->checkSimilarCourse($newValue);
           }
           break;
         case "creditHours":
@@ -110,6 +111,64 @@
         "major" => trim($this->major),
         "creditHours" => trim($this->creditHours),
         "GPA" => trim($this->GPA)
+      );
+    }
+
+    private function checkSimilarCourse($course)
+    {
+      $newSimilar = false;
+      $oldSimilar = false;
+
+      foreach($this->listSimilarCourses() as $pair)
+      {
+        $newSimilar = false;
+        $oldSimilar = false;
+
+        foreach($pair as $pairCourse)
+        {
+          if($pairCourse["department"] == $course->get("department") &&
+            $pairCourse["courseNumber"] == $course->get("courseNumber"))
+          {
+            $newSimilar = true;
+          }
+        }
+
+        if($newSimilar)
+        {
+          foreach($this->courses as $oldCourse) 
+          {
+            foreach($pair as $pairCourse)
+            {
+              if($pairCourse["department"] == $oldCourse->get("department") &&
+                $pairCourse["courseNumber"] == $oldCourse->get("courseNumber"))
+              {
+                $oldSimilar = true;
+                break;
+              }
+            }
+
+            if($oldSimilar)
+            {
+              break;          
+            } 
+          }
+        }
+
+        if($newSimilar && $oldSimilar)
+        {
+          break;
+        }
+      }
+
+      if(false == $newSimilar && false == $oldSimilar){
+        $this->creditHours += $course->get("weight");
+      }
+    }
+
+    private function listSimilarCourses()
+    {
+      return array(
+        array( array("department" => "ECON", "courseNumber" => 2900), array("department" => "STAT", "courseNumber" => 2780) )
       );
     }
 
