@@ -98,7 +98,7 @@
     foreach($courses as  $course)
   	{
         $courseNumber = $course->get("courseNumber");
-  	 	if(($courseNumber >= 2880 && $courseNumber <= 2885) || ($courseNumber >= 3880 && $courseNumber <= 3885) || ($courseNumber >= 4880 && $courseNumber <= 4885))
+  	 	if(($courseNumber >= 2980 && $courseNumber <= 2985) || ($courseNumber >= 3980 && $courseNumber <= 3985) || ($courseNumber >= 4980 && $courseNumber <= 4985))
   		{
   			$appliedStudyCourses[] = $course;
   		}
