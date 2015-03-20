@@ -15,7 +15,9 @@
         "maxActivityCreditHours" => checkMusePhacMax($studentProfile),
         "maxAppliedStudyCreditHours" => checkAppliedStudy($studentProfile),
         "max24Discipline" => check24Discipline($studentProfile),
-        "max5IndStudy" => checkIndependentStudy($studentProfile)
+        "max5IndStudy" => checkIndependentStudy($studentProfile),
+        "uleth60Total" => checkUleth60TotalAttendance($studentProfile),
+        "uleth30Last" => checkUlethLast30Attendance($studentProfile)
       );  
     }
     
@@ -258,6 +260,50 @@
     return array(
       "result" => $totWeight <= 12,
       "reason" => $courseList
+    );
+  }
+
+  function checkUleth60TotalAttendance($studentProfile)
+  {
+    $ulethCredits = 0;
+    foreach($studentProfile->get("courses") as $course)
+    {
+      $title = $course->get("courseTitle");
+      if($title != "Transfer Credit")
+      { 
+          $ulethCredits += $course->get("weight");
+      }
+    }
+      
+    return array
+    (
+      "result" => $ulethCredits >= 60,
+      "reason" => $ulethCredits
+    );
+  }
+
+  function checkUlethLast30Attendance($studentProfile)
+  {
+    $ulethCredits = 0;
+
+    //for($i = count($studentProfile->courses); $i >= 0; $i--)
+    foreach(array_reverse($studentProfile->get("courses")) as $course)
+    {
+      if( $ulethCredits<30)
+      {
+        if($course->get("courseTitle") == "Transfer Credit" && $ulethCredits < 30)
+        {
+          break;
+        }
+        $ulethCredits += $course->get("weight");
+      }
+       
+    }
+
+    return array
+    (
+      "result" => $ulethCredits >= 30,
+      "reason" => $ulethCredits
     );
   }
 ?>
