@@ -224,7 +224,7 @@
         if(($department != "ADCS" && $department != "CDEV"&& $department != "CRED"
             && $department != "EDUC" && $department != "HLSC" && $department != "MGT"
             && $department != "NURS" && $department != "PUBH" && $department != "MUSE"
-            && $department != "PHAC") || ($department=="HLSC" && $courseNumber == 3450))
+            && $department != "PHAC") || ($department=="HLSC" && $courseNumber == 3450) || ($department=="MGT" && $courseNumber == 3780))
         {
           $courses[] = $course->toArray();
         }

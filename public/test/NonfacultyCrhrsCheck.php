@@ -357,7 +357,7 @@ class nonfacultyCrhrsTest extends PHPUnit_Framework_TestCase
     $result = false;
     $student = new StudentProfile();
     $course = new Course();
-    $course->set("department","HLSC");
+    $course->set("department","MGT");
     $course->set("courseNumber",3780);
     $course->set("weight",3);
     $student->set("courses",$course);
