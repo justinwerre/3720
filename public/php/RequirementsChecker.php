@@ -77,7 +77,7 @@
         if($courseNumber == 2990 || $courseNumber == 3990 || $courseNumber == 4990) 
   		  {
   			  
-          $independentStudyCourses[] = $course;
+          $independentStudyCourses[] = $course->toArray();
           
   		  }
   	
@@ -100,7 +100,7 @@
         $courseNumber = $course->get("courseNumber");
   	 	if(($courseNumber >= 2980 && $courseNumber <= 2985) || ($courseNumber >= 3980 && $courseNumber <= 3985) || ($courseNumber >= 4980 && $courseNumber <= 4985))
   		{
-  			$appliedStudyCourses[] = $course;
+  			$appliedStudyCourses[] = $course->toArray();
   		}
     }
     return array
@@ -134,7 +134,7 @@
       $department = $course->get("department");
       if($department == "MUSE" || $department == "PHAC")
       {
-  		$musePhacMaxCourses[] = $course;
+  		$musePhacMaxCourses[] = $course->toArray();
       }
     }
     return array
@@ -149,6 +149,7 @@
   {
     $max24Discipline = array();
     $largest = array();
+    $list = array();
     $sizeLargest = 0;
     $department = "";
     $courses = $studentProfile->get("courses");
@@ -182,10 +183,14 @@
         $department = $department . "," . $dept[0]->get("department");
       }
     }
+    foreach($largest as $course)
+    {
+      $list[] = $course->toArray();
+    }
     return array
   	(
       "result" => $sizeLargest <= 24,
-      "reason" => $largest,
+      "reason" => $list,
       "dept" => $department
     ); 
   }
@@ -216,6 +221,7 @@
   function checkNonfacultyCrhrs($studentProfile)
   {
     $totWeight=0.0;
+    $courseList = array();
     foreach($studentProfile->get("courses") as $course)
     {
       $department = $course->get("department");
@@ -223,11 +229,12 @@
         || $department=="HLSC" || $department=="MGT" || $department=="NURS" || $department=="PUBH")
       {
         $totWeight += $course->get("weight");
+        $courseList[] = $course->toArray();
       }
     }
     return array(
       "result" => $totWeight <= 12,
-      "reason" => $totWeight
+      "reason" => $courseList
     );
   }
 ?>

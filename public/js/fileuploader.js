@@ -128,6 +128,9 @@ function oneThousandsReport(response){
       var dept = $("<td />", {text: value.department});
       var crsNmb = $("<td />", {text: value.courseNumber});
       var crsTitle = $("<td />", {text: value.courseTitle});
+      if(value.weight<1){
+        crsTitle = $("<td />", {text:"In Progress"});
+       }
       returnArray.push($("<tr />", {
         class: "info",
         append: Array(dept, crsNmb, crsTitle)
@@ -171,7 +174,7 @@ function threeThousandsFourThousandsReport(response){
 function nonFacultyCrhrsReport(response){
   var header = $("<td />", {text: "Non faculty credit hours:"});
   var result = $("<td />", {text: response.nonfacultyCrhrs.result?"Pass":"Fail"});
-  var reason = $("<td />", {text: response.nonfacultyCrhrs.reason+" non faculty credit hours"});
+  var reason = $("<td />", {text: response.nonfacultyCrhrs.reason.length * 3 +" non faculty credit hours"});
   var returnArray = new Array($("<tr />",{
       class: response.nonfacultyCrhrs.result?"success":"danger",
       append: Array(header, result, reason)
@@ -207,6 +210,22 @@ function maxActivityCreditHoursReport(response){
 		  append: Array(header, result, reason)
     })
   );
+
+  if(!response.maxActivityCreditHours.result || true){
+    $.each(response.maxActivityCreditHours.reason, function(name, value){
+      var dept = $("<td />", {text: value.department});
+      var crsNmb = $("<td />", {text: value.courseNumber});
+       var crsTitle = $("<td />", {text: value.courseTitle});
+       if(value.weight<1){
+        crsTitle = $("<td />", {text:"In Progress"});
+       }
+       returnArray.push($("<tr />", {
+        class: "info",
+        append: Array(dept, crsNmb, crsTitle)
+      }));
+    });
+  }
+    
   return returnArray;
 }
 
@@ -214,12 +233,28 @@ function maxActivityCreditHoursReport(response){
 function maxAppliedStudyCreditHoursReport(response){
   var header = $("<td />", {text: "Applied studies credit hours:"});
   var result = $("<td />", {text: response.maxAppliedStudyCreditHours.result?"Pass":"Fail"});
-  var reason = $("<td />", {text: response.maxAppliedStudyCreditHours.reason.length * 3 +" applied studies course credit hours"});
+  var reason = $("<td />", {text: response.maxAppliedStudyCreditHours.reason.length * 3 +" applied studies credit hours"});
   var returnArray = new Array($("<tr />",{
       class: response.maxAppliedStudyCreditHours.result?"success":"danger",
 		  append: Array(header, result, reason)
     })
   );
+
+  if(!response.maxAppliedStudyCreditHours.result || true){
+    $.each(response.maxAppliedStudyCreditHours.reason, function(name, value){
+      var dept = $("<td />", {text: value.department});
+      var crsNmb = $("<td />", {text: value.courseNumber});
+       var crsTitle = $("<td />", {text: value.courseTitle});
+       if(value.weight<1){
+        crsTitle = $("<td />", {text:"In Progress"});
+       }
+       returnArray.push($("<tr />", {
+        class: "info",
+        append: Array(dept, crsNmb, crsTitle)
+      }));
+    });
+  }
+    
   return returnArray;
 }
 
@@ -233,18 +268,50 @@ function max24DisciplineReport(response){
 		  append: Array(header, result, reason)
     })
   );
+
+  if(!response.max24Discipline.result || true){
+    $.each(response.max24Discipline.reason, function(name, value){
+      var dept = $("<td />", {text: value.department});
+      var crsNmb = $("<td />", {text: value.courseNumber});
+       var crsTitle = $("<td />", {text: value.courseTitle});
+       if(value.weight<1){
+        crsTitle = $("<td />", {text:"In Progress"});
+       }
+       returnArray.push($("<tr />", {
+        class: "info",
+        append: Array(dept, crsNmb, crsTitle)
+      }));
+    });
+  }
+    
   return returnArray;
 }
 
 function max5IndStudyReport(response){
   var header = $("<td />", {text: "Independent studies credit hours:"});
   var result = $("<td />", {text: response.max5IndStudy.result?"Pass":"Fail"});
-  var reason = $("<td />", {text: response.max5IndStudy.reason.length * 3 +" independent studies course credit hours"});
+  var reason = $("<td />", {text: response.max5IndStudy.reason.length * 3 +" independent studies credit hours"});
   var returnArray = new Array($("<tr />",{
       class: response.max5IndStudy.result?"success":"danger",
       append: Array(header, result, reason)
     })
   );
+
+  if(!response.max5IndStudy.result || true){
+    $.each(response.max5IndStudy.reason, function(name, value){
+      var dept = $("<td />", {text: value.department});
+      var crsNmb = $("<td />", {text: value.courseNumber});
+       var crsTitle = $("<td />", {text: value.courseTitle});
+       if(value.weight<1){
+        crsTitle = $("<td />", {text:"In Progress"});
+       }
+       returnArray.push($("<tr />", {
+        class: "info",
+        append: Array(dept, crsNmb, crsTitle)
+      }));
+    });
+  }
+    
   return returnArray;
 }
 
