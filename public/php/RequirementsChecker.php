@@ -242,11 +242,16 @@
     foreach($studentProfile->get("courses") as $course)
     {
       $department = $course->get("department");
+      $courseNumber = $course->get("courseNumber");
       if ($department=="ADCS" || $department=="CDEV" || $department=="CRED" || $department=="EDUC" 
         || $department=="HLSC" || $department=="MGT" || $department=="NURS" || $department=="PUBH")
       {
-        $totWeight += $course->get("weight");
-        $courseList[] = $course->toArray();
+        if($department=="HLSC" && $courseNumber == 3450){}
+        else
+        {
+          $totWeight += $course->get("weight");
+          $courseList[] = $course->toArray();
+        }
       }
     }
     return array(
