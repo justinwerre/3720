@@ -81,7 +81,7 @@
 			foreach($courses as $course){
 				foreach($missingCourses as $key => $missing){
 					if($course->get("department") == $missing['department'] && 
-						$course->get('courseNumber') == $missing['course']){
+						$course->get('courseNumber') == $missing['courseNumber']){
 						$econCourses[] = $course->toArray();
 						unset($missingCourses[$key]);
 					}
@@ -101,14 +101,14 @@
 		private function listRequiredCourses()
 		{
 			return array(
-				array('course' => 1010, 'department' => 'ECON'),
-				array('course' => 1012, 'department' => 'ECON'),
-				array('course' => 2750, 'department' => 'ECON'),
-				array('course' => 2900, 'department' => 'ECON'),
-				array('course' => 3010, 'department' => 'ECON'),
-				array('course' => 3012, 'department' => 'ECON'),
-				array('course' => 3950, 'department' => 'ECON'),
-				array('course' => 1770, 'department' => 'STAT')
+				array('courseNumber' => 1010, 'department' => 'ECON'),
+				array('courseNumber' => 1012, 'department' => 'ECON'),
+				array('courseNumber' => 2750, 'department' => 'ECON'),
+				array('courseNumber' => 2900, 'department' => 'ECON'),
+				array('courseNumber' => 3010, 'department' => 'ECON'),
+				array('courseNumber' => 3012, 'department' => 'ECON'),
+				array('courseNumber' => 3950, 'department' => 'ECON'),
+				array('courseNumber' => 1770, 'department' => 'STAT')
 			);
 		}
 	}

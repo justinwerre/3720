@@ -400,7 +400,7 @@ function econNumberOfCourses(results){
 function econRequiredCourses(results){
   var header = $("<td />", {text: "Economics Classes Taken:"});
   var result = $("<td />", {text: results.result?"Pass":"Fail"});
-  var reason = $("<td />", {text: results.reason.length+" courses"});
+  var reason = $("<td />", {text: Object.keys(results.reason.missing).length+" courses missing"});
   var returnArray = new Array($("<tr />",{
     class: results.result?"success":"danger",
     append: Array(header, result, reason)
@@ -419,7 +419,7 @@ function econRequiredCourses(results){
 
     $.each(results.reason.missing, function(name, value){
       var dept = $("<td />", {text: value.department});
-      var crsNmb = $("<td />", {text: value.course});
+      var crsNmb = $("<td />", {text: value.courseNumber});
       var crsTitle = $("<td />", {text: value.courseTitle});
       returnArray.push($("<tr />", {
         class: "danger",
