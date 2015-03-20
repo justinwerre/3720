@@ -246,7 +246,7 @@
       if ($department=="ADCS" || $department=="CDEV" || $department=="CRED" || $department=="EDUC" 
         || $department=="HLSC" || $department=="MGT" || $department=="NURS" || $department=="PUBH")
       {
-        if($department=="HLSC" && $courseNumber == 3450){}
+        if(($department=="HLSC" && $courseNumber == 3450) || ($department=="MGT" && $courseNumber == 3780)){}
         else
         {
           $totWeight += $course->get("weight");
