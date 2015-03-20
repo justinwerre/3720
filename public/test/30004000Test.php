@@ -294,4 +294,19 @@ class check30004000Test extends PHPUnit_Framework_TestCase
         $result = true;
     $this->assertEquals(true, $result);
   }
+    
+  public function testMgt3780()
+  {
+    $result = false;
+    $student = new StudentProfile();
+    $course = new Course();
+    $course->set("department","HLSC");
+    $course->set("courseNumber",3780);
+    $course->set("weight",3);
+    $student->set("courses",$course);
+    $status = checkNonfacultyCrhrs($student);
+    if($status["result"] == false && count($status["reason"]) == 1)
+        $result = true;
+    $this->assertEquals(true, $result);
+  }
 }
