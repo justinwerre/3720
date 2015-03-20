@@ -279,4 +279,19 @@ class check30004000Test extends PHPUnit_Framework_TestCase
     $status = check30004000Courses($student);
     $this->assertEquals(false, $status["result"]);
   }
+    
+  public function testHlsc3450()
+  {
+    $result = false;
+    $student = new StudentProfile();
+    $course = new Course();
+    $course->set("department","HLSC");
+    $course->set("courseNumber",3450);
+    $course->set("weight",3);
+    $student->set("courses",$course);
+    $status = check30004000Courses($student);
+    if($status["result"] == true && count($status["reason"]) == 0)
+        $result = true;
+    $this->assertEquals(true, $result);
+  }
 }
