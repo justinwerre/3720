@@ -15,6 +15,7 @@
     $major = "";
     $name = "";
     $lineCount = 0;
+    $majorLine = 0;
     // $totalCreditHours = 0;
     $transferCredit = false;
     
@@ -100,7 +101,15 @@
           if($i < count($arr))
               $major = $major . " " . $arr[$i];
         }
-        $student->set("major",$major);
+        if($lineCount > ($majorLine+1))
+        {
+          $majorLine = $lineCount;
+          $student->set("major",$major);
+        }
+        else
+        {
+          $student->set("major",$student->get("major").", ".$major);
+        }
       }
       
       /* 
@@ -264,6 +273,7 @@
 	    $major = "";
 	    $name = "";
     	$lineCount = 0;
+        $majorLine = 0;
 
   		}
 	  }
