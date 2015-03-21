@@ -39,6 +39,8 @@ $(document).ready(function(){
           $table.append(maxAppliedStudyCreditHoursReport(value.gradCheck));
           $table.append(max24DisciplineReport(value.gradCheck));
           $table.append(max5IndStudyReport(value.gradCheck));
+          $table.append(uleth60TotalReport(value.gradCheck));
+          $table.append(uleth30LastReport(value.gradCheck));
 
 					econTests(value, $table);
 				});
@@ -332,6 +334,32 @@ function max5IndStudyReport(response){
       }));
     });
   }
+    
+  return returnArray;
+}
+
+function uleth60TotalReport(response){
+  var header = $("<td />", {text: "Credit hours taken at uleth:"});
+  var result = $("<td />", {text: response.uleth60Total.result?"Pass":"Fail"});
+  var reason = $("<td />", {text: response.uleth60Total.reason +" credit hours taken at uleth"});
+  var returnArray = new Array($("<tr />",{
+      class: response.uleth60Total.result?"success":"danger",
+      append: Array(header, result, reason)
+    })
+  );
+    
+  return returnArray;
+}
+
+function uleth30LastReport(response){
+  var header = $("<td />", {text: "Last credit hours taken at uleth:"});
+  var result = $("<td />", {text: response.uleth30Last.result?"Pass":"Fail"});
+  var reason = $("<td />", {text: response.uleth30Last.reason +" final credit hours taken at uleth"});
+  var returnArray = new Array($("<tr />",{
+      class: response.uleth30Last.result?"success":"danger",
+      append: Array(header, result, reason)
+    })
+  );
     
   return returnArray;
 }
