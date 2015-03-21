@@ -15,8 +15,9 @@
   foreach($parsedStudents as $student)
   {
 		$major = $student->get('major');
+        $secondMajor = $student->get('secondMajor');
 		
-		if(trim($major) == "Economics")
+		if(trim($major) == "Economics" || trim($secondMajor) == "Economics")
 		{
 			$requirementChecker = new EconRequirementsChecker($student);
 		}

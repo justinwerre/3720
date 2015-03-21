@@ -134,11 +134,11 @@
   function checkMusePhacMax($studentProfile)
   {
     $maxCourses = 0;
-    if(trim($studentProfile->get("major")) == "Music")
+    if(trim($studentProfile->get("major")) == "Music" || trim($studentProfile->get("secondMajor")) == "Music")
     {
       $maxCourses = 8;
     }
-    elseif(trim($studentProfile->get("major")) == "Kinesiology")
+    elseif(trim($studentProfile->get("major")) == "Kinesiology" || trim($studentProfile->get("secondMajor")) == "Kinesiology")
     {
       $maxCourses = 10;
     }
