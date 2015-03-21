@@ -72,7 +72,10 @@ function facultyReport(response){
 // creates a table row for major
 function majorReport(response){
   var header = $("<td />", {text: "Major:"});
-  var major = $("<td />", {text: response.major});
+  if(response.secondMajor != "")
+    var major = $("<td />", {text: response.major + ", " + response.secondMajor});
+  else
+    var major = $("<td />", {text: response.major});  
   var blank = $("<td />", {text: " "});
   return $("<tr />",{
     append: Array(header, major, blank),

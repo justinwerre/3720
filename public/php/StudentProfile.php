@@ -6,6 +6,7 @@
     private $faculty;
     private $program;
     private $major;
+    private $secondMajor;
     private $creditHours;
     private $inProgressCreditHours;
     private $GPA;
@@ -16,6 +17,7 @@
       $this->faculty = "";
       $this->program = "";
       $this->major = "";
+      $this->secondMajor = "";
       $this->courses = array();
       $this->creditHours = 0;
       $this->GPA = 0.0;
@@ -39,6 +41,9 @@
           break;
         case "major":
           $this->major = $newValue;
+          break;
+        case "secondMajor":
+          $this->secondMajor = $newValue;
           break;
         case "courses":
           $inserted = false;
@@ -89,6 +94,9 @@
         case "major":
           $returnValue = $this->major;
           break;
+        case "secondMajor":
+          $returnValue = $this->secondMajor;
+          break;
         case "courses":
           $returnValue = $this->courses;
           break;
@@ -108,6 +116,7 @@
         "faculty" => trim($this->faculty),
         "program" => trim($this->program),
         "major" => trim($this->major),
+        "secondMajor" => trim($this->secondMajor),
         "creditHours" => trim($this->creditHours),
         "GPA" => trim($this->GPA)
       );

@@ -13,6 +13,8 @@
     $faculty = "";
     $program = "";
     $major = "";
+    $secondMajor = "";
+    $ignore = false;
     $name = "";
     $lineCount = 0;
     $majorLine = 0;
@@ -99,16 +101,32 @@
         for($i = 2; $i < count($arr); $i++)
         {
           if($i < count($arr))
-              $major = $major . " " . $arr[$i];
+          {
+              if($arr[$i] == "2nd")
+              {
+                $ignore = true;
+              }
+              else
+              {
+                if($arr[$i] != "Major:")
+                {
+                  if($ignore)
+                    $secondMajor = $secondMajor . " " . $arr[$i];
+                  else
+                    $major = $major . " " . $arr[$i];
+                }
+              }
+          }
         }
         if($lineCount > ($majorLine+1))
         {
           $majorLine = $lineCount;
           $student->set("major",$major);
+          $student->set("secondMajor",$secondMajor);
         }
         else
         {
-          $student->set("major",$student->get("major").", ".$major);
+          $student->set("secondMajor",$major);
         }
       }
       
@@ -271,6 +289,8 @@
 	    $faculty = "";
 	    $program = "";
 	    $major = "";
+        $secondMajor = "";
+        $ignore = false;
 	    $name = "";
     	$lineCount = 0;
         $majorLine = 0;
