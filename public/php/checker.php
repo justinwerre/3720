@@ -1,9 +1,17 @@
+<?php 
+session_start();
+//If no user is logged in, redirect to main page
+if(!isset($_SESSION['username']))
+{
+header("../index.html");
+}
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
     <link href="/css/bootstrap.css" rel="stylesheet" />
-    <link href="/css/table.css" rel="stylesheet" />
     <script src="/js/jquery-1.11.2.js" type="text/javascript" ></script>
     <script src="/js/fileuploader.js" type="text/javascript" ></script>
   </head>
@@ -15,7 +23,7 @@
           <button type="button" id="filesubmitbutton" class="btn btn-default form-control">Submit</button>
         </div>
       </form>
-      <div id="report"></div>
+      <table id="report" class="table"></table>
     </div>
   </body>
 </html>
